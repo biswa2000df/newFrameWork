@@ -64,7 +64,9 @@ public class ConnectDataSheet extends BrowserClass {
 
 			// new type and logic explanation***************************************
 
-			/*
+			/*This is Most Important
+			 * 
+			 * 
 			 * tale jou logic lekhichi First re sabu column name get kariki list re store
 			 * kariba List<String> columnName = r.getFieldNames();
 			 * 
