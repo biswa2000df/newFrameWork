@@ -15,9 +15,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ActionClass extends BrowserClass {
+public class ActionClass extends ConnectDataSheet {
 
-	// webElement, hello, Action, driver
+	// webwebElement, hello, Action, driver
 
 	static WebElement FROM;
 	static String GetText;
@@ -25,23 +25,24 @@ public class ActionClass extends BrowserClass {
 	static UtilScreenshotAndReport utilClass;
 	
 
-	public static void actrds(String TestCase_No, WebElement element, List<WebElement> elements, String dataField,
-			String actiontype, String Description, String Neg_Description, WebDriver driver)
-			throws InterruptedException, IOException {
+	public static void actrds()throws InterruptedException, IOException {
+		
+		/*String TestCase_No, WebwebElement webElement, List<WebwebElement> webElements, String DataSheet2Value,
+			String Action, String Description, String Neg_Description, WebDriver driver*/
 
 		utilClass = new UtilScreenshotAndReport();
 
-		if (actiontype.equalsIgnoreCase("SendKeys")) {
-			element.sendKeys(dataField);
+		if (Action.equalsIgnoreCase("SendKeys")) {
+			webElement.sendKeys(DataSheet2Value);
 		}
 
-		if (actiontype.equalsIgnoreCase("click")) {
-			element.click();
+		if (Action.equalsIgnoreCase("click")) {
+			webElement.click();
 		}
 
-		if (actiontype.contains("wait")) {
+		if (Action.contains("wait")) {
 			String digit = null;
-			String string = actiontype;
+			String string = Action;
 			Pattern pattern = Pattern.compile("\\((\\d+)\\)"); // Matches digits enclosed in parentheses
 			Matcher matcher = pattern.matcher(string);
 
@@ -54,28 +55,28 @@ public class ActionClass extends BrowserClass {
 			Thread.sleep(l);
 		}
 
-		if (actiontype.equalsIgnoreCase("STARTBROWSER")) {
+		if (Action.equalsIgnoreCase("STARTBROWSER")) {
 			Initialisation(ConnectToMainController.Browser);
 		}
 
-		if (actiontype.equalsIgnoreCase("QUIT")) {
+		if (Action.equalsIgnoreCase("QUIT")) {
 
 			driver.quit();
 		}
 		
-		if (actiontype.equalsIgnoreCase("Close")) {
+		if (Action.equalsIgnoreCase("Close")) {
 			driver.close();
 		}
 
-		if (actiontype.equalsIgnoreCase("BROWSERURL")) {
-			driver.get(dataField);
+		if (Action.equalsIgnoreCase("BROWSERURL")) {
+			driver.get(DataSheet2Value);
 		}
 		
-		if (actiontype.equalsIgnoreCase("NavigateBrowser")) {
-			driver.navigate().to(dataField);
+		if (Action.equalsIgnoreCase("NavigateBrowser")) {
+			driver.navigate().to(DataSheet2Value);
 		}
 		
-		if(actiontype.equalsIgnoreCase("NewTabOpen")) {
+		if(Action.equalsIgnoreCase("NewTabOpen")) {
 			
 //			driver.switchTo().newWindow(WindowType.TAB);//This is the anotherway to open a tab
 			
@@ -83,167 +84,167 @@ public class ActionClass extends BrowserClass {
 
 		}
 		
-		if(actiontype.contains("WindowHandelByIndex")) {
+		if(Action.contains("WindowHandelByIndex")) {
 			
-			String digit = getOnlyDigit(actiontype); // call the getdigit method to get the data
+			String digit = getOnlyDigit(Action); // call the getdigit method to get the data
 			int Scroll = Integer.parseInt(digit);
 			 ArrayList<String> windowHandles = new ArrayList<>(driver.getWindowHandles());	
 			 System.out.println("Total window are ==============================> "+windowHandles.size());
 		        driver.switchTo().window(windowHandles.get(Scroll));
 		}
 
-		if (actiontype.equalsIgnoreCase("MOUSEHOVER")) {
+		if (Action.equalsIgnoreCase("MOUSEHOVER")) {
 			Actions act = new Actions(driver);
-			act.moveToElement(element).build().perform();
+			act.moveToElement(webElement).build().perform();
 
 		}
-		if (actiontype.equalsIgnoreCase("DOUBLECLICK")) {
+		if (Action.equalsIgnoreCase("DOUBLECLICK")) {
 			Actions act = new Actions(driver);
-			act.doubleClick(element).perform();
+			act.doubleClick(webElement).perform();
 
 		}
 
-		if (actiontype.equalsIgnoreCase("ACTIONCLICK")) {
+		if (Action.equalsIgnoreCase("ACTIONCLICK")) {
 			Actions act = new Actions(driver);
-			act.moveToElement(element).click().build().perform();
+			act.moveToElement(webElement).click().build().perform();
 
 		}
-		if (actiontype.equalsIgnoreCase("RIGHTCLICK")) {
+		if (Action.equalsIgnoreCase("RIGHTCLICK")) {
 			Actions act = new Actions(driver);
-			act.contextClick(element).click().build().perform();
+			act.contextClick(webElement).click().build().perform();
 
 		}
-		if (actiontype.equalsIgnoreCase("MOUSEDRAG")) {
-			FROM = element;
+		if (Action.equalsIgnoreCase("MOUSEDRAG")) {
+			FROM = webElement;
 			System.out.println(FROM);
 			
 		}
 		
-		if (actiontype.equalsIgnoreCase("MOUSEDROP")) {
-			System.out.println(element);
+		if (Action.equalsIgnoreCase("MOUSEDROP")) {
+			System.out.println(webElement);
 			Actions act = new Actions(driver);
-			act.dragAndDrop(FROM, element).perform();
+			act.dragAndDrop(FROM, webElement).perform();
 		}
 
-		if (actiontype.equalsIgnoreCase("MOUSECLICKSENDKEY")) {
+		if (Action.equalsIgnoreCase("MOUSECLICKSENDKEY")) {
 			Actions act = new Actions(driver);
-			act.moveToElement(element).click().sendKeys(dataField).perform();
+			act.moveToElement(webElement).click().sendKeys(DataSheet2Value).perform();
 		}
 
 		/////////////// ******************IFRAME*************************//////////////////////////
 
-		if (actiontype.contains("FRAMEINDEX")) {
+		if (Action.contains("FRAMEINDEX")) {
 			
-			String digit = getOnlyDigit(actiontype); // call the getdigit method to get the data
+			String digit = getOnlyDigit(Action); // call the getdigit method to get the data
 			int index = Integer.parseInt(digit);
 			
 			driver.switchTo().frame(index);
 			System.out.println("Frame Switch Successfully Using Index");
 		}
 
-		if (actiontype.equalsIgnoreCase("FRAMELOCATOR")) {
-			driver.switchTo().frame(element);
+		if (Action.equalsIgnoreCase("FRAMELOCATOR")) {
+			driver.switchTo().frame(webElement);
 			System.out.println("Frame Switch Successfully Using Locator");
 		}
 
-		if (actiontype.equalsIgnoreCase("DEFAULTCONTENT")) {
+		if (Action.equalsIgnoreCase("DEFAULTCONTENT")) {
 			driver.switchTo().defaultContent();
 		}
-		if (actiontype.equalsIgnoreCase("PARENTFRAME")) {
+		if (Action.equalsIgnoreCase("PARENTFRAME")) {
 			driver.switchTo().parentFrame();
 		}
 
-		if (actiontype.equalsIgnoreCase("FRAMECOUNT")) {
-			List<WebElement> count = elements;
+		if (Action.equalsIgnoreCase("FRAMECOUNT")) {
+			List<WebElement> count = webElements;
 			System.out.println("Iframe size are   =====================>" + count.size());
 		}
 
-		if (actiontype.equalsIgnoreCase("gettext")) {
-			GetText = element.getText();
+		if (Action.equalsIgnoreCase("gettext")) {
+			GetText = webElement.getText();
 			System.out.println(GetText);
 		}
 		
-		if (actiontype.equalsIgnoreCase("GetIshineOTP")) {
+		if (Action.equalsIgnoreCase("GetIshineOTP")) {
 			String otp=GetText.substring(21,27);
-			element.sendKeys(otp);
+			webElement.sendKeys(otp);
 		}
 		
 		
 
-		if (actiontype.equalsIgnoreCase("SelectVisibleText")) {
-			System.out.println(element);
-			Select select = new Select(element);
-			select.selectByVisibleText(dataField);
+		if (Action.equalsIgnoreCase("SelectVisibleText")) {
+			System.out.println(webElement);
+			Select select = new Select(webElement);
+			select.selectByVisibleText(DataSheet2Value);
 		}
 
-		if (actiontype.equalsIgnoreCase("SelectByValue")) {
-			Select select = new Select(element);
+		if (Action.equalsIgnoreCase("SelectByValue")) {
+			Select select = new Select(webElement);
 			Thread.sleep(3000);
-			select.selectByValue(dataField);
+			select.selectByValue(DataSheet2Value);
 		}
 
-		if (actiontype.equalsIgnoreCase("SelectByIndex")) {
-			Select select = new Select(element);
-			select.selectByIndex(Integer.parseInt(dataField));
+		if (Action.equalsIgnoreCase("SelectByIndex")) {
+			Select select = new Select(webElement);
+			select.selectByIndex(Integer.parseInt(DataSheet2Value));
 		}
 
-		if (actiontype.equalsIgnoreCase("AlertAccept")) {
+		if (Action.equalsIgnoreCase("AlertAccept")) {
 			driver.switchTo().alert().accept();
 		}
 
-		if (actiontype.equalsIgnoreCase("AlertDismiss")) {
+		if (Action.equalsIgnoreCase("AlertDismiss")) {
 			driver.switchTo().alert().dismiss();
 		}
 
-		if (actiontype.equalsIgnoreCase("AlertSendkeys")) {
-			driver.switchTo().alert().sendKeys(dataField);
+		if (Action.equalsIgnoreCase("AlertSendkeys")) {
+			driver.switchTo().alert().sendKeys(DataSheet2Value);
 		}
 
-		if (actiontype.contains("ScrollDown")) {
+		if (Action.contains("ScrollDown")) {
 
-			String digit = getOnlyDigit(actiontype); // call the getdigit method to get the data
+			String digit = getOnlyDigit(Action); // call the getdigit method to get the data
 			int Scroll = Integer.parseInt(digit);
 
 			JavascriptExecutor js = (JavascriptExecutor) driver;
 			js.executeScript("window.scrollBy(0, " + Scroll + ")", "");
 		}
 
-		if (actiontype.contains("ScrollUp")) {
+		if (Action.contains("ScrollUp")) {
 
-			String digit = getOnlyDigit(actiontype); // call the getdigit method to get the data
+			String digit = getOnlyDigit(Action); // call the getdigit method to get the data
 			int Scroll = Integer.parseInt(digit);
 
 			JavascriptExecutor js = (JavascriptExecutor) driver;
 			js.executeScript("window.scrollBy(0, " + -Scroll + ")", "");
 		}
 		
-		if (actiontype.contains("ScrollElementUntilVisible")) {     // Scrolling down the page till the element is found	
+		if (Action.contains("ScrollwebElementUntilVisible")) {     // Scrolling down the page till the webElement is found	
 
 			JavascriptExecutor js = (JavascriptExecutor) driver;		
-	        js.executeScript("arguments[0].scrollIntoView();", element);
+	        js.executeScript("arguments[0].scrollIntoView();", webElement);
 		}
 		
 		
 		
-		if (actiontype.equalsIgnoreCase("CheckVisibility")) {
+		if (Action.equalsIgnoreCase("CheckVisibility")) {
 
-			Boolean Verify = Boolean.parseBoolean(dataField);
+			Boolean Verify = Boolean.parseBoolean(DataSheet2Value);
 
 			if (Verify) {
 				try {
-					System.out.println(element);
-					if (element.isDisplayed()) {
+					System.out.println(webElement);
+					if (webElement.isDisplayed()) {
 						ConnectDataSheet.status="PASS";
 //						utilClass.testCaseCreate(TestCase_No);
 						utilClass.passTestCase(driver, TestCase_No, Description);
-						System.out.println("Element is Display");
+						System.out.println("webElement is Display");
 
 					}
 				} catch (Exception e) {
 					ConnectDataSheet.status="FAIL";
 //					utilClass.testCaseCreate(TestCase_No);
 					utilClass.failTestCase(driver, TestCase_No, Neg_Description);
-					System.out.println("Element is not Display");
+					System.out.println("webElement is not Display");
 				}
 			}
 
@@ -251,10 +252,10 @@ public class ActionClass extends BrowserClass {
 
 	}
 
-	public static String getOnlyDigit(String actiontype) { ///////// inside the bracket get only the digit
+	public static String getOnlyDigit(String Action) { ///////// inside the bracket get only the digit
 
 		String digit = null;
-		String string = actiontype;
+		String string = Action;
 		Pattern pattern = Pattern.compile("\\((\\d+)\\)"); // Matches digits enclosed in parentheses
 		Matcher matcher = pattern.matcher(string);
 

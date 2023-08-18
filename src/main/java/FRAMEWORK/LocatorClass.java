@@ -31,23 +31,22 @@ public class LocatorClass extends ConnectDataSheet {
 	ActionClass actClass;
 	ConnectDataSheet conSheet;
 
-	/*String TestCase_No, String PropertyName, String PropertyValue, String Datafield,
-			String Action, String Description, String Neg_Description, WebDriver driver*/
-	
-	
-	public void xpathpick()
+	/*
+	 * String TestCase_No, String PropertyName, String PropertyValue, String
+	 * Datafield, String Action, String Description, String Neg_Description,
+	 * WebDriver driver
+	 */
 
-			throws FilloException, InterruptedException, IOException {
+	public void xpathpick() throws FilloException, InterruptedException, IOException {
 
-		WebElement webElement = null;
-		List<WebElement> webElements = null;
+//		WebElement webElement = null;
+//		List<WebElement> webElements = null;
 
 		xget = new LocatorClass();
 		actClass = new ActionClass();
 		conSheet = new ConnectDataSheet();
 
 		By by;
-		
 
 		if ((PropertyName != null && !PropertyName.isEmpty() && PropertyValue != null && !PropertyValue.isEmpty())) {
 
@@ -74,20 +73,25 @@ public class LocatorClass extends ConnectDataSheet {
 			try {
 				webElement = driver.findElement(by);
 				webElements = driver.findElements(by);
-				ConnectDataSheet.DataFieldRead(TestCase_No, webElement, webElements, Datafield, Action, Description,
-						Neg_Description, driver);
+				ConnectDataSheet.DataFieldRead();
+				/*TestCase_No, webElement, webElements, Datafield, Action, Description,
+						Neg_Description, driver*/
 			} catch (Exception e) {
+				
 //				System.err.println(e.getMessage());
 //				e.printStackTrace();
-				ConnectDataSheet.DataFieldRead(TestCase_No, webElement, webElements, Datafield, Action, Description,
-						Neg_Description, driver);
+				ConnectDataSheet.DataFieldRead();
+				fail++;
+				/*TestCase_No, webElement, webElements, Datafield, Action, Description,
+						Neg_Description, driver*/
 
 			}
 		}
 
 		else {
-			ConnectDataSheet.DataFieldRead(TestCase_No, webElement, webElements, Datafield, Action, Description,
-					Neg_Description, driver);
+			ConnectDataSheet.DataFieldRead();
+			/*TestCase_No, webElement, webElements, Datafield, Action, Description,
+					Neg_Description, driver*/
 		}
 
 	}

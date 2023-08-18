@@ -17,7 +17,7 @@ import com.codoid.products.fillo.Recordset;
 public class ConnectDataSheet extends BrowserClass {
 
 //	public static void main(String[] args) throws FilloException {
-//		System.out.println("Hello");
+//		System.out.println("DataSheet2Value");
 //		m1();
 //	}
 	public static String Si_No;
@@ -29,12 +29,19 @@ public class ConnectDataSheet extends BrowserClass {
 	public static String Action;
 	public static String Description;
 	public static String Neg_Description;
-	static LocatorClass xget;
-	static ConnectDataSheet consheet;
+	static LocatorClass locatorClass;
+	static ConnectDataSheet connectDatasheet;
 	static UtilScreenshotAndReport utilClass;
 	public static String destFileScrnshot;
 	public static String status;
-	public static int pass = 0, fail = 0;
+
+	public static WebElement webElement = null;
+	public static List<WebElement> webElements = null;
+
+	public static String DataSheet2Value;
+	static ActionClass actClass;
+
+	public static int totalTest = 0, pass = 0, fail = 0;
 
 	// In this method DataSheetGet(String fileName) recive the datasheet file name
 	// check the maincontroler module is same as datasheet module name
@@ -49,8 +56,8 @@ public class ConnectDataSheet extends BrowserClass {
 	// generate report.
 
 	public static void DataSheetGet(String fileName) throws FilloException, InterruptedException, IOException {
-		consheet = new ConnectDataSheet();
-		xget = new LocatorClass();
+		connectDatasheet = new ConnectDataSheet();
+		locatorClass = new LocatorClass();
 		utilClass = new UtilScreenshotAndReport();
 
 		Fillo fillo = new Fillo();
@@ -64,7 +71,8 @@ public class ConnectDataSheet extends BrowserClass {
 
 			// new type and logic explanation***************************************
 
-			/*This is Most Important
+			/*
+			 * This is Most Important
 			 * 
 			 * 
 			 * tale jou logic lekhichi First re sabu column name get kariki list re store
@@ -167,21 +175,26 @@ public class ConnectDataSheet extends BrowserClass {
 					}
 				}
 
-				/*TestCase_No, PropertyName, PropertyValue, Datafield, Action, Description,
-							Neg_Description, driver*/
-				
+				/*
+				 * TestCase_No, PropertyName, PropertyValue, Datafield, Action, Description,
+				 * Neg_Description, driver
+				 */
+
 				try {
-					xget.xpathpick();
+					totalTest++;
+					locatorClass.xpathpick();
+					pass = totalTest - fail;
+					System.out.println("TotalTest = "+totalTest+" Pass = "+pass+" Fail = "+fail);
 					
-					pass++;
-					System.out.println("Pass = "+pass+"   "+"Fail = "+fail);
-					
+
 				} catch (Exception e) {
-					
+
 //					UtilScreenshotAndReport.test.fail(e);
 					e.printStackTrace();
 					fail++;
-					System.out.println("Pass = "+pass+"   "+"Fail = "+fail);
+					System.out.println("TotalTest = "+totalTest+" Pass = "+pass+" Fail = "+fail);
+					
+				
 				}
 
 				if (!Action.contains("wait") && Action.equalsIgnoreCase("CheckVisibility")) {
@@ -189,7 +202,7 @@ public class ConnectDataSheet extends BrowserClass {
 				}
 
 //				UtilScreenshotAndReport.test.log(Status.INFO, Description);
-//			xget.xpathpick((String) row.get(1), (String) row.get(2), (String) row.get(3), (String) row.get(4), driver);
+//			locatorClass.xpathpick((String) row.get(1), (String) row.get(2), (String) row.get(3), (String) row.get(4), driver);
 
 //			 for( j=1;j<row.size();j++)
 //			 {
@@ -215,14 +228,14 @@ public class ConnectDataSheet extends BrowserClass {
 //					+ "PropertyValue====================>" + (String) row.get(2) + "\n" + "Datafield=============>"
 //					+ (String) row.get(3) + "\n" + "ActionType========>" + (String) row.get(4));
 
-//			 xget.xpathpick(LOCATOR, PropertyValue, Datafield, Action, driver);
+//			 locatorClass.xpathpick(LOCATOR, PropertyValue, Datafield, Action, driver);
 
 			}
 			if (i == rowsList.size()) {
 
 				System.out.println("\n");
-				
-				System.out.println("Pass = "+pass+"   "+"Fail = "+fail);
+
+				System.out.println("TotalTest = "+totalTest+" Pass = "+pass+" Fail = "+fail);
 
 				System.out.println("********************  Successfully Completed  ********************" + "\n");
 			}
@@ -246,12 +259,14 @@ public class ConnectDataSheet extends BrowserClass {
 	// first check the datafield if it is not null then get the datafield value and
 	// pass the value to this method actrds();
 
-	static String hello;
-	static ActionClass actClass;
+	public static void DataFieldRead() throws FilloException, InterruptedException, IOException {
 
-	public static void DataFieldRead(String TestCase_No, WebElement webElement, List<WebElement> webElements,
-			String Datafield, String Action, String Description, String Neg_Description, WebDriver driver)
-			throws FilloException, InterruptedException, IOException {
+		/*
+		 * String TestCase_No, WebElement webElement, List<WebElement> webElements,
+		 * String Datafield, String Action, String Description, String Neg_Description,
+		 * WebDriver driver
+		 */
+
 		actClass = new ActionClass();
 
 		if (Datafield != null && !Datafield.isEmpty())
@@ -264,18 +279,23 @@ public class ConnectDataSheet extends BrowserClass {
 			String query = "SELECT * FROM Sheet2";
 			Recordset recordset = conn.executeQuery(query);
 			while (recordset.next()) {
-				hello = recordset.getField(Datafield);
-				System.out.println(
-						"DataFiels For Sheet2====================================================" + hello + "\n");
-				ActionClass.actrds(TestCase_No, webElement, webElements, hello, Action, Description, Neg_Description,
-						driver);
+				DataSheet2Value = recordset.getField(Datafield);
+				System.out.println("DataFiels For Sheet2===================================================="
+						+ DataSheet2Value + "\n");
+				ActionClass.actrds();
+
+				// TestCase_No, webElement, webElements, DataSheet2Value, Action, Description,
+				// Neg_Description,
+				// driver
 
 			}
 		}
 
 		else {
-			ActionClass.actrds(TestCase_No, webElement, webElements, hello, Action, Description, Neg_Description,
-					driver);
+			ActionClass.actrds();
+			// TestCase_No, webElement, webElements, DataSheet2Value, Action, Description,
+			// Neg_Description,
+			// driver
 		}
 
 	}
