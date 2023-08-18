@@ -23,6 +23,13 @@ public class ActionClass extends ConnectDataSheet {
 	static String GetText;
 	static int Scroll;
 	static UtilScreenshotAndReport utilClass;
+	public static WebElement element;
+	public static List<WebElement> elements;
+	
+	ActionClass(){
+	 element = ConnectDataSheet.webElement;
+	 elements = ConnectDataSheet.webElements;
+	}
 	
 
 	public static void actrds()throws InterruptedException, IOException {
@@ -33,11 +40,11 @@ public class ActionClass extends ConnectDataSheet {
 		utilClass = new UtilScreenshotAndReport();
 
 		if (Action.equalsIgnoreCase("SendKeys")) {
-			webElement.sendKeys(DataSheet2Value);
+			element.sendKeys(DataSheet2Value);
 		}
 
 		if (Action.equalsIgnoreCase("click")) {
-			webElement.click();
+			element.click();
 		}
 
 		if (Action.contains("wait")) {
@@ -95,40 +102,40 @@ public class ActionClass extends ConnectDataSheet {
 
 		if (Action.equalsIgnoreCase("MOUSEHOVER")) {
 			Actions act = new Actions(driver);
-			act.moveToElement(webElement).build().perform();
+			act.moveToElement(element).build().perform();
 
 		}
 		if (Action.equalsIgnoreCase("DOUBLECLICK")) {
 			Actions act = new Actions(driver);
-			act.doubleClick(webElement).perform();
+			act.doubleClick(element).perform();
 
 		}
 
 		if (Action.equalsIgnoreCase("ACTIONCLICK")) {
 			Actions act = new Actions(driver);
-			act.moveToElement(webElement).click().build().perform();
+			act.moveToElement(element).click().build().perform();
 
 		}
 		if (Action.equalsIgnoreCase("RIGHTCLICK")) {
 			Actions act = new Actions(driver);
-			act.contextClick(webElement).click().build().perform();
+			act.contextClick(element).click().build().perform();
 
 		}
 		if (Action.equalsIgnoreCase("MOUSEDRAG")) {
-			FROM = webElement;
+			FROM = element;
 			System.out.println(FROM);
 			
 		}
 		
 		if (Action.equalsIgnoreCase("MOUSEDROP")) {
-			System.out.println(webElement);
+			System.out.println(element);
 			Actions act = new Actions(driver);
-			act.dragAndDrop(FROM, webElement).perform();
+			act.dragAndDrop(FROM, element).perform();
 		}
 
 		if (Action.equalsIgnoreCase("MOUSECLICKSENDKEY")) {
 			Actions act = new Actions(driver);
-			act.moveToElement(webElement).click().sendKeys(DataSheet2Value).perform();
+			act.moveToElement(element).click().sendKeys(DataSheet2Value).perform();
 		}
 
 		/////////////// ******************IFRAME*************************//////////////////////////
@@ -143,7 +150,7 @@ public class ActionClass extends ConnectDataSheet {
 		}
 
 		if (Action.equalsIgnoreCase("FRAMELOCATOR")) {
-			driver.switchTo().frame(webElement);
+			driver.switchTo().frame(element);
 			System.out.println("Frame Switch Successfully Using Locator");
 		}
 
@@ -155,36 +162,36 @@ public class ActionClass extends ConnectDataSheet {
 		}
 
 		if (Action.equalsIgnoreCase("FRAMECOUNT")) {
-			List<WebElement> count = webElements;
+			List<WebElement> count = elements;
 			System.out.println("Iframe size are   =====================>" + count.size());
 		}
 
 		if (Action.equalsIgnoreCase("gettext")) {
-			GetText = webElement.getText();
+			GetText = element.getText();
 			System.out.println(GetText);
 		}
 		
 		if (Action.equalsIgnoreCase("GetIshineOTP")) {
 			String otp=GetText.substring(21,27);
-			webElement.sendKeys(otp);
+			element.sendKeys(otp);
 		}
 		
 		
 
 		if (Action.equalsIgnoreCase("SelectVisibleText")) {
-			System.out.println(webElement);
-			Select select = new Select(webElement);
+			System.out.println(element);
+			Select select = new Select(element);
 			select.selectByVisibleText(DataSheet2Value);
 		}
 
 		if (Action.equalsIgnoreCase("SelectByValue")) {
-			Select select = new Select(webElement);
+			Select select = new Select(element);
 			Thread.sleep(3000);
 			select.selectByValue(DataSheet2Value);
 		}
 
 		if (Action.equalsIgnoreCase("SelectByIndex")) {
-			Select select = new Select(webElement);
+			Select select = new Select(element);
 			select.selectByIndex(Integer.parseInt(DataSheet2Value));
 		}
 
@@ -221,7 +228,7 @@ public class ActionClass extends ConnectDataSheet {
 		if (Action.contains("ScrollwebElementUntilVisible")) {     // Scrolling down the page till the webElement is found	
 
 			JavascriptExecutor js = (JavascriptExecutor) driver;		
-	        js.executeScript("arguments[0].scrollIntoView();", webElement);
+	        js.executeScript("arguments[0].scrollIntoView();", element);
 		}
 		
 		
@@ -232,8 +239,8 @@ public class ActionClass extends ConnectDataSheet {
 
 			if (Verify) {
 				try {
-					System.out.println(webElement);
-					if (webElement.isDisplayed()) {
+					System.out.println(element);
+					if (element.isDisplayed()) {
 						ConnectDataSheet.status="PASS";
 //						utilClass.testCaseCreate(TestCase_No);
 						utilClass.passTestCase(driver, TestCase_No, Description);

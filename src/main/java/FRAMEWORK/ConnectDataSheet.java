@@ -29,17 +29,17 @@ public class ConnectDataSheet extends BrowserClass {
 	public static String Action;
 	public static String Description;
 	public static String Neg_Description;
-	static LocatorClass locatorClass;
-	static ConnectDataSheet connectDatasheet;
-	static UtilScreenshotAndReport utilClass;
+	public static LocatorClass locatorClass;
+	public static ConnectDataSheet connectDatasheet;
+	public static UtilScreenshotAndReport utilClass;
 	public static String destFileScrnshot;
 	public static String status;
 
-	public static WebElement webElement = null;
-	public static List<WebElement> webElements = null;
+	public static WebElement webElement ;
+	public static List<WebElement> webElements ;
 
 	public static String DataSheet2Value;
-	static ActionClass actClass;
+	public static ActionClass actClass;
 
 	public static int totalTest = 0, pass = 0, fail = 0;
 
@@ -184,17 +184,15 @@ public class ConnectDataSheet extends BrowserClass {
 					totalTest++;
 					locatorClass.xpathpick();
 					pass = totalTest - fail;
-					System.out.println("TotalTest = "+totalTest+" Pass = "+pass+" Fail = "+fail);
-					
+					System.out.println("TotalTest = " + totalTest + " Pass = " + pass + " Fail = " + fail);
 
 				} catch (Exception e) {
 
 //					UtilScreenshotAndReport.test.fail(e);
 					e.printStackTrace();
 					fail++;
-					System.out.println("TotalTest = "+totalTest+" Pass = "+pass+" Fail = "+fail);
-					
-				
+					System.out.println("TotalTest = " + totalTest + " Pass = " + pass + " Fail = " + fail);
+
 				}
 
 				if (!Action.contains("wait") && Action.equalsIgnoreCase("CheckVisibility")) {
@@ -235,17 +233,18 @@ public class ConnectDataSheet extends BrowserClass {
 
 				System.out.println("\n");
 
-				System.out.println("TotalTest = "+totalTest+" Pass = "+pass+" Fail = "+fail);
+				System.out.println("TotalTest = " + totalTest + " Pass = " + pass + " Fail = " + fail);
 
 				System.out.println("********************  Successfully Completed  ********************" + "\n");
 			}
 		} catch (Exception e) {
-			System.err.print(e.getMessage());
+//			System.err.print(e.getMessage());
 			e.printStackTrace();
 		}
 
 		finally {
 			utilClass.ExtentFlush();
+			UtilScreenshotAndReport.CreateHtmlTable();
 		}
 
 	}
@@ -280,7 +279,7 @@ public class ConnectDataSheet extends BrowserClass {
 			Recordset recordset = conn.executeQuery(query);
 			while (recordset.next()) {
 				DataSheet2Value = recordset.getField(Datafield);
-				System.out.println("DataFiels For Sheet2===================================================="
+				System.out.println("DataFiels For Sheet2==================================================== "
 						+ DataSheet2Value + "\n");
 				ActionClass.actrds();
 

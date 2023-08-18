@@ -25,11 +25,11 @@ public class LocatorClass extends ConnectDataSheet {
 	// is failed or
 	// it goes to the catch block to call the datasheet method().
 
-	LocatorClass xget;
+//	LocatorClass xget;
 //	WebElement webElement;
 //	List<WebElement> webElements;
-	ActionClass actClass;
-	ConnectDataSheet conSheet;
+//	ActionClass actClass;
+//	ConnectDataSheet conSheet;
 
 	/*
 	 * String TestCase_No, String PropertyName, String PropertyValue, String
@@ -42,9 +42,8 @@ public class LocatorClass extends ConnectDataSheet {
 //		WebElement webElement = null;
 //		List<WebElement> webElements = null;
 
-		xget = new LocatorClass();
+		locatorClass = new LocatorClass();
 		actClass = new ActionClass();
-		conSheet = new ConnectDataSheet();
 
 		By by;
 
@@ -79,7 +78,7 @@ public class LocatorClass extends ConnectDataSheet {
 			} catch (Exception e) {
 				
 //				System.err.println(e.getMessage());
-//				e.printStackTrace();
+				e.printStackTrace();
 				ConnectDataSheet.DataFieldRead();
 				fail++;
 				/*TestCase_No, webElement, webElements, Datafield, Action, Description,
