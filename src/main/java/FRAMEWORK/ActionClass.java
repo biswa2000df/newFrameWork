@@ -15,6 +15,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import dev.failsafe.internal.util.Assert;
+
 public class ActionClass extends ConnectDataSheet {
 
 	// webwebElement, hello, Action, driver
@@ -25,6 +27,8 @@ public class ActionClass extends ConnectDataSheet {
 	static UtilScreenshotAndReport utilClass;
 	public static WebElement element;
 	public static List<WebElement> elements;
+	
+	public static boolean ActualResult;
 	
 	ActionClass(){
 	 element = ConnectDataSheet.webElement;
@@ -240,17 +244,21 @@ public class ActionClass extends ConnectDataSheet {
 			if (Verify) {
 				try {
 					System.out.println(element);
-					if (element.isDisplayed()) {
+					ActualResult =element.isDisplayed();
+					System.out.println("ActualResultpass========="+ActualResult);
+					if (ActualResult) {
 						ConnectDataSheet.status="PASS";
 //						utilClass.testCaseCreate(TestCase_No);
-						utilClass.passTestCase(driver, TestCase_No, Description);
+						utilClass.passTestCase();
 						System.out.println("webElement is Display");
 
 					}
 				} catch (Exception e) {
+					ActualResult = false;
+					System.out.println("ActualResultFail======"+ActualResult);
 					ConnectDataSheet.status="FAIL";
 //					utilClass.testCaseCreate(TestCase_No);
-					utilClass.failTestCase(driver, TestCase_No, Neg_Description);
+					utilClass.failTestCase();
 					System.out.println("webElement is not Display");
 				}
 			}

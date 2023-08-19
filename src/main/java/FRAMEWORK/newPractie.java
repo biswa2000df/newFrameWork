@@ -25,19 +25,14 @@ public class newPractie {
 	public static String Module;
 	public static String PageName;
 	public static String RunStatus;
-	public static String Control;
-	public static String ObjectType;
 	public static String PropertyName;
 	public static String PropertyValue;
 	public static String Datafield;
 	public static String Action;
-	public static String DataField_Type;
 	public static String Action_Type;
 	public static String Test_Case;
-	public static String TestCase_Type;
 	public static String Description;
 	public static String Scenario_ID;
-	public static String Scenario_Description;
 
 	public static String sTest_Case = null;
 
@@ -46,7 +41,7 @@ public class newPractie {
 	public static ExtentReports extent;
 	public static ExtentTest test;
 
-	public static void main(String[] args) throws FilloException, IOException {
+	public static void ma() throws FilloException, IOException {
 
 		htmlReport = new ExtentHtmlReporter("normal.html");
 		extent = new ExtentReports();
@@ -68,77 +63,68 @@ public class newPractie {
 		extent.setSystemInfo("Browser", "Chrome");
 		extent.setSystemInfo("Application URL", "https://www.google.com");
 
-		Fillo fillo = new Fillo();
-		Connection conn = fillo.getConnection(System.getProperty("user.dir") + File.separator + "Subscription.xlsx");
-//		Connection conn=fillo.getConnection("‪C:\\Users\\biswa\\eclipse-workspace\\BiswajitFramework\\Subscription.xlsx");
-		String selectQuery = "SELECT * FROM Sheet6";
-		Recordset r = conn.executeQuery(selectQuery);
-
-		List<Object> rowList = new ArrayList<Object>();
-
-		while (r.next()) {
-			List<String> columnName = r.getFieldNames();
-//			System.out.println(columnName);
-			List<Object> rowValue = new ArrayList<Object>();
-			for (String s : columnName) {
-				rowValue.add(r.getField(s));
-
-			}
-			rowList.add(rowValue);
-		}
-
-		System.out.println(rowList.size());
-
-		for (int i = 0; i < rowList.size(); i++) {
-//			System.out.println(rowList.get(i));
-			List<Object> row = (List<Object>) rowList.get(i);
-
-			Srno = (String) row.get(0);
-			Module = (String) row.get(1);
-			PageName = (String) row.get(2);
-			RunStatus = (String) row.get(3);
-			Control = (String) row.get(4);
-			ObjectType = (String) row.get(5);
-			PropertyName = (String) row.get(6);
-			PropertyValue = (String) row.get(7);
-			Datafield = (String) row.get(8);
-			Action = (String) row.get(9);
-			DataField_Type = (String) row.get(10);
-			Action_Type = (String) row.get(11);
-			Test_Case = (String) row.get(12);
-			TestCase_Type = (String) row.get(13);
-			Description = (String) row.get(14);
-			Scenario_ID = (String) row.get(15);
-			Scenario_Description = (String) row.get(16);
-
-			System.out.println("Srno================================================" + Srno);
-			System.out.println("Module==============================================" + Module);
-			System.out.println("PageName============================================" + PageName);
-			System.out.println("RunStatus===========================================" + RunStatus);
-			System.out.println("Control=============================================" + Control);
-			System.out.println("ObjectType==========================================" + ObjectType);
-			System.out.println("PropertyName========================================" + PropertyName);
-			System.out.println("PropertyValue=======================================" + PropertyValue);
-			System.out.println("Datafield===========================================" + Datafield);
-			System.out.println("Action==============================================" + Action);
-			System.out.println("DataField_Type======================================" + DataField_Type);
-			System.out.println("Action_Type=========================================" + Action_Type);
-			System.out.println("Test_Case===========================================" + Test_Case);
-			System.out.println("TestCase_Type=======================================" + TestCase_Type);
-			System.out.println("Description=========================================" + Description);
-			System.out.println("Scenario_ID=========================================" + Scenario_ID);
-			System.out.println("Scenario_Description================================" + Scenario_Description);
-
-			System.out.println("\n");
-
-			if (!Test_Case.equals(sTest_Case)) {
-
-				extentrepost();
-			}
-			sTest_Case = Test_Case;
-			info(i);
-		}
-		flush1();
+//		Fillo fillo = new Fillo();
+//		Connection conn = fillo.getConnection(System.getProperty("user.dir") + File.separator + "DataSheet" + File.separator + "IshinePortal.xlsx");
+////		Connection conn=fillo.getConnection("‪C:\\Users\\biswa\\eclipse-workspace\\BiswajitFramework\\Subscription.xlsx");
+//		String selectQuery = "SELECT * FROM Sheet3";
+//		Recordset r = conn.executeQuery(selectQuery);
+//
+//		List<Object> rowList = new ArrayList<Object>();
+//
+//		while (r.next()) {
+//			List<String> columnName = r.getFieldNames();
+////			System.out.println(columnName);
+//			List<Object> rowValue = new ArrayList<Object>();
+//			for (String s : columnName) {
+//				rowValue.add(r.getField(s));
+//
+//			}
+//			rowList.add(rowValue);
+//		}
+//
+//		System.out.println(rowList.size());
+//
+//		for (int i = 0; i < rowList.size(); i++) {
+////			System.out.println(rowList.get(i));
+//			List<Object> row = (List<Object>) rowList.get(i);
+//
+//			Srno = (String) row.get(0);
+//			Module = (String) row.get(1);
+//			PageName = (String) row.get(2);
+//			RunStatus = (String) row.get(3);
+//			PropertyName = (String) row.get(4);
+//			PropertyValue = (String) row.get(5);
+//			Datafield = (String) row.get(6);
+//			Action = (String) row.get(7);
+//			Action_Type = (String) row.get(8);
+//			Test_Case = (String) row.get(9);
+//			Description = (String) row.get(10);
+//			Scenario_ID = (String) row.get(11);
+//			
+//
+//			System.out.println("Srno================================================" + Srno);
+//			System.out.println("Module==============================================" + Module);
+//			System.out.println("PageName============================================" + PageName);
+//			System.out.println("RunStatus===========================================" + RunStatus);
+//			System.out.println("PropertyName========================================" + PropertyName);
+//			System.out.println("PropertyValue=======================================" + PropertyValue);
+//			System.out.println("Datafield===========================================" + Datafield);
+//			System.out.println("Action==============================================" + Action);
+//			System.out.println("Action_Type=========================================" + Action_Type);
+//			System.out.println("Test_Case===========================================" + Test_Case);
+//			System.out.println("Description=========================================" + Description);
+//			System.out.println("Scenario_ID=========================================" + Scenario_ID);
+//
+//			System.out.println("\n");
+//
+//			if (!Test_Case.equals(sTest_Case)) {
+//
+//				extentrepost();
+//			}
+//			sTest_Case = Test_Case;
+//			info(i);
+//		}
+//		flush1();
 
 	}
 	
@@ -148,12 +134,13 @@ public static int i=0;
 		
 		i++;
 
-		test = extent.createTest(
-				"<font color=\"Blue\"><b>" + Scenario_ID + "</b></font> - <font color=\"Brown\"><b>" + Module
-						+ "</b></font> - <font color=\"Green\"><b>" + Test_Case + "</b></font> ( " + Description + " )",
-				"</br><h4><font color=\"Lime\"><b>" + Module.toUpperCase() + "</b></font></h4>")
-				.createNode("My_Child_Test - "+ i ).assignCategory("BISWAJIT");
+//		test = extent.createTest(
+//				"<font color=\"Blue\"><b>" + Scenario_ID + "</b></font> - <font color=\"Brown\"><b>" + Module
+//						+ "</b></font> - <font color=\"Green\"><b>" + Test_Case + "</b></font> ( " + Description + " )",
+//				"</br><h4><font color=\"Lime\"><b>" + Module.toUpperCase() + "</b></font></h4>")
+//				.createNode("My_Child_Test - "+ i ).assignCategory("BISWAJIT");
 
+		test = extent.createTest("kanha");
 	}
 
 	public static void info(int i) {

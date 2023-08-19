@@ -21,25 +21,30 @@ public class ConnectDataSheet extends BrowserClass {
 //		m1();
 //	}
 	public static String Si_No;
-	public static String TestCase_No;
 	public static String MODULE;
+	public static String PageName;
 	public static String PropertyName;
 	public static String PropertyValue;
 	public static String Datafield;
 	public static String Action;
+	public static String Action_Type;
+	public static String Test_Case;
 	public static String Description;
-	public static String Neg_Description;
+	public static String Scenario_ID;
+
 	public static LocatorClass locatorClass;
 	public static ConnectDataSheet connectDatasheet;
 	public static UtilScreenshotAndReport utilClass;
 	public static String destFileScrnshot;
 	public static String status;
 
-	public static WebElement webElement ;
-	public static List<WebElement> webElements ;
+	public static WebElement webElement;
+	public static List<WebElement> webElements;
 
 	public static String DataSheet2Value;
 	public static ActionClass actClass;
+
+	public static String sTest_Case = null;
 
 	public static int totalTest = 0, pass = 0, fail = 0;
 
@@ -65,7 +70,7 @@ public class ConnectDataSheet extends BrowserClass {
 				System.getProperty("user.dir") + File.separator + "DataSheet" + File.separator + fileName);
 		try {
 
-			String query = "SELECT * FROM Sheet1 WHERE RUNSTATUS='Y' and MODULE='" + ConnectToMainController.Module
+			String query = "SELECT * FROM Sheet3 WHERE RUNSTATUS='Y' and MODULE='" + ConnectToMainController.Module
 					+ "'";
 			Recordset recordset = conn.executeQuery(query);
 
@@ -132,9 +137,13 @@ public class ConnectDataSheet extends BrowserClass {
 //		System.out.println(rowsList);
 //		return rowsList;
 
-			utilClass.CsvFileCreate();
-			utilClass.WriteCSVFile("Si_No", "TestCase_No", "Status", "Screenshot_Path");
-			utilClass.extentReport(); ///// call the extent report class
+			/*
+			 * utilClass.CsvFileCreate(); utilClass.WriteCSVFile("Si_No", "TestCase_No",
+			 * "Status", "Screenshot_Path"); utilClass.extentReport(); ///// call the extent
+			 * report class
+			 */
+
+			utilClass.extentReport();  //call the extent report method 
 
 			int i;
 			for (i = 0; i < rowsList.size(); i++) {
@@ -149,45 +158,52 @@ public class ConnectDataSheet extends BrowserClass {
 				List<Object> row = (List<Object>) rowsList.get(i);
 
 				Si_No = (String) row.get(0);
-				TestCase_No = (String) row.get(1);
-				MODULE = (String) row.get(2);
+				MODULE = (String) row.get(1);
+				PageName = (String) row.get(2);
 				PropertyName = (String) row.get(4);
 				PropertyValue = (String) row.get(5);
 				Datafield = (String) row.get(6);
 				Action = (String) row.get(7);
-				Description = (String) row.get(8);
-				Neg_Description = (String) row.get(9);
+				Action_Type = (String) row.get(8);
+				Test_Case = (String) row.get(9);
+				Description = (String) row.get(10);
+				Scenario_ID = (String) row.get(11);
 
 //			 System.out.println("LOCATOR NAME=========================>"+LOCATOR+"\n"+"PropertyValue====================>"+PropertyValue+"\n"+"Datafield=============>"+Datafield+"\n"+"ActionType========>"+Action);
 				System.out.println();
 				System.out.println("SI_No             ====================> " + Si_No);
-				System.out.println("TestCase_No       ====================> " + TestCase_No);
+				System.out.println("Scenario_ID       ====================> " + Scenario_ID);
 				System.out.println("PropertyName      ====================> " + PropertyName);
 				System.out.println("PropertyValue     ====================> " + PropertyValue);
 				System.out.println("Datafield         ====================> " + Datafield);
 				System.out.println("ActionType        ====================> " + Action);
 
-				if (Description != null && !Description.isEmpty()) {
-					String testCaseAndDescription = TestCase_No.concat(" " + Description);
-					UtilScreenshotAndReport.testCaseCreate(testCaseAndDescription);
-					if (!Action.equalsIgnoreCase("CheckVisibility")) {
-						UtilScreenshotAndReport.testcaseInfo(Description);
-					}
-				}
+				/*
+				 * if (Description != null && !Description.isEmpty()) { String
+				 * testCaseAndDescription = TestCase_No.concat(" " + Description);
+				 * UtilScreenshotAndReport.testCaseCreate(testCaseAndDescription); if
+				 * (!Action.equalsIgnoreCase("CheckVisibility")) {
+				 * UtilScreenshotAndReport.testcaseInfo(Description); } }
+				 */
 
 				/*
 				 * TestCase_No, PropertyName, PropertyValue, Datafield, Action, Description,
 				 * Neg_Description, driver
 				 */
 
+				if (!Test_Case.equals(sTest_Case)) {
+					utilClass.testCaseCreate();
+				}
+				sTest_Case = Test_Case;
+
 				try {
 					totalTest++;
 					locatorClass.xpathpick();
+
 					pass = totalTest - fail;
 					System.out.println("TotalTest = " + totalTest + " Pass = " + pass + " Fail = " + fail);
 
 				} catch (Exception e) {
-
 //					UtilScreenshotAndReport.test.fail(e);
 					e.printStackTrace();
 					fail++;
@@ -195,9 +211,10 @@ public class ConnectDataSheet extends BrowserClass {
 
 				}
 
-				if (!Action.contains("wait") && Action.equalsIgnoreCase("CheckVisibility")) {
-					utilClass.WriteCSVFile(Si_No, TestCase_No, status, destFileScrnshot);
-				}
+				/*
+				 * if (!Action.contains("wait") && Action.equalsIgnoreCase("CheckVisibility")) {
+				 * utilClass.WriteCSVFile(Si_No, TestCase_No, status, destFileScrnshot); }
+				 */
 
 //				UtilScreenshotAndReport.test.log(Status.INFO, Description);
 //			locatorClass.xpathpick((String) row.get(1), (String) row.get(2), (String) row.get(3), (String) row.get(4), driver);
@@ -281,16 +298,21 @@ public class ConnectDataSheet extends BrowserClass {
 				DataSheet2Value = recordset.getField(Datafield);
 				System.out.println("DataFiels For Sheet2==================================================== "
 						+ DataSheet2Value + "\n");
-				ActionClass.actrds();
+//				ActionClass.actrds();
 
 				// TestCase_No, webElement, webElements, DataSheet2Value, Action, Description,
 				// Neg_Description,
 				// driver
-
 			}
+
+			UtilScreenshotAndReport.testcaseInfoWithDataField();
+			ActionClass.actrds();
 		}
 
 		else {
+
+			UtilScreenshotAndReport.testcaseInfoWithoutDataField();
+
 			ActionClass.actrds();
 			// TestCase_No, webElement, webElements, DataSheet2Value, Action, Description,
 			// Neg_Description,

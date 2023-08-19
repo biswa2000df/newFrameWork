@@ -39,8 +39,8 @@ public class LocatorClass extends ConnectDataSheet {
 
 	public void xpathpick() throws FilloException, InterruptedException, IOException {
 
-//		WebElement webElement = null;
-//		List<WebElement> webElements = null;
+		 webElement = null;
+		 webElements = null;
 
 		locatorClass = new LocatorClass();
 		actClass = new ActionClass();

@@ -18,17 +18,25 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.aventstack.extentreports.reporter.configuration.ChartLocation;
+import com.aventstack.extentreports.reporter.configuration.Protocol;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.opencsv.CSVWriter;
 
 public class UtilScreenshotAndReport extends ConnectDataSheet {
 
-	public ExtentHtmlReporter htmlReport;
-	public static ExtentReports extent;
-	public static ExtentTest test;
+	ExtentHtmlReporter htmlReport;
+	ExtentReports extent;
+	static ExtentTest test;
 	static String year;
 	static String time;
 	public static String ReportFile;
+	public static String ssDatafield = null;
+	public static String ssDataSheet2Value = null;
+	
+	
+		
+	
 
 	public String takeScreenShot(WebDriver driver, String TestCase_No) throws IOException {
 		File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
@@ -91,40 +99,84 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 		String destFile = getFormat("YYYY", "MMMM", "dd", "Report");
 		ReportFile = destFile + File.separator + time + "_" + htmlFile;
 		htmlReport = new ExtentHtmlReporter(ReportFile);
-
-		htmlReport.config().setDocumentTitle("Automation Report");// Title of the report
-		htmlReport.config().setReportName("Functional Report");// Name of the report
-		htmlReport.config().setTheme(Theme.DARK);
-		htmlReport.config().setChartVisibilityOnOpen(false);
 		extent = new ExtentReports();
-		extent.setSystemInfo("Comapny Name", "APMOSYS");
-		extent.setSystemInfo("Project Name", ConnectToMainController.Module);
-		extent.setSystemInfo("Test Lead", "Prabhat Padhy");
 		extent.attachReporter(htmlReport);
+
+		htmlReport.config().setDocumentTitle("Biswajit FrameWork Report");// Title of the report
+		htmlReport.config().setReportName("Automation Report");// Name of the report
+		htmlReport.config().setTestViewChartLocation(ChartLocation.BOTTOM);
+		htmlReport.config().setChartVisibilityOnOpen(false);
+		htmlReport.config().setTheme(Theme.DARK);
+
+		extent.setSystemInfo("Comapny Name", "APMOSYS");
+		extent.setSystemInfo("FrameWork", "Biswajit Framework");
+		extent.setSystemInfo("Project Name", "ISHINE");
+		extent.setSystemInfo("Test Lead", "Prabhat Padhy");
 		extent.setSystemInfo("OS", "Window11");
 		extent.setSystemInfo("Tester Name", "Biswajit");
-		extent.setSystemInfo("Browser", ConnectToMainController.Browser);
+		extent.setSystemInfo("Browser", "Chrome");
+		extent.setSystemInfo("Application URL", "https://www.google.com");
 
 	}
 
-	public static void testcaseInfo(String Description) {
-		test.log(Status.INFO, Description);
+	public static void testcaseInfoWithDataField() {
+		ssDatafield = Datafield;
+		ssDataSheet2Value = DataSheet2Value;
+//		test.log(Status.INFO, Description);
+		
+//		if (Datafield != null && !Datafield.isEmpty())
+//		
+//		if (ssDatafield != null || ssDatafield.isEmpty() && ssDataSheet2Value != null || ssDataSheet2Value.isEmpty()) {
+//			ssDatafield = " ";
+//			ssDataSheet2Value = " ";
+//		}
+
+		test.log(Status.INFO,
+				"<font color=\"Blue\"><b>Module - </b></font>" + MODULE + " "
+						+ "<font color=\"Lime\"><b>Step - </b></font>" + Si_No + " "
+						+ "<font color=\"Aqua\"><b>Data Field - </b></font>" + ssDatafield + " "
+						+ "<font color=\"Lime\"><b>Test Data - </b></font>" + ssDataSheet2Value);
+
 	}
 
-	public static void testCaseCreate(String tc) {
-		test = extent.createTest(tc);
+	public static void testcaseInfoWithoutDataField() {
+
+		test.log(Status.INFO, "<font color=\"Blue\"><b>Module - </b></font>" + MODULE + " "
+				+ "<font color=\"Lime\"><b>Step - </b></font>" + Si_No);
+
 	}
 
-	public void passTestCase(WebDriver driver, String TestCase_No, String Description) throws IOException {
-		test.log(Status.INFO, MarkupHelper.createLabel(Description, ExtentColor.GREEN));
-		test.log(Status.PASS, "",
-				MediaEntityBuilder.createScreenCaptureFromPath(takeScreenShot(driver, TestCase_No)).build());
+	public void testCaseCreate() {
+		test = extent.createTest(
+				"<font color=\"Blue\"><b>" + Scenario_ID + "</b></font> - <font color=\"Brown\"><b>" + MODULE
+						+ "</b></font> - <font color=\"Green\"><b>" + Test_Case + "</b></font> ( " + Description + " )",
+				"</br><h4><font color=\"Lime\"><b>" + MODULE.toUpperCase() + "</b></font></h4>").createNode("<h5><b>" + Description + "</b></h5>")
+				.assignCategory("BISWAJIT");
 	}
 
-	public void failTestCase(WebDriver driver, String TestCase_No, String Neg_Description) throws IOException {
-		test.log(Status.INFO, MarkupHelper.createLabel(Neg_Description, ExtentColor.RED));
-		test.log(Status.FAIL, "",
-				MediaEntityBuilder.createScreenCaptureFromPath(takeScreenShot(driver, TestCase_No)).build());
+	public void passTestCase() throws IOException {
+		
+		test.log(Status.PASS,
+				"<h6><br><font color=\"Red\"><b> Expected Result is - </b></font></h6>" + ssDataSheet2Value
+						+ "	 <h6><br> <font color=\"Red\"><b>Actual Result is - </b></font><h6>" + ActionClass.ActualResult 
+						+ "<br>" ,  MediaEntityBuilder.createScreenCaptureFromPath(takeScreenShot(driver, Scenario_ID)).build());
+	}
+
+
+	public void failTestCase() throws IOException {
+//		test.log(Status.INFO, MarkupHelper.createLabel(Neg_Description, ExtentColor.RED));
+//		test.log(Status.FAIL, "",
+//				MediaEntityBuilder.createScreenCaptureFromPath(
+//						"<h6><br><font color=\"Red\"><b> Expected Result is - </b></font></h6>" + "True"
+//								+ "	 <h6><br> <font color=\"Red\"><b>Actual Result is - </b></font><h6>" + "False"
+//								+ "<br>" , takeScreenShot(driver, Scenario_ID))
+//						.build());
+		
+		test.log(Status.FAIL,
+				"<h6><br><font color=\"Red\"><b> Expected Result is - </b></font></h6>" + ssDataSheet2Value
+						+ "	 <h6><br> <font color=\"Red\"><b>Actual Result is - </b></font><h6>" + ActionClass.ActualResult 
+						+ "<br>" ,  MediaEntityBuilder.createScreenCaptureFromPath(takeScreenShot(driver, Scenario_ID)).build());
+
 
 	}
 
