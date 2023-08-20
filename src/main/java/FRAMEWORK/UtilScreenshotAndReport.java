@@ -134,7 +134,7 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 		test.log(Status.INFO,
 				"<font color=\"Blue\"><b>Module - </b></font>" + MODULE + " "
 						+ "<font color=\"Lime\"><b>Step - </b></font>" + Si_No + " "
-						+ "<font color=\"Aqua\"><b>Data Field - </b></font>" + ssDatafield + " "
+						+ "<font color=\"Red\"><b>Data Field - </b></font>" + ssDatafield.toUpperCase() + " "
 						+ "<font color=\"Lime\"><b>Test Data - </b></font>" + ssDataSheet2Value);
 
 	}
@@ -243,7 +243,7 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 		String ExtentReportPath = ReportFile;
 
 		writer.write("<td>" + ConnectToMainController.Module + "</td><td>" + totalTest + "</td><td>" + pass
-				+ "</td><td>" + fail + "</td><td><a href=" + ExtentReportPath + ">View Report</a></td>");
+				+ "</td><td>" + fail + "</td><td><a href="+ExtentReportPath+" target=_blank>View Report</a></td>");
 
 //	            for (int i = 0; i < numRows; i++) {
 //	                writer.write("<tr>\n");
