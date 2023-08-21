@@ -143,7 +143,11 @@ public class ConnectDataSheet extends BrowserClass {
 			 * report class
 			 */
 
-			utilClass.extentReport();  //call the extent report method 
+			utilClass.extentReport(); // call the extent report method
+			utilClass.CsvFileCreate();
+			utilClass.WriteCSVFileHeading("Test_Case", "Description", "ExpectedResult", "ActualResult", "Status",
+					"Date", "Time", "Screenshot_File_Location", "BrowserType", "IP", "HOST", "ZONE");
+			utilClass.IP_HOST();
 
 			int i;
 			for (i = 0; i < rowsList.size(); i++) {
@@ -210,6 +214,13 @@ public class ConnectDataSheet extends BrowserClass {
 					System.out.println("TotalTest = " + totalTest + " Pass = " + pass + " Fail = " + fail);
 
 				}
+
+				// Write the Data Inside the csv File
+				if (Action.equalsIgnoreCase("CheckVisibility"))
+					utilClass.WriteCSVFileData(Test_Case, Description, DataSheet2Value,
+							String.valueOf(ActionClass.ActualResult), status, utilClass.yearFormat, utilClass.time,
+							destFileScrnshot, ConnectToMainController.Browser, utilClass.IP, utilClass.HostName,
+							utilClass.ZoneName);
 
 				/*
 				 * if (!Action.contains("wait") && Action.equalsIgnoreCase("CheckVisibility")) {
