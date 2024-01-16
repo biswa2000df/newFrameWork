@@ -14,44 +14,59 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.codoid.products.exception.FilloException;
 
 public class LicenceClass {
+	final static Logger logger = LogManager.getLogger(LicenceClass.class);
 
 	public static void LicenceCheck() throws ParseException, FilloException, InterruptedException, IOException {
-		InetAddress localHost = InetAddress.getLocalHost();
-		NetworkInterface networkInterface = NetworkInterface.getByInetAddress(localHost);
+		try {
 
-		byte[] macAddressBytes = networkInterface.getHardwareAddress();
+			InetAddress localHost = InetAddress.getLocalHost();
+			NetworkInterface networkInterface = NetworkInterface.getByInetAddress(localHost);
 
-		// Convert MAC address bytes to a human-readable string
-		StringBuilder macAddressBuilder = new StringBuilder();
-		for (byte b : macAddressBytes) {
-			macAddressBuilder.append(String.format("%02X:", b));
-		}
-		String macAddress = macAddressBuilder.toString();
-		if (macAddress.length() > 0) {
-			macAddress = macAddress.substring(0, macAddress.length() - 1).replaceAll(":", "");
-		}
+			byte[] macAddressBytes = networkInterface.getHardwareAddress();
 
-		System.out.println("MAC Address: " + macAddress);
+			// Convert MAC address bytes to a human-readable string
+			StringBuilder macAddressBuilder = new StringBuilder();
+			for (byte b : macAddressBytes) {
+				macAddressBuilder.append(String.format("%02X:", b));
+			}
+			String macAddress = macAddressBuilder.toString();
+			if (macAddress.length() > 0) {
+				macAddress = macAddress.substring(0, macAddress.length() - 1).replaceAll(":", "");
+			}
 
-		Boolean validateMac = validatemacid(macAddress);
+			System.out.println("MAC Address: " + macAddress);
 
-		Date dt = new Date();
-		System.out.println(dt);
-		SimpleDateFormat smdt = new SimpleDateFormat("dd/MM/yyyy");
-		String sDate1 = "25/08/2023";
-		Date date1 = smdt.parse(sDate1);
-		if (dt.before(date1) && validateMac == true) {
-			System.out.println("**********Biswajit Scriptless Automation Tool is a node based License.**********");
-			System.out.println("            ********"+"Your License Validity is till " + sDate1+"********");
-			ConnectToMainController.MainContolerSheet();
+			Boolean validateMac = validatemacid(macAddress);
 
-		} else {
-			JFrame parent = new JFrame();
-			JOptionPane.showMessageDialog(parent, "License has expired.\n please contact Biswajit");
-			System.exit(1);
+			Date dt = new Date();
+			System.out.println(dt);
+			SimpleDateFormat smdt = new SimpleDateFormat("dd/MM/yyyy");
+			String sDate1 = "25/08/2024";
+			Date date1 = smdt.parse(sDate1);
+			if (dt.before(date1) && validateMac == true) {
+				System.out.println("**********Biswajit Scriptless Automation Tool is a node based License.**********");
+				System.out.println("            ********" + "Your License Validity is till " + sDate1 + "********");
+				UtilScreenshotAndReport.configureLog4j();//call to generate the logs
+				ConnectToMainController.MainContolerSheet();
+
+			} else {
+				JFrame parent = new JFrame();
+				JOptionPane.showMessageDialog(parent, "License has expired.\n please contact Biswajit");
+				System.exit(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.debug("Debug Message : " + e);
+			logger.info("Info Message :  " + e);
+			logger.warn("Warn Message :  " + e);
+			logger.error("Error Message :  " + e);
+			logger.fatal("Fatal Message : " + e);
 		}
 	}
 

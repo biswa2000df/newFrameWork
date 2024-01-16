@@ -1,10 +1,11 @@
 package FRAMEWORK;
 
 import java.io.IOException;
-import java.util.List;
+import java.time.Duration;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.codoid.products.exception.FilloException;
 
@@ -39,6 +40,8 @@ public class LocatorClass extends ConnectDataSheet {
 
 	public void xpathpick() throws FilloException, InterruptedException, IOException {
 
+		
+
 		 webElement = null;
 		 webElements = null;
 
@@ -70,6 +73,8 @@ public class LocatorClass extends ConnectDataSheet {
 				throw new IllegalArgumentException("Unsupported PropertyName type: " + PropertyName);
 			}
 			try {
+				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+				wait.until(ExpectedConditions.visibilityOfElementLocated(by));
 				webElement = driver.findElement(by);
 				webElements = driver.findElements(by);
 				ConnectDataSheet.DataFieldRead();

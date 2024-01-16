@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -47,6 +49,8 @@ public class ConnectDataSheet extends BrowserClass {
 	public static String sTest_Case = null;
 
 	public static int totalTest = 0, pass = 0, fail = 0;
+
+	final static Logger logger = LogManager.getLogger(ConnectDataSheet.class);
 
 	// In this method DataSheetGet(String fileName) recive the datasheet file name
 	// check the maincontroler module is same as datasheet module name
@@ -202,7 +206,11 @@ public class ConnectDataSheet extends BrowserClass {
 
 				try {
 					totalTest++;
+					if(ConnectToMainController.Browser.equalsIgnoreCase("HtmlUnitDriver") && Action.equalsIgnoreCase("CheckVisibility")) {//only for htmlunit driver because the driver is headless driver
+						
+					}else {
 					locatorClass.xpathpick();
+					}
 
 					pass = totalTest - fail;
 					System.out.println("TotalTest = " + totalTest + " Pass = " + pass + " Fail = " + fail);
@@ -212,6 +220,12 @@ public class ConnectDataSheet extends BrowserClass {
 					e.printStackTrace();
 					fail++;
 					System.out.println("TotalTest = " + totalTest + " Pass = " + pass + " Fail = " + fail);
+					e.printStackTrace();
+					logger.debug("Debug Message : " + e);
+					logger.info("Info Message :  " + e);
+					logger.warn("Warn Message :  " + e);
+					logger.error("Error Message :  " + e);
+					logger.fatal("Fatal Message : " + e);
 
 				}
 
@@ -268,6 +282,11 @@ public class ConnectDataSheet extends BrowserClass {
 		} catch (Exception e) {
 //			System.err.print(e.getMessage());
 			e.printStackTrace();
+			logger.debug("Debug Message : " + e);
+			logger.info("Info Message :  " + e);
+			logger.warn("Warn Message :  " + e);
+			logger.error("Error Message :  " + e);
+			logger.fatal("Fatal Message : " + e);
 		}
 
 		finally {
@@ -293,41 +312,51 @@ public class ConnectDataSheet extends BrowserClass {
 		 * String Datafield, String Action, String Description, String Neg_Description,
 		 * WebDriver driver
 		 */
+		try {
 
-		actClass = new ActionClass();
+			actClass = new ActionClass();
 
-		if (Datafield != null && !Datafield.isEmpty())
+			if (Datafield != null && !Datafield.isEmpty())
 
-		{
+			{
 
-			Fillo fillo = new Fillo();
-			Connection conn = fillo.getConnection(System.getProperty("user.dir") + File.separator + "DataSheet"
-					+ File.separator + ConnectToMainController.TestFlow_Path);
-			String query = "SELECT * FROM Sheet2";
-			Recordset recordset = conn.executeQuery(query);
-			while (recordset.next()) {
-				DataSheet2Value = recordset.getField(Datafield);
-				System.out.println("DataFiels For Sheet2==================================================== "
-						+ DataSheet2Value + "\n");
+				Fillo fillo = new Fillo();
+				Connection conn = fillo.getConnection(System.getProperty("user.dir") + File.separator + "DataSheet"
+						+ File.separator + ConnectToMainController.TestFlow_Path);
+				String query = "SELECT * FROM Sheet2";
+				Recordset recordset = conn.executeQuery(query);
+				while (recordset.next()) {
+					DataSheet2Value = recordset.getField(Datafield);
+					System.out.print("DataFields For Sheet2==================================================== "
+							+ DataSheet2Value + "\n");
 //				ActionClass.actrds();
 
+					// TestCase_No, webElement, webElements, DataSheet2Value, Action, Description,
+					// Neg_Description,
+					// driver
+				}
+
+				UtilScreenshotAndReport.testcaseInfoWithDataField();
+				ActionClass.actrds();
+			}
+
+			else {
+
+				UtilScreenshotAndReport.testcaseInfoWithoutDataField();
+
+				ActionClass.actrds();
 				// TestCase_No, webElement, webElements, DataSheet2Value, Action, Description,
 				// Neg_Description,
 				// driver
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.debug("Debug Message : " + e);
+			logger.info("Info Message :  " + e);
+			logger.warn("Warn Message :  " + e);
+			logger.error("Error Message :  " + e);
+			logger.fatal("Fatal Message : " + e);
 
-			UtilScreenshotAndReport.testcaseInfoWithDataField();
-			ActionClass.actrds();
-		}
-
-		else {
-
-			UtilScreenshotAndReport.testcaseInfoWithoutDataField();
-
-			ActionClass.actrds();
-			// TestCase_No, webElement, webElements, DataSheet2Value, Action, Description,
-			// Neg_Description,
-			// driver
 		}
 
 	}

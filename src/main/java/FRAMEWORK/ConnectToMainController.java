@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.codoid.products.exception.FilloException;
 import com.codoid.products.fillo.Connection;
 import com.codoid.products.fillo.Fillo;
@@ -20,6 +23,7 @@ public class ConnectToMainController {
 	static String Browser = null;
 	static String process1 = null;
 	static ConnectDataSheet conDataSheet;
+	final static Logger logger = LogManager.getLogger(ConnectToMainController.class);
 
 	// Inside this method ----->MainContolerSheet()
 	// In this method first check the file maincontroler file is present or not
@@ -28,6 +32,7 @@ public class ConnectToMainController {
 	// then call this MainControlerDataSheet() and pass the process data
 
 	public static void MainContolerSheet() throws FilloException, InterruptedException, IOException {
+		try {
 		conDataSheet = new ConnectDataSheet();
 
 		// TODO Auto-generated method stub
@@ -88,6 +93,15 @@ public class ConnectToMainController {
 			}
 		} else {
 			System.out.println("MainMain_Controller File is Not Present");
+			System.exit(0);
+		}
+		}catch(Exception e) {
+			e.printStackTrace();
+			logger.debug("Debug Message : " + e);
+			logger.info("Info Message :  " + e);
+			logger.warn("Warn Message :  " + e);
+			logger.error("Error Message :  " + e);
+			logger.fatal("Fatal Message : " + e);
 		}
 
 	}
@@ -134,6 +148,12 @@ public class ConnectToMainController {
 
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
+			e.printStackTrace();
+			logger.debug("Debug Message : " + e);
+			logger.info("Info Message :  " + e);
+			logger.warn("Warn Message :  " + e);
+			logger.error("Error Message :  " + e);
+			logger.fatal("Fatal Message : " + e);
 		}
 
 	}
@@ -156,6 +176,7 @@ public class ConnectToMainController {
 												///// DataSheet folder.
 		} else {
 			System.out.println(" DataSheet File is not present");
+			System.exit(0);
 		}
 	}
 
