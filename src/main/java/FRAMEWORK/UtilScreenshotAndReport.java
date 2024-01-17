@@ -387,7 +387,6 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 	}
 
 	public void IP_HOST() {
-		logger.info("Info Message :  IP_HOST");
 		String IP_HOST_ZONE = "";
 		try {
 			InetAddress address = InetAddress.getLocalHost();
@@ -466,13 +465,12 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
         loggerContext.updateLoggers();
 
         // Log a message indicating the new log file
-        logger.info("Logging to dynamically created file: {}", logFileName);
+//        logger.info("Logging to dynamically created file: {}", logFileName);
     }
 
     private static String generateLogFileName() {
     	String LogsFilePath = getFormat("YYYY", "MMMM", "dd", "Logs");
     	return LogsFilePath + File.separator + "Framework.log";
-//        return "logs/selenium_" + now.format(formatter) + ".log";
     }
 
 }

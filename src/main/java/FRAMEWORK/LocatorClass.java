@@ -40,10 +40,8 @@ public class LocatorClass extends ConnectDataSheet {
 
 	public void xpathpick() throws FilloException, InterruptedException, IOException {
 
-		
-
-		 webElement = null;
-		 webElements = null;
+		webElement = null;
+		webElements = null;
 
 		locatorClass = new LocatorClass();
 		actClass = new ActionClass();
@@ -73,29 +71,51 @@ public class LocatorClass extends ConnectDataSheet {
 				throw new IllegalArgumentException("Unsupported PropertyName type: " + PropertyName);
 			}
 			try {
-				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 				wait.until(ExpectedConditions.visibilityOfElementLocated(by));
 				webElement = driver.findElement(by);
 				webElements = driver.findElements(by);
 				ConnectDataSheet.DataFieldRead();
-				/*TestCase_No, webElement, webElements, Datafield, Action, Description,
-						Neg_Description, driver*/
+				
+				
+				/*
+				 * TestCase_No, webElement, webElements, Datafield, Action, Description,
+				 * Neg_Description, driver
+				 */
 			} catch (Exception e) {
 				
+				try {
+					webElement = driver.findElement(by);
+					webElements = driver.findElements(by);
+				}
+				catch(Exception E) {
+//					System.err.println(E.getMessage());
+					E.printStackTrace();
+					logger.error("Error Message :  " + E);
+				}
+				
 //				System.err.println(e.getMessage());
-				e.printStackTrace();
-				ConnectDataSheet.DataFieldRead();
+//				e.printStackTrace();
+				if (Action.equalsIgnoreCase("CheckVisibility")) {
+					ConnectDataSheet.DataFieldRead();
+				}
 				fail++;
-				/*TestCase_No, webElement, webElements, Datafield, Action, Description,
-						Neg_Description, driver*/
+				
+				
+				/*
+				 * TestCase_No, webElement, webElements, Datafield, Action, Description,
+				 * Neg_Description, driver
+				 */
 
 			}
 		}
 
 		else {
 			ConnectDataSheet.DataFieldRead();
-			/*TestCase_No, webElement, webElements, Datafield, Action, Description,
-					Neg_Description, driver*/
+			/*
+			 * TestCase_No, webElement, webElements, Datafield, Action, Description,
+			 * Neg_Description, driver
+			 */
 		}
 
 	}

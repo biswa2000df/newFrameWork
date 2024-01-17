@@ -280,7 +280,7 @@ public class ConnectDataSheet extends BrowserClass {
 				System.out.println("********************  Successfully Completed  ********************" + "\n");
 			}
 		} catch (Exception e) {
-//			System.err.print(e.getMessage());
+			System.err.print(e.getMessage());
 			e.printStackTrace();
 			logger.debug("Debug Message : " + e);
 			logger.info("Info Message :  " + e);
@@ -350,7 +350,7 @@ public class ConnectDataSheet extends BrowserClass {
 				// driver
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();  //after date sheet it print the exception if it is element is empty then the element not send the data or not click the element
 			logger.debug("Debug Message : " + e);
 			logger.info("Info Message :  " + e);
 			logger.warn("Warn Message :  " + e);
