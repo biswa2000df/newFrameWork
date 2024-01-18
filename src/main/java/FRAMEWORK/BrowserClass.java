@@ -17,14 +17,14 @@ public class BrowserClass {
 	static WebDriver driver;
 	public static String browserDriverFolderPath;
 	public static String browserDriverPath;
+	public static String OS;
 
 	public static void Initialisation(String browser) {
 
 		if (browser.equalsIgnoreCase("chrome")) {
 			BrowserDriverFolder(browser);
 //			WebDriverManager.chromedriver().setup();
-			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + File.separator
-					+ "BrowserDriver" + File.separator + "chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", browserDriverPath);
 			ChromeOptions option = new ChromeOptions();
 			option.addArguments("--remote-allow-origins=*");
 			driver = new ChromeDriver(option);
@@ -49,50 +49,76 @@ public class BrowserClass {
 			driver = new HtmlUnitDriver();
 			System.out.println("HtmlUnitDriver");
 			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		}
-		else {
+		} else {
 			System.out.println("SORRY!!! U Choose InvalidBrowser");
 			System.exit(0);
 		}
-		
+
 	}
 
 //		driver.get("https://mail.apmosys.com/webmail/#sign-in");
 
 	public static void BrowserDriverFolder(String Browser) {
 
-		 browserDriverFolderPath = System.getProperty("user.dir") + File.separator + "BrowserDriver";
+		browserDriverFolderPath = System.getProperty("user.dir") + File.separator + "BrowserDriver";
 		File BrowserDriverFolderPath = new File(browserDriverFolderPath);
+
 		if (BrowserDriverFolderPath.exists()) {
 
-			BrowserDriver(Browser);//calling to the browser .exe file
+			OS = System.getProperty("os.name");
+			System.out.println(OS); // Windows 11
+
+			if (OS.substring(0, 7).equalsIgnoreCase("Windows")) {// here i done the substring because it is showing
+																	// "Windows 11" thats why i done the substring.
+				WindowBrowserDriver(Browser);// calling to the windowsbrowser .exe file
+			} else {
+				LinuxAndUbuntuBrowserDriver(Browser); // calling to the linux and ubuntu browser file
+				System.out.println("ubuntu");
+			}
+
 			File BrowserDriverPath = new File(browserDriverPath);
 			if (BrowserDriverPath.exists()) {
 
 			} else {
 				System.out.println("SORRY!!!  " + Browser + "Driver.exe File is Not Present");
 				System.exit(1);
-				
+
 			}
 		} else {
 			System.out.println("SORRY!!!  'BrowserDriver' folder is Not Present");
 			System.exit(1);
 		}
 	}
-	
-	public static void BrowserDriver(String BrowserEXEFile) {
-		switch(BrowserEXEFile) {
+
+	public static void WindowBrowserDriver(String BrowserEXEFile) {
+		switch (BrowserEXEFile) {
 		case "Chrome":
-			browserDriverPath = System.getProperty("user.dir") + File.separator + "BrowserDriver"
-					+ File.separator + "chromedriver.exe";
+			browserDriverPath = System.getProperty("user.dir") + File.separator + "BrowserDriver" + File.separator
+					+ "chromedriver.exe";
 			break;
 		case "edge":
-			browserDriverPath = System.getProperty("user.dir") + File.separator + "BrowserDriver"
-					+ File.separator + "edgedriver.exe";
+			browserDriverPath = System.getProperty("user.dir") + File.separator + "BrowserDriver" + File.separator
+					+ "edgedriver.exe";
 			break;
-			default:
-				System.out.println("SORRY!!! You select Invalid Driver");
-			
+		default:
+			System.out.println("SORRY!!! You select Invalid Driver");
+
+		}
+	}
+
+	public static void LinuxAndUbuntuBrowserDriver(String BrowserEXEFile) {
+		switch (BrowserEXEFile) {
+		case "Chrome":
+			browserDriverPath = System.getProperty("user.dir") + File.separator + "BrowserDriver" + File.separator
+					+ "chromedriver";
+			break;
+		case "edge":
+			browserDriverPath = System.getProperty("user.dir") + File.separator + "BrowserDriver" + File.separator
+					+ "edgedriver";
+			break;
+		default:
+			System.out.println("SORRY!!! You select Invalid Driver");
+
 		}
 	}
 

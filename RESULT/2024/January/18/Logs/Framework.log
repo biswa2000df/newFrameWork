@@ -1,0 +1,40 @@
+2024-01-18 22:53:48.117 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"email-address"}
+  (Session info: chrome=120.0.6099.218)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.137.1', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [a918f75d3dc722004dd15a8fc5a5129a, findElement {using=xpath, value=email-address}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.218, chrome: {chromedriverVersion: 120.0.6099.71 (9729082fe617..., userDataDir: C:\Users\biswa\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57474}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:57474/devtoo..., se:cdpVersion: 120.0.6099.218, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a918f75d3dc722004dd15a8fc5a5129a
+2024-01-18 22:55:37.870 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"iw_webmail_msg_body"}
+  (Session info: chrome=120.0.6099.218)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.137.1', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [a918f75d3dc722004dd15a8fc5a5129a, findElement {using=xpath, value=iw_webmail_msg_body}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.218, chrome: {chromedriverVersion: 120.0.6099.71 (9729082fe617..., userDataDir: C:\Users\biswa\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57474}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:57474/devtoo..., se:cdpVersion: 120.0.6099.218, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a918f75d3dc722004dd15a8fc5a5129a
+2024-01-18 22:56:18.147 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"#iw_webmail_msg_body"}
+  (Session info: chrome=120.0.6099.218)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.137.1', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [a918f75d3dc722004dd15a8fc5a5129a, findElement {using=id, value=iw_webmail_msg_body}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.218, chrome: {chromedriverVersion: 120.0.6099.71 (9729082fe617..., userDataDir: C:\Users\biswa\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57474}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:57474/devtoo..., se:cdpVersion: 120.0.6099.218, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a918f75d3dc722004dd15a8fc5a5129a
+2024-01-18 22:56:31.266 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.NullPointerException: Cannot invoke "String.substring(int, int)" because "FRAMEWORK.ActionClass.GetText" is null
+2024-01-18 22:56:31.266 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.NullPointerException: Cannot invoke "String.substring(int, int)" because "FRAMEWORK.ActionClass.GetText" is null
+2024-01-18 22:56:31.266 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.NullPointerException: Cannot invoke "String.substring(int, int)" because "FRAMEWORK.ActionClass.GetText" is null
+2024-01-18 22:56:31.266 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.NullPointerException: Cannot invoke "String.substring(int, int)" because "FRAMEWORK.ActionClass.GetText" is null
+2024-01-18 23:38:49.366 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=120.0.6099.218)
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.4.111', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [a094a09e86b2022740f5ae2f639b14f2, findElement {using=xpath, value=//input[@placeholder="Enter Username"]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.218, chrome: {chromedriverVersion: 120.0.6099.71 (9729082fe617..., userDataDir: C:\Users\biswa\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49370}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:49370/devtoo..., se:cdpVersion: 120.0.6099.218, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a094a09e86b2022740f5ae2f639b14f2

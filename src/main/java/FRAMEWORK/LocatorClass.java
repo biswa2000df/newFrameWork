@@ -83,7 +83,7 @@ public class LocatorClass extends ConnectDataSheet {
 				 * Neg_Description, driver
 				 */
 			} catch (Exception e) {
-				
+				//i write again to the webelement becaause it print the erroe exceptioin the clear format thats why i write because the explicity wait it is showing only timeout exception so thats why.
 				try {
 					webElement = driver.findElement(by);
 					webElements = driver.findElements(by);

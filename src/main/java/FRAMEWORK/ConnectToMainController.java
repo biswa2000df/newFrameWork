@@ -33,69 +33,69 @@ public class ConnectToMainController {
 
 	public static void MainContolerSheet() throws FilloException, InterruptedException, IOException {
 		try {
-		conDataSheet = new ConnectDataSheet();
+			conDataSheet = new ConnectDataSheet();
 
-		// TODO Auto-generated method stub
+			// TODO Auto-generated method stub
 
-		String MainControler = System.getProperty("user.dir") + File.separator + "Main_Controller.xlsx";
-		File file = new File(MainControler);
+			String MainControler = System.getProperty("user.dir") + File.separator + "Main_Controller.xlsx";
+			File file = new File(MainControler);
 
-		if (file.exists()) {
+			if (file.exists()) {
 
-			Fillo fillo = new Fillo();
-			Connection conn = fillo.getConnection(MainControler);
-			String query = "SELECT * FROM MainController Where RunStatus='Y'";
+				Fillo fillo = new Fillo();
+				Connection conn = fillo.getConnection(MainControler);
+				String query = "SELECT * FROM MainController Where RunStatus='Y'";
 
-			List<Object> rowlist = new ArrayList<Object>();
+				List<Object> rowlist = new ArrayList<Object>();
 
-			Recordset recordset = conn.executeQuery(query);
+				Recordset recordset = conn.executeQuery(query);
 
-			while (recordset.next()) {
-				List<String> columns = recordset.getFieldNames();
-				List<Object> rowvalues = new ArrayList<Object>();
+				while (recordset.next()) {
+					List<String> columns = recordset.getFieldNames();
+					List<Object> rowvalues = new ArrayList<Object>();
 
-				for (String column : columns) {
-					rowvalues.add(recordset.getField(column));
+					for (String column : columns) {
+						rowvalues.add(recordset.getField(column));
+					}
+					rowlist.add(rowvalues);
 				}
-				rowlist.add(rowvalues);
-			}
 
 //			System.out.println("MainController Row List "+rowlist);    // MainController Row List [[3, y, Chrome, IshinePortal, IshinePortal, IshinePortal, IshinePortal]]   this type it is print row list
 
-			for (int i = 0; i < rowlist.size(); i++) {
+				for (int i = 0; i < rowlist.size(); i++) {
 
-				List<Object> row = (List<Object>) rowlist.get(i);
+					List<Object> row = (List<Object>) rowlist.get(i);
 
-				Sr_No = (String) row.get(0);
-				Browser = (String) row.get(2);
-				ApplicationID = (String) row.get(3);
-				Module = (String) row.get(4);
-				process1 = (String) row.get(6);
-				try {
+					Sr_No = (String) row.get(0);
+					Browser = (String) row.get(2);
+					ApplicationID = (String) row.get(3);
+					Module = (String) row.get(4);
+					process1 = (String) row.get(6);
+					try {
 
-					if (Sr_No != null && !Sr_No.isEmpty() && Browser != null && !Browser.isEmpty()
-							&& ApplicationID != null && !ApplicationID.isEmpty() && Module != null && !Module.isEmpty()
-							&& process1 != null && !process1.isEmpty())
+						if (Sr_No != null && !Sr_No.isEmpty() && Browser != null && !Browser.isEmpty()
+								&& ApplicationID != null && !ApplicationID.isEmpty() && Module != null
+								&& !Module.isEmpty() && process1 != null && !process1.isEmpty())
 
-					{
-						MainControlerDataSheet(process1); // call this method with processname to the datasheet
-					} else {
-						System.out.println("Please Filled all the data Properly");
+						{
+							MainControlerDataSheet(process1); // call this method with processname to the datasheet
+						} else {
+							System.out.println("Please Filled all the data Properly");
+						}
+
+					} catch (Exception e) {
+						System.err.println(e.getMessage());
+						e.printStackTrace();
+
 					}
 
-				} catch (Exception e) {
-					System.err.println(e.getMessage());
-					e.printStackTrace();
-
-				}
-
 //			System.out.println(process1);
+				}
+			} else {
+				System.out.println("MainMain_Controller File is Not Present");
+				System.exit(0);
 			}
-		} else {
-			System.out.println("MainMain_Controller File is Not Present");
-			System.exit(0);
-		}
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			logger.debug("Debug Message : " + e);
 			logger.info("Info Message :  " + e);
@@ -118,7 +118,8 @@ public class ConnectToMainController {
 		try {
 
 			Fillo fillo = new Fillo();
-			Connection conn = fillo.getConnection(System.getProperty("user.dir") + File.separator + "Main_Controller.xlsx");
+			Connection conn = fillo
+					.getConnection(System.getProperty("user.dir") + File.separator + "Main_Controller.xlsx");
 			String query = "SELECT * FROM Sheet3 Where Process='" + process1 + "'";
 
 			Recordset recordset = conn.executeQuery(query);
@@ -138,7 +139,7 @@ public class ConnectToMainController {
 
 				TestFlow_Path = (String) row.get(2);
 
-				System.out.println("DataSheetName========================> " + TestFlow_Path);
+//				System.out.println("DataSheetName========================> " + TestFlow_Path);// print the datasheet file name "IshinePortal.xlsx"
 
 				fileCheck(TestFlow_Path);///// Call this method sending the datasheet name with the .xlsx format which
 											///// is
@@ -164,18 +165,29 @@ public class ConnectToMainController {
 	/// is called fileCheck(TestFlow_Path) like this...
 	// Then call the conDataSheet.DataSheetGet(fileName); to send the file name .
 
-	public static void fileCheck(String fileName) throws FilloException, InterruptedException, IOException {
+	public static void fileCheck(String DataSheetFileName) throws FilloException, InterruptedException, IOException {
 
-		String filePath = System.getProperty("user.dir") + File.separator+ "DataSheet" + File.separator + fileName;
-//	System.out.println(filePath);
+		String DataSheetFolderPath = System.getProperty("user.dir") + File.separator + "DataSheet";
+		String DataSheetFilePath = System.getProperty("user.dir") + File.separator + "DataSheet" + File.separator
+				+ DataSheetFileName;
+//	System.out.println(DataSheetFolderPath);
 
-		File file = new File(filePath);
-		if (file.exists()) {
+		File DataSheetFolder = new File(DataSheetFolderPath);
+		if (DataSheetFolder.exists()) {
+
+			File DataSheetFile = new File(DataSheetFilePath);
+			if (DataSheetFile.exists()) {
 //			System.out.println(filePath + " DataSheet File is present");
-			conDataSheet.DataSheetGet(fileName);///// this method to call the datasheet folder which is present in the
-												///// DataSheet folder.
+				conDataSheet.DataSheetGet(DataSheetFileName);///// this method to call the datasheet folder which is
+																///// present in
+				///// the
+				///// DataSheet folder.
+			} else {
+				System.out.println("DataSheet File is not present");
+				System.exit(0);
+			}
 		} else {
-			System.out.println(" DataSheet File is not present");
+			System.out.println("SORRY!!! 'DataSheet' folder is not present");
 			System.exit(0);
 		}
 	}

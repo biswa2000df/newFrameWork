@@ -40,18 +40,23 @@ public class LicenceClass {
 				macAddress = macAddress.substring(0, macAddress.length() - 1).replaceAll(":", "");
 			}
 
-			System.out.println("MAC Address: " + macAddress);
+//			System.out.println("MAC Address: " + macAddress);  //print the MAC address to check the comparision
 
 			Boolean validateMac = validatemacid(macAddress);
 
 			Date dt = new Date();
-			System.out.println(dt);
+			
 			SimpleDateFormat smdt = new SimpleDateFormat("dd/MM/yyyy");
 			String sDate1 = "25/08/2024";
 			Date date1 = smdt.parse(sDate1);
 			if (dt.before(date1) && validateMac == true) {
 				System.out.println("**********Biswajit Scriptless Automation Tool is a node based License.**********");
 				System.out.println("            ********" + "Your License Validity is till " + sDate1 + "********");
+				System.out.println("\n");
+				System.out.println("                **********Welcome " +System.getProperty("user.name") + "**********");
+				System.out.println();
+				System.out.println(dt);
+				
 				UtilScreenshotAndReport.configureLog4j();//call to generate the logs
 				ConnectToMainController.MainContolerSheet();
 
