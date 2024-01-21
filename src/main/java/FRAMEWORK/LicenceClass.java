@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -23,8 +24,11 @@ public class LicenceClass {
 	final static Logger logger = LogManager.getLogger(LicenceClass.class);
 
 	public static void LicenceCheck() throws ParseException, FilloException, InterruptedException, IOException {
+	
+		/*
 		try {
 
+		
 			InetAddress localHost = InetAddress.getLocalHost();
 			NetworkInterface networkInterface = NetworkInterface.getByInetAddress(localHost);
 
@@ -39,6 +43,27 @@ public class LicenceClass {
 			if (macAddress.length() > 0) {
 				macAddress = macAddress.substring(0, macAddress.length() - 1).replaceAll(":", "");
 			}
+			*/
+			
+			   try {
+		            Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
+		            String macAddress = null;
+		            while (networkInterfaces.hasMoreElements()) {
+		                NetworkInterface networkInterface = networkInterfaces.nextElement();
+		                byte[] macAddressBytes = networkInterface.getHardwareAddress();
+
+		                if (macAddressBytes != null) {
+		                    StringBuilder macAddressBuilder = new StringBuilder();
+		                    for (byte b : macAddressBytes) {
+		                        macAddressBuilder.append(String.format("%02X:", b));
+		                    }
+		                    macAddress = macAddressBuilder.toString().substring(0, macAddressBuilder.length() - 1).replace(":", "");
+
+//		                    System.out.println("MAC Address for " + networkInterface.getName() + ": " + macAddress);
+		                }
+		            }
+		        
+
 
 //			System.out.println("MAC Address: " + macAddress);  //print the MAC address to check the comparision
 
@@ -50,10 +75,11 @@ public class LicenceClass {
 			String sDate1 = "25/08/2024";
 			Date date1 = smdt.parse(sDate1);
 			if (dt.before(date1) && validateMac == true) {
+				System.out.println();
 				System.out.println("**********Biswajit Scriptless Automation Tool is a node based License.**********");
 				System.out.println("            ********" + "Your License Validity is till " + sDate1 + "********");
 				System.out.println("\n");
-				System.out.println("                **********Welcome " +System.getProperty("user.name") + "**********");
+				System.out.println("                ********** Welcome " +System.getProperty("user.name") + " **********");
 				System.out.println();
 				System.out.println(dt);
 				

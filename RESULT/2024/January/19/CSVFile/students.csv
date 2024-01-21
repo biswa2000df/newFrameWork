@@ -1,0 +1,4 @@
+"Test_Case","Description","ExpectedResult","ActualResult","Status","Date","Time","Screenshot_File_Location","BrowserType","IP","HOST","ZONE"
+"Test_Case","Description","ExpectedResult","ActualResult","Status","Date","Time","Screenshot_File_Location","BrowserType","IP","HOST","ZONE"
+"Test_Case","Description","ExpectedResult","ActualResult","Status","Date","Time","Screenshot_File_Location","BrowserType","IP","HOST","ZONE"
+"TC_01_01","Redirects To Ishine Login page","true","true","PASS","2024-01-19","18_15_09","=HYPERLINK(""C:\Users\biswa\eclipse-workspace\BiswajitFramework\RESULT\2024\January\19\Screenshot\18_15_09_SC_04.png"")","Chrome","192.168.4.111","BISWAJIT2000","Asia/Calcutta"

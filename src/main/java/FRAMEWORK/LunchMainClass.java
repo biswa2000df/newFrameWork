@@ -14,8 +14,9 @@ import com.codoid.products.fillo.Fillo;
 import com.codoid.products.fillo.Recordset;
 
 public class LunchMainClass extends BrowserClass {
-
+public static long executionStartTime;
 	public static void main(String[] args) throws FilloException, InterruptedException, IOException, ParseException {
+		executionStartTime = System.nanoTime();//Execution start time	
 		Run();
 	}
 

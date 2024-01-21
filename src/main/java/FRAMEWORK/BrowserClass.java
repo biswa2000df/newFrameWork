@@ -27,6 +27,9 @@ public class BrowserClass {
 			System.setProperty("webdriver.chrome.driver", browserDriverPath);
 			ChromeOptions option = new ChromeOptions();
 			option.addArguments("--remote-allow-origins=*");
+			option.addArguments("--no-sandbox");
+//			option.addArguments("--headless");
+			
 			driver = new ChromeDriver(option);
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
@@ -66,14 +69,12 @@ public class BrowserClass {
 		if (BrowserDriverFolderPath.exists()) {
 
 			OS = System.getProperty("os.name");
-			System.out.println(OS); // Windows 11
+			System.out.println("OS = " + OS); // Windows 11
 
-			if (OS.substring(0, 7).equalsIgnoreCase("Windows")) {// here i done the substring because it is showing
-																	// "Windows 11" thats why i done the substring.
-				WindowBrowserDriver(Browser);// calling to the windowsbrowser .exe file
-			} else {
+			if (OS.equalsIgnoreCase("Linux")) {
 				LinuxAndUbuntuBrowserDriver(Browser); // calling to the linux and ubuntu browser file
-				System.out.println("ubuntu");
+			} else {
+				WindowBrowserDriver(Browser);// calling to the windowsbrowser .exe file
 			}
 
 			File BrowserDriverPath = new File(browserDriverPath);

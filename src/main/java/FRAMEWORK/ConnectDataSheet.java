@@ -291,6 +291,7 @@ public class ConnectDataSheet extends BrowserClass {
 
 		finally {
 			utilClass.ExtentFlush();
+			utilClass.ExecutionTime();
 			UtilScreenshotAndReport.CreateHtmlTable();
 		}
 

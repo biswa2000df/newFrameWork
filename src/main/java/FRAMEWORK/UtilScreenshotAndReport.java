@@ -50,6 +50,8 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 	static String IP = null;
 	static String HostName = "";
 	static String ZoneName = null;
+	public static long executionEndTime;
+	public static String TotalExecutionTime;
 
 	final static Logger logger = LogManager.getLogger(UtilScreenshotAndReport.class);
 
@@ -163,9 +165,9 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 			e.printStackTrace();
 			logger.debug("Debug Message : " + e);
 			logger.info("Info Message :  " + e);
-			logger.warn("Warn Message :  " + e);
-			logger.error("Error Message :  " + e);
-			logger.fatal("Fatal Message : " + e);
+//			logger.warn("Warn Message :  " + e);
+//			logger.error("Error Message :  " + e);
+//			logger.fatal("Fatal Message : " + e);
 		}
 
 	}
@@ -181,9 +183,9 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 			e.printStackTrace();
 			logger.debug("Debug Message : " + e);
 			logger.info("Info Message :  " + e);
-			logger.warn("Warn Message :  " + e);
-			logger.error("Error Message :  " + e);
-			logger.fatal("Fatal Message : " + e);
+//			logger.warn("Warn Message :  " + e);
+//			logger.error("Error Message :  " + e);
+//			logger.fatal("Fatal Message : " + e);
 		}
 
 	}
@@ -215,9 +217,9 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 			e.printStackTrace();
 			logger.debug("Debug Message : " + e);
 			logger.info("Info Message :  " + e);
-			logger.warn("Warn Message :  " + e);
-			logger.error("Error Message :  " + e);
-			logger.fatal("Fatal Message : " + e);
+//			logger.warn("Warn Message :  " + e);
+//			logger.error("Error Message :  " + e);
+//			logger.fatal("Fatal Message : " + e);
 		}
 	}
 
@@ -241,9 +243,9 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 			e.printStackTrace();
 			logger.debug("Debug Message : " + e);
 			logger.info("Info Message :  " + e);
-			logger.warn("Warn Message :  " + e);
-			logger.error("Error Message :  " + e);
-			logger.fatal("Fatal Message : " + e);
+//			logger.warn("Warn Message :  " + e);
+//			logger.error("Error Message :  " + e);
+//			logger.fatal("Fatal Message : " + e);
 		}
 
 	}
@@ -297,9 +299,9 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 			e.printStackTrace();
 			logger.debug("Debug Message : " + e);
 			logger.info("Info Message :  " + e);
-			logger.warn("Warn Message :  " + e);
-			logger.error("Error Message :  " + e);
-			logger.fatal("Fatal Message : " + e);
+//			logger.warn("Warn Message :  " + e);
+//			logger.error("Error Message :  " + e);
+//			logger.fatal("Fatal Message : " + e);
 		}
 	}
 
@@ -329,9 +331,7 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 			e.printStackTrace();
 			logger.debug("Debug Message : " + e);
 			logger.info("Info Message :  " + e);
-			logger.warn("Warn Message :  " + e);
-			logger.error("Error Message :  " + e);
-			logger.fatal("Fatal Message : " + e);
+
 		}
 	}
 
@@ -355,12 +355,13 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 
 			writer.write("<table border=\"1\">\n");
 			writer.write(
-					"<tr> <th><font color=\"Lime\">Project</font></th><th><font color=\"Blue\">Total TCs</font></th><th><font color=\"Green\">Passed TCs</font></th><th><font color=\"Red\">Failed TCs</font></th><th>Report</th><th>CSV_File</th></tr>");
+					"<tr> <th><font color=\"Lime\">Project</font></th><th><font color=\"Blue\">Total TCs</font></th><th><font color=\"Green\">Passed TCs</font></th><th><font color=\"Red\">Failed TCs</font></th><th>Report</th><th>CSV_File</th><th><font color=\"Green\">Execution Time</font></th></tr>");
 
 			writer.write("<td>" + ConnectToMainController.Module + "</td><td>" + totalTest + "</td><td>" + pass
 					+ "</td><td>" + fail + "</td><td><a href=" + Extent_ReportFile
 					+ " target=_blank>View Report</a></td><td><a href=" + CSV_ReportFile
-					+ " target=_blank>CSV</a></td>");
+					+ " target=_blank>CSV</a></td>"
+					+ "<td>" + TotalExecutionTime + "</td>");
 
 //	            for (int i = 0; i < numRows; i++) {
 //	                writer.write("<tr>\n");
@@ -377,11 +378,7 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.debug("Debug Message : " + e);
 			logger.info("Info Message :  " + e);
-			logger.warn("Warn Message :  " + e);
-			logger.error("Error Message :  " + e);
-			logger.fatal("Fatal Message : " + e);
 		}
 
 	}
@@ -417,7 +414,7 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 			/// "+name);
 
 		} catch (Exception e) {
-			System.out.println(e);
+//			System.out.println(e);
 			e.printStackTrace();
 			logger.debug("Debug Message : " + e);
 			logger.info("Info Message :  " + e);
@@ -427,50 +424,78 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 		}
 
 	}
-	
+
 	public static void configureLog4j() {
-        // Get the current LoggerContext
-        LoggerContext loggerContext = (LoggerContext) LogManager.getContext(false);
+		// Get the current LoggerContext
+		LoggerContext loggerContext = (LoggerContext) LogManager.getContext(false);
 
-        // Get the current Log4j configuration
-        Configuration config = loggerContext.getConfiguration();
-        
-        // Set the root logger level to DEBUG
-        LoggerConfig rootLoggerConfig = config.getRootLogger();
-        rootLoggerConfig.setLevel(org.apache.logging.log4j.Level.INFO);  //HERE ALSO TO CHANGE THE DEBUG OR INFO OR ALL OR ERROR OR WARN ETC MODE,
+		// Get the current Log4j configuration
+		Configuration config = loggerContext.getConfiguration();
 
-        // Create a FileAppender with a dynamically generated file name
-        String logFileName = generateLogFileName();
-        	
-        FileAppender appender = FileAppender.newBuilder()
-                .setName("File")
-                .withFileName(logFileName)
+		// Set the root logger level to DEBUG
+		LoggerConfig rootLoggerConfig = config.getRootLogger();
+		rootLoggerConfig.setLevel(org.apache.logging.log4j.Level.INFO); // HERE ALSO TO CHANGE THE DEBUG OR INFO OR ALL
+																		// OR ERROR OR WARN ETC MODE,
+
+		// Remove any existing appenders (including console appender)
+		rootLoggerConfig.getAppenders().forEach((name, appender) -> {
+			rootLoggerConfig.removeAppender(name);
+			appender.stop();
+		});
+
+		// Create a FileAppender with a dynamically generated file name
+		String logFileName = generateLogFileName();
+
+		FileAppender appender = FileAppender.newBuilder().setName("File").withFileName(logFileName)
 //                .withAppend(false)//here  write the append false me u can not append the new run logs only overwrite if u want then make false to true
-                .withAppend(true)
-                .setLayout(PatternLayout.newBuilder().withPattern("%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n").build())
-                .build();
+				.withAppend(true).setLayout(PatternLayout.newBuilder()
+						.withPattern("%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n").build())
+				.build();
 
-        // Add the appender to the configuration
-        appender.start();
-        config.addAppender(appender);
+		// Add the appender to the configuration
+		appender.start();
+		config.addAppender(appender);
 
-        // Update the LoggerConfig to use the new appender
-        LoggerConfig loggerConfig = config.getLoggerConfig(LogManager.ROOT_LOGGER_NAME);
-        loggerConfig.addAppender(appender, null, null);
+		// Update the LoggerConfig to use the new appender
+		LoggerConfig loggerConfig = config.getLoggerConfig(LogManager.ROOT_LOGGER_NAME);
+		loggerConfig.addAppender(appender, null, null);
 
-        // Update the configuration
-        config.getRootLogger().addAppender(appender, null, null);
+		// Update the configuration
+		config.getRootLogger().addAppender(appender, null, null);
 
-        // Update the Log4j context
-        loggerContext.updateLoggers();
+		// Update the Log4j context
+		loggerContext.updateLoggers();
 
-        // Log a message indicating the new log file
-//        logger.info("Logging to dynamically created file: {}", logFileName);
-    }
+		// Log a message indicating the new log file
+		logger.info("Logging to dynamically created file: {}", logFileName);
+	}
 
-    private static String generateLogFileName() {
-    	String LogsFilePath = getFormat("YYYY", "MMMM", "dd", "Logs");
-    	return LogsFilePath + File.separator + "Framework.log";
-    }
+	private static String generateLogFileName() {
+		String LogsFilePath = getFormat("YYYY", "MMMM", "dd", "Logs");
+		return LogsFilePath + File.separator + "Framework.log";
+	}
+
+	public void ExecutionTime() {
+
+		executionEndTime = System.nanoTime();
+
+		// Calculate the execution time in milliseconds
+		long executionTimeInMilliseconds = (executionEndTime - LunchMainClass.executionStartTime)/ 1_000_000;
+		/*
+								 * The use of underscores in numeric literals is a feature introduced in Java 7
+								 * to improve readability. In Java, underscores in numeric literals have no
+								 * effect on the actual value; they are used purely for visual separation of
+								 * digits to make large numbers more readable.
+								 */
+
+		// Convert milliseconds to hours, minutes, and seconds
+		long hours = executionTimeInMilliseconds / (60 * 60 * 1000);
+		long minutes = (executionTimeInMilliseconds % (60 * 60 * 1000)) / (60 * 1000);
+		long seconds = (executionTimeInMilliseconds % (60 * 1000)) / 1000;
+
+		TotalExecutionTime = hours + ":" + minutes + ":" + seconds;
+		/*System.out.println("Execution time: " + hours + " hours, " + minutes + " minutes, " + seconds + " seconds,"
+			+ executionTimeInMilliseconds + " Milliseconds");*/	
+	}
 
 }

@@ -1,33 +1,14 @@
 package FRAMEWORK;
 
-import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-
-import com.codoid.products.exception.FilloException;
-import com.codoid.products.fillo.Connection;
-import com.codoid.products.fillo.Fillo;
-import com.codoid.products.fillo.Recordset;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
 
 public class normalclass {
 
-	public static void main(String[] args) throws FilloException, IOException {
-//		// TODO Auto-generated method stub
+	public static void main(String[] args) throws AddressException, MessagingException, InterruptedException {
 //
 //		Fillo fillo = new Fillo();
 //		Connection conn = fillo.getConnection(System.getProperty("user.dir") + "\\Ishine.xlsx");
@@ -184,15 +165,15 @@ public class normalclass {
 //			System.err.println("An error occurred: " + e.getMessage());
 //		}
 
-		Fillo fillo = new Fillo();
-		Connection conn = fillo.getConnection(System.getProperty("user.dir") + "\\Subscription.xlsx");
-		String selectQuery = "SELECT * FROM Sheet6";
-		Recordset r = conn.executeQuery(selectQuery);
-
-		List<Object> rowList = new ArrayList<Object>();
 		/*
-		 * tale jou logic lekhichi First re sabu column name get kariki list re store
-		 * kariba List<String> columnName = r.getFieldNames();
+		 * Fillo fillo = new Fillo(); Connection conn =
+		 * fillo.getConnection(System.getProperty("user.dir") + "\\Subscription.xlsx");
+		 * String selectQuery = "SELECT * FROM Sheet6"; Recordset r =
+		 * conn.executeQuery(selectQuery);
+		 * 
+		 * List<Object> rowList = new ArrayList<Object>(); /* tale jou logic lekhichi
+		 * First re sabu column name get kariki list re store kariba List<String>
+		 * columnName = r.getFieldNames();
 		 * 
 		 * Then row value paei gote object type array list kariba gote row ku gote
 		 * object type array list
@@ -214,31 +195,110 @@ public class normalclass {
 		 * as[[]] object type array list
 		 */
 
-		while (r.next()) {
-			List<String> columnName = r.getFieldNames();
-//			System.out.println(columnName); // [Srno, Module, PageName, RunStatus, Control, ObjectType, PropertyName,
-			// PropertyValue, Datafield, Action, DataField_Type, Action_Type, Test_Case,
-			// TestCase_Type, Description, Scenario_ID, Scenario_Description, COLUMN_17]
-			List<Object> rowValue = new ArrayList<Object>();
-			for (String s : columnName) {
-				rowValue.add(r.getField(s));
-			}
-//			System.out.println(rowValue); // [2, Subscription, Home Page, Y, C, , , , , deleteAllCookies, , , TC_01_01,
-			// Positive, Redirects To 5 paisa Home page, SC_01, Ledger purchase flow, ]
-			rowList.add(rowValue);
-		}
+		/*
+		 * while (r.next()) { List<String> columnName = r.getFieldNames(); //
+		 * System.out.println(columnName); // [Srno, Module, PageName, RunStatus,
+		 * Control, ObjectType, PropertyName, // PropertyValue, Datafield, Action,
+		 * DataField_Type, Action_Type, Test_Case, // TestCase_Type, Description,
+		 * Scenario_ID, Scenario_Description, COLUMN_17] List<Object> rowValue = new
+		 * ArrayList<Object>(); for (String s : columnName) {
+		 * rowValue.add(r.getField(s)); } // System.out.println(rowValue); // [2,
+		 * Subscription, Home Page, Y, C, , , , , deleteAllCookies, , , TC_01_01, //
+		 * Positive, Redirects To 5 paisa Home page, SC_01, Ledger purchase flow, ]
+		 * rowList.add(rowValue); }
+		 * 
+		 * System.out.println(rowList);
+		 * 
+		 * System.out.println(rowList.size());
+		 * 
+		 * for (int i = 0; i < rowList.size(); i++) { //
+		 * System.out.println(rowList.get(i)); List<Object> row = (List<Object>)
+		 * rowList.get(i);
+		 * 
+		 * 
+		 * }
+		 */
+		// Replace with your Gmail credentials
+		
+		/*
+		 * File f = new File(
+		 * "C:\\Users\\biswa\\eclipse-workspace\\BiswajitFramework\\RESULT\\2024\\January\\21\\HtmlTable\\SummaryTable.html"
+		 * ); String to = "biswajitsahookanha11@gmail.com";// pass = lveshguhuyjmvglw
+		 * String from = "biswajitkanha11@gmail.com"; final String username =
+		 * "biswajitkanha11@gmail.com"; final String password = "zfbaqijmtutiejyd"; //
+		 * pass=zfbaqijmtutiejyd
+		 * 
+		 * String host = "smtp.gmail.com";
+		 * 
+		 * Properties props = new Properties(); props.put("mail.smtp.auth", "true");
+		 * props.put("mail.smtp.starttls.enable", "true"); props.put("mail.smtp.host",
+		 * host); props.put("mail.smtp.port", "587");
+		 * 
+		 * Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+		 * protected PasswordAuthentication getPasswordAuthentication() { return new
+		 * PasswordAuthentication(username, password); } });
+		 * 
+		 * try {
+		 * 
+		 * Message message = new MimeMessage(session); message.setFrom(new
+		 * InternetAddress(from)); message.setRecipients(Message.RecipientType.TO,
+		 * InternetAddress.parse(to));
+		 * message.setSubject("Automation Framework Report"); // Create MimeMultipart
+		 * Multipart multipart = new MimeMultipart();
+		 * 
+		 * // Add HTML part (replace htmlContent with your actual HTML content) BodyPart
+		 * htmlPart = new MimeBodyPart(); String htmlContent =
+		 * "<html><body><h2>Automation Test Report</h2>" +
+		 * "<p>Hi Sir, </p><p>Please find the Automation Test Report Below Table:</p>" +
+		 * "<table border='1'><tr><th>Column1</th><th>Column2</th></tr>" +
+		 * "<tr><td>Value1</td><td>Value2</td></tr></table></body></html>";
+		 * htmlPart.setContent(htmlContent, "text/html");
+		 * 
+		 * // Add HTML part to MimeMultipart multipart.addBodyPart(htmlPart);
+		 * 
+		 * // Set the content of the message message.setContent(multipart);
+		 * 
+		 * // Send the email message Transport.send(message);
+		 * 
+		 * System.out.println("Sent message successfully....");
+		 * 
+		 * } catch (AuthenticationFailedException e) {
+		 * System.out.println("Authentication failed. Please check your credentials.");
+		 * e.printStackTrace(); }
+		 */
+		
+//		Date dt = new Date();
+//		SimpleDateFormat tm1 = new SimpleDateFormat("HH:mm:ss");
+//		String time = tm1.format(dt);
+//		System.out.println(dt);
+//		System.out.println(time);
+//		Thread.sleep(60000);
+//		SimpleDateFormat tm2 = new SimpleDateFormat("HH:mm:ss");
+//		String time1 = tm2.format(dt);
+//		System.out.println(dt);
+//		System.out.println(time1);
+		
+		long startTime = System.nanoTime();
 
-		System.out.println(rowList);
+        // Some code to be timed
+        for (int i = 0; i < 100000; i++) {
+            Math.sqrt(i);
+        }
+        Thread.sleep(70000);
 
-		System.out.println(rowList.size());
+        long endTime = System.nanoTime();
 
-		for (int i = 0; i < rowList.size(); i++) {
-//			System.out.println(rowList.get(i));
-			List<Object> row = (List<Object>) rowList.get(i);
-			
-			
-		}
+        // Calculate the execution time in milliseconds
+        long executionTimeInMilliseconds = (endTime - startTime) / 1_000_000;
+        
+        /*The use of underscores in numeric literals is a feature introduced in Java 7 to improve readability. In Java, underscores in numeric literals have no effect on the actual value; they are used purely for visual separation of digits to make large numbers more readable.*/
 
-	}
+        // Convert milliseconds to hours, minutes, and seconds
+        long hours = executionTimeInMilliseconds / (60 * 60 * 1000);
+        long minutes = (executionTimeInMilliseconds % (60 * 60 * 1000)) / (60 * 1000);
+        long seconds = (executionTimeInMilliseconds % (60 * 1000)) / 1000;
+
+        System.out.println("Execution time: " + hours + " hours, " + minutes + " minutes, " + seconds + " seconds," + executionTimeInMilliseconds + " Milliseconds");
+    }
 
 }
