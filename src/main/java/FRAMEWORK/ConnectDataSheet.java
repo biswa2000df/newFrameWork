@@ -74,7 +74,7 @@ public class ConnectDataSheet extends BrowserClass {
 				System.getProperty("user.dir") + File.separator + "DataSheet" + File.separator + fileName);
 		try {
 
-			String query = "SELECT * FROM Sheet3 WHERE RUNSTATUS='Y' and MODULE='" + ConnectToMainController.Module
+			String query = "SELECT * FROM Sheet1 WHERE RUNSTATUS='Y' and MODULE='" + ConnectToMainController.Module
 					+ "'";
 			Recordset recordset = conn.executeQuery(query);
 

@@ -280,25 +280,26 @@ public class normalclass {
 		
 		long startTime = System.nanoTime();
 
-        // Some code to be timed
-        for (int i = 0; i < 100000; i++) {
-            Math.sqrt(i);
-        }
-        Thread.sleep(70000);
+		// Some code to be timed
+		for (int i = 0; i < 100000; i++) {
+		    Math.sqrt(i);
+		}
+		Thread.sleep(70000);
 
-        long endTime = System.nanoTime();
+		long endTime = System.nanoTime();
 
-        // Calculate the execution time in milliseconds
-        long executionTimeInMilliseconds = (endTime - startTime) / 1_000_000;
-        
-        /*The use of underscores in numeric literals is a feature introduced in Java 7 to improve readability. In Java, underscores in numeric literals have no effect on the actual value; they are used purely for visual separation of digits to make large numbers more readable.*/
+		// Calculate the execution time in milliseconds
+		long executionTimeInMilliseconds = (endTime - startTime) / 1_000_000;
 
-        // Convert milliseconds to hours, minutes, and seconds
-        long hours = executionTimeInMilliseconds / (60 * 60 * 1000);
-        long minutes = (executionTimeInMilliseconds % (60 * 60 * 1000)) / (60 * 1000);
-        long seconds = (executionTimeInMilliseconds % (60 * 1000)) / 1000;
+		// Convert milliseconds to hours, minutes, seconds, and milliseconds
+		long hours = executionTimeInMilliseconds / (60 * 60 * 1000);
+		long remainingMilliseconds = executionTimeInMilliseconds % (60 * 60 * 1000);
+		long minutes = remainingMilliseconds / (60 * 1000);
+		remainingMilliseconds %= (60 * 1000);
+		long seconds = remainingMilliseconds / 1000;
+		long milliseconds = remainingMilliseconds % 1000;
 
-        System.out.println("Execution time: " + hours + " hours, " + minutes + " minutes, " + seconds + " seconds," + executionTimeInMilliseconds + " Milliseconds");
+		System.out.println("Execution time: " + hours + " hours, " + minutes + " minutes, " + seconds + " seconds, " + milliseconds + " milliseconds, " + executionTimeInMilliseconds + " milliseconds total");
     }
 
 }

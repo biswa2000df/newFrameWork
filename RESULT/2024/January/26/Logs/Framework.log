@@ -1,0 +1,10 @@
+2024-01-26 18:01:31.269 [main] INFO  FRAMEWORK.UtilScreenshotAndReport - Logging to dynamically created file: C:\Users\biswa\eclipse-workspace\BiswajitFramework\RESULT\2024\January\26\Logs\Framework.log
+2024-01-26 18:01:32.345 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  com.codoid.products.exception.FilloException: sheet1 table is not found
+2024-01-26 18:01:32.345 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  com.codoid.products.exception.FilloException: sheet1 table is not found
+2024-01-26 18:01:32.345 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  com.codoid.products.exception.FilloException: sheet1 table is not found
+2024-01-26 18:01:32.345 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : com.codoid.products.exception.FilloException: sheet1 table is not found
+2024-01-26 18:01:32.349 [main] INFO  FRAMEWORK.ConnectToMainController - Info Message :  java.lang.NullPointerException: Cannot invoke "com.aventstack.extentreports.ExtentReports.flush()" because "this.extent" is null
+2024-01-26 18:01:32.350 [main] WARN  FRAMEWORK.ConnectToMainController - Warn Message :  java.lang.NullPointerException: Cannot invoke "com.aventstack.extentreports.ExtentReports.flush()" because "this.extent" is null
+2024-01-26 18:01:32.350 [main] ERROR FRAMEWORK.ConnectToMainController - Error Message :  java.lang.NullPointerException: Cannot invoke "com.aventstack.extentreports.ExtentReports.flush()" because "this.extent" is null
+2024-01-26 18:01:32.350 [main] FATAL FRAMEWORK.ConnectToMainController - Fatal Message : java.lang.NullPointerException: Cannot invoke "com.aventstack.extentreports.ExtentReports.flush()" because "this.extent" is null
+2024-01-26 18:02:24.271 [main] INFO  FRAMEWORK.UtilScreenshotAndReport - Logging to dynamically created file: C:\Users\biswa\eclipse-workspace\BiswajitFramework\RESULT\2024\January\26\Logs\Framework.log

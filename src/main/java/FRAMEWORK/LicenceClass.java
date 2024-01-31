@@ -83,7 +83,7 @@ public class LicenceClass {
 				System.out.println();
 				System.out.println(dt);
 				
-				UtilScreenshotAndReport.configureLog4j();//call to generate the logs
+//				UtilScreenshotAndReport.configureLog4j();//call to generate the logs
 				ConnectToMainController.MainContolerSheet();
 
 			} else {

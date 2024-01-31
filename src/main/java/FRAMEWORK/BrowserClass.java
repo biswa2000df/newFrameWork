@@ -3,6 +3,7 @@ package FRAMEWORK;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -28,6 +29,7 @@ public class BrowserClass {
 			ChromeOptions option = new ChromeOptions();
 			option.addArguments("--remote-allow-origins=*");
 			option.addArguments("--no-sandbox");
+			option.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 //			option.addArguments("--headless");
 			
 			driver = new ChromeDriver(option);
@@ -93,7 +95,15 @@ public class BrowserClass {
 
 	public static void WindowBrowserDriver(String BrowserEXEFile) {
 		switch (BrowserEXEFile) {
-		case "Chrome":
+		case "CHROME":
+			browserDriverPath = System.getProperty("user.dir") + File.separator + "BrowserDriver" + File.separator
+					+ "chromedriver.exe";
+			break;
+		case "EDGE":
+			browserDriverPath = System.getProperty("user.dir") + File.separator + "BrowserDriver" + File.separator
+					+ "edgedriver.exe";
+			break;
+		case "chrome":
 			browserDriverPath = System.getProperty("user.dir") + File.separator + "BrowserDriver" + File.separator
 					+ "chromedriver.exe";
 			break;
@@ -102,14 +112,23 @@ public class BrowserClass {
 					+ "edgedriver.exe";
 			break;
 		default:
-			System.out.println("SORRY!!! You select Invalid Driver");
+			System.out.println("SORRY!!! Your OS = " + OS +", But You select Invalid Driver");
+			System.exit(0);
 
 		}
 	}
 
 	public static void LinuxAndUbuntuBrowserDriver(String BrowserEXEFile) {
 		switch (BrowserEXEFile) {
-		case "Chrome":
+		case "CHROME":
+			browserDriverPath = System.getProperty("user.dir") + File.separator + "BrowserDriver" + File.separator
+					+ "chromedriver";
+			break;
+		case "EDGE":
+			browserDriverPath = System.getProperty("user.dir") + File.separator + "BrowserDriver" + File.separator
+					+ "edgedriver";
+			break;
+		case "chrome":
 			browserDriverPath = System.getProperty("user.dir") + File.separator + "BrowserDriver" + File.separator
 					+ "chromedriver";
 			break;
@@ -118,7 +137,8 @@ public class BrowserClass {
 					+ "edgedriver";
 			break;
 		default:
-			System.out.println("SORRY!!! You select Invalid Driver");
+			System.out.println("SORRY!!! Your OS  = " + OS +", But You select Invalid Driver");
+			System.exit(0); 
 
 		}
 	}

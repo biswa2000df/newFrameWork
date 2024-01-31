@@ -52,13 +52,16 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 	static String ZoneName = null;
 	public static long executionEndTime;
 	public static String TotalExecutionTime;
+	public static String extentReportDynamicPath;
+	public static String csvFileDynamicPath;
+	public static String conCatDot = ".";
 
 	final static Logger logger = LogManager.getLogger(UtilScreenshotAndReport.class);
 
 	public String takeScreenShot(WebDriver driver, String TestCase_No) throws IOException {
 
 		File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		String destPath = getFormat("YYYY", "MMMM", "dd", "Screenshot");
+		String destPath = getFormat("YYYY", "MMMM", "dd", "Screenshot", "screenshotMethod");
 		ConnectDataSheet.destFileScrnshot = destPath + File.separator + time + "_" + TestCase_No + ".png";
 
 //		ScreenshotPathFormat();		
@@ -80,7 +83,7 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 
 	// Modification on file format ======today date is 12-aug-2023
 
-	public static String getFormat(String Year, String Month, String Date, String Type) {
+	public static String getFormat(String Year, String Month, String Date, String Type, String methodName) {
 
 		Date date = new Date();
 		SimpleDateFormat yer = new SimpleDateFormat(Year);
@@ -98,11 +101,32 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 //		System.out.println(year);
 //		System.out.println(Mnth);
 //		System.out.println(Dt);
+		String f = null;
 
-		String f = System.getProperty("user.dir") + File.separator + "RESULT" + File.separator + year + File.separator
-				+ Mnth + File.separator + Dt + File.separator + Type;
-		new File(f).mkdirs();
-//		System.out.println(f);
+//	         ConnectToMainController.ReportType = "DYNAMIC";//DYNAMIC STATIC
+
+		if (ConnectToMainController.ReportType.equalsIgnoreCase("DYNAMIC")) {
+			if (methodName.equalsIgnoreCase("screenshotMethod")) {
+				f = conCatDot + File.separator + "DYNAMIC_RESULT" + File.separator + Type; // because the only required
+																							// this file due to create
+																							// the dynamic image path
+																							// and other method are not
+																							// required
+			} else {
+				f = System.getProperty("user.dir") + conCatDot + File.separator + "DYNAMIC_RESULT";
+				new File(f).mkdirs();
+			}
+//			new File(f).mkdirs();
+//	            System.out.println("==========================================" + f);
+		} else {
+
+			f = System.getProperty("user.dir") + File.separator + "STATIC_RESULT" + File.separator + year
+					+ File.separator + Mnth + File.separator + Dt + File.separator + Type;
+			new File(f).mkdirs();
+//				System.out.println("==========================================" + f);
+			return f;
+
+		}
 		return f;
 	}
 
@@ -117,8 +141,9 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 		 * File(destFile).mkdirs();
 		 */
 
-		String destFile = getFormat("YYYY", "MMMM", "dd", "Report");
+		String destFile = getFormat("YYYY", "MMMM", "dd", "Report", "ReportMethod");
 		Extent_ReportFile = destFile + File.separator + time + "_" + htmlFile;
+		extentReportDynamicPath = conCatDot + File.separator + time + "_" + htmlFile;
 		htmlReport = new ExtentHtmlReporter(Extent_ReportFile);
 		extent = new ExtentReports();
 		extent.attachReporter(htmlReport);
@@ -205,13 +230,20 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 	}
 
 	public void passTestCase() throws IOException {
+		String TakeScreenshotPath;
 		try {
+			if (ConnectToMainController.ReportType.equalsIgnoreCase("DYNAMIC")) {
+				TakeScreenshotPath = conCatDot + takeScreenShot(driver, Scenario_ID);
+			} else {
+				TakeScreenshotPath = takeScreenShot(driver, Scenario_ID);
+			}
 
 			test.log(Status.PASS,
 					"<h6><br><font color=\"Red\"><b> Expected Result is - </b></font></h6>" + ssDataSheet2Value
 							+ "	 <h6><br> <font color=\"Red\"><b>Actual Result is - </b></font><h6>"
 							+ ActionClass.ActualResult + "<br>",
-					MediaEntityBuilder.createScreenCaptureFromPath(takeScreenShot(driver, Scenario_ID)).build());
+//					MediaEntityBuilder.createScreenCaptureFromPath(takeScreenShot(driver, Scenario_ID)).build());
+					MediaEntityBuilder.createScreenCaptureFromPath(TakeScreenshotPath).build());
 		} catch (Exception e) {
 
 			e.printStackTrace();
@@ -224,7 +256,13 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 	}
 
 	public void failTestCase() throws IOException {
+		String TakeScreenshotPath;
 		try {
+			if (ConnectToMainController.ReportType.equalsIgnoreCase("DYNAMIC")) {
+				TakeScreenshotPath = conCatDot + takeScreenShot(driver, Scenario_ID);
+			} else {
+				TakeScreenshotPath = takeScreenShot(driver, Scenario_ID);
+			}
 //		test.log(Status.INFO, MarkupHelper.createLabel(Neg_Description, ExtentColor.RED));
 //		test.log(Status.FAIL, "",
 //				MediaEntityBuilder.createScreenCaptureFromPath(
@@ -237,7 +275,8 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 					"<h6><br><font color=\"Red\"><b> Expected Result is - </b></font></h6>" + ssDataSheet2Value
 							+ "	 <h6><br> <font color=\"Red\"><b>Actual Result is - </b></font><h6>"
 							+ ActionClass.ActualResult + "<br>",
-					MediaEntityBuilder.createScreenCaptureFromPath(takeScreenShot(driver, Scenario_ID)).build());
+//					MediaEntityBuilder.createScreenCaptureFromPath(takeScreenShot(driver, Scenario_ID)).build());
+					MediaEntityBuilder.createScreenCaptureFromPath(TakeScreenshotPath).build());
 		} catch (Exception e) {
 
 			e.printStackTrace();
@@ -270,7 +309,7 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 		 * File(destFile).mkdirs();
 		 */
 
-		destFile = getFormat("YYYY", "MMMM", "dd", "CSVFile");
+		destFile = getFormat("YYYY", "MMMM", "dd", "CSVFile", "csvFileMethod");
 
 	}
 
@@ -312,6 +351,7 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 		try {
 
 			CSV_ReportFile = destFile + File.separator + csvFile;
+			csvFileDynamicPath = conCatDot + File.separator + csvFile; // dynamic path
 			fileWriter = new FileWriter(CSV_ReportFile, true);
 			CSVWriter cw = new CSVWriter(fileWriter);
 			String line1[] = { Test_Case, Description, ExpectedResult, ActualResult, Status, Date, Time,
@@ -341,7 +381,7 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 
 		try {
 
-			String htmlTable = getFormat("YYYY", "MMMM", "dd", "HtmlTable");
+			String htmlTable = getFormat("YYYY", "MMMM", "dd", "HtmlTable", "htmlTableMethod");
 			String filename = htmlTable + File.separator + "SummaryTable.html";
 
 			FileWriter writer = new FileWriter(filename);
@@ -355,13 +395,19 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 
 			writer.write("<table border=\"1\">\n");
 			writer.write(
-					"<tr> <th><font color=\"Lime\">Project</font></th><th><font color=\"Blue\">Total TCs</font></th><th><font color=\"Green\">Passed TCs</font></th><th><font color=\"Red\">Failed TCs</font></th><th>Report</th><th>CSV_File</th><th><font color=\"Green\">Execution Time</font></th></tr>");
+					"<tr> <th><font color=\"Lime\">Project</font></th><th><font color=\"Blue\">Total TCs</font></th><th><font color=\"Green\">Passed TCs</font></th><th><font color=\"Red\">Failed TCs</font></th><th>Report</th><th>CSV_File</th><th><font color=\"Green\">ExecutionTime</font></th></tr>");
 
-			writer.write("<td>" + ConnectToMainController.Module + "</td><td>" + totalTest + "</td><td>" + pass
-					+ "</td><td>" + fail + "</td><td><a href=" + Extent_ReportFile
-					+ " target=_blank>View Report</a></td><td><a href=" + CSV_ReportFile
-					+ " target=_blank>CSV</a></td>"
-					+ "<td>" + TotalExecutionTime + "</td>");
+			if (ConnectToMainController.ReportType.equalsIgnoreCase("STATIC")) {
+				writer.write("<td>" + ConnectToMainController.Module + "</td><td>" + totalTest + "</td><td>" + pass
+						+ "</td><td>" + fail + "</td><td><a href=" + Extent_ReportFile
+						+ " target=_blank>View Report</a></td><td><a href=" + CSV_ReportFile
+						+ " target=_blank>CSV</a></td>" + "<td>" + TotalExecutionTime + "</td>");
+			} else {
+				writer.write("<td>" + ConnectToMainController.Module + "</td><td>" + totalTest + "</td><td>" + pass
+						+ "</td><td>" + fail + "</td><td><a href=" + extentReportDynamicPath
+						+ " target=_blank>View Report</a></td><td><a href=" + csvFileDynamicPath
+						+ " target=_blank>CSV</a></td>" + "<td>" + TotalExecutionTime + "</td>");
+			}
 
 //	            for (int i = 0; i < numRows; i++) {
 //	                writer.write("<tr>\n");
@@ -471,31 +517,55 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 	}
 
 	private static String generateLogFileName() {
-		String LogsFilePath = getFormat("YYYY", "MMMM", "dd", "Logs");
+		String LogsFilePath = getFormat("YYYY", "MMMM", "dd", "Logs", "logsFileMethod");
 		return LogsFilePath + File.separator + "Framework.log";
 	}
 
 	public void ExecutionTime() {
+		long hours = 0;
+		long minutes = 0;
+		long seconds = 0;
+		long remainingMilliseconds = 0;
+		long milliseconds = 0;
 
 		executionEndTime = System.nanoTime();
 
 		// Calculate the execution time in milliseconds
-		long executionTimeInMilliseconds = (executionEndTime - LunchMainClass.executionStartTime)/ 1_000_000;
+		long executionTimeInMilliseconds = (executionEndTime - LunchMainClass.executionStartTime) / 1_000_000;
 		/*
-								 * The use of underscores in numeric literals is a feature introduced in Java 7
-								 * to improve readability. In Java, underscores in numeric literals have no
-								 * effect on the actual value; they are used purely for visual separation of
-								 * digits to make large numbers more readable.
-								 */
+		 * The use of underscores in numeric literals is a feature introduced in Java 7
+		 * to improve readability. In Java, underscores in numeric literals have no
+		 * effect on the actual value; they are used purely for visual separation of
+		 * digits to make large numbers more readable.
+		 */
 
 		// Convert milliseconds to hours, minutes, and seconds
-		long hours = executionTimeInMilliseconds / (60 * 60 * 1000);
-		long minutes = (executionTimeInMilliseconds % (60 * 60 * 1000)) / (60 * 1000);
-		long seconds = (executionTimeInMilliseconds % (60 * 1000)) / 1000;
+//		 hours = executionTimeInMilliseconds / (60 * 60 * 1000);
+//		 minutes = (executionTimeInMilliseconds % (60 * 60 * 1000)) / (60 * 1000);
+//		 seconds = (executionTimeInMilliseconds % (60 * 1000)) / 1000;
 
-		TotalExecutionTime = hours + ":" + minutes + ":" + seconds;
-		/*System.out.println("Execution time: " + hours + " hours, " + minutes + " minutes, " + seconds + " seconds,"
-			+ executionTimeInMilliseconds + " Milliseconds");*/	
+		hours = executionTimeInMilliseconds / (60 * 60 * 1000);
+		remainingMilliseconds = executionTimeInMilliseconds % (60 * 60 * 1000);
+		minutes = remainingMilliseconds / (60 * 1000);
+		remainingMilliseconds %= (60 * 1000);
+		seconds = remainingMilliseconds / 1000;
+		milliseconds = remainingMilliseconds % 1000;
+
+		if (hours != 0) {
+			TotalExecutionTime = hours + " hour " + minutes + " min " + seconds + " seconds " + milliseconds + " ms";
+		} else if (minutes != 0) {
+			TotalExecutionTime = minutes + " min " + seconds + " seconds "  + milliseconds + " ms";
+		} else if(seconds != 0) {
+			TotalExecutionTime = seconds + " seconds "  + milliseconds + " ms";
+		} else
+			 TotalExecutionTime = milliseconds + " ms";
+
+//		TotalExecutionTime = hours + ":" + minutes + ":" + seconds;
+		/*
+		 * System.out.println("Execution time: " + hours + " hours, " + minutes +
+		 * " minutes, " + seconds + " seconds," + executionTimeInMilliseconds +
+		 * " Milliseconds");
+		 */
 	}
 
 }

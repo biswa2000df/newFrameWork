@@ -5,6 +5,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
 
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
 import javax.mail.*;
 import javax.mail.internet.*;
 
@@ -85,59 +87,76 @@ public class HtmlTable {
 		writer.close();
 		System.out.println("HTML table has been generated in " + filename);
 		
-		String to = "biswajitsahookanha11@gmail.com";// pass = lveshguhuyjmvglw
-		String from = "biswajitkanha11@gmail.com";
-		final String username = "biswajitkanha11@gmail.com";
-		final String password = "zfbaqijmtutiejyd";  // pass=zfbaqijmtutiejyd
-		
-		String host = "smtp.gmail.com";
+		 String from = "biswajitkanha11@gmail.com";
+		 String to = "biswajitsahookanha11@gmail.com";
+		 String cc = "kanhabiswajitsahoo11@gmail.com,biswajitkanha316@gmail.com";
+	       
+	        final String username = "biswajitkanha11@gmail.com";
+	        final String password = "zfbaqijmtutiejyd";
+	        String host = "smtp.gmail.com";
 
-		Properties props = new Properties();
-		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.smtp.host", host);
-		props.put("mail.smtp.port", "587");
+	        Properties props = new Properties();
+	        props.put("mail.smtp.auth", "true");
+	        props.put("mail.smtp.starttls.enable", "true");
+	        props.put("mail.smtp.host", host);
+	        props.put("mail.smtp.port", "587");
 
-		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
-			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(username, password);
-			}
-		});
+	        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+	            protected PasswordAuthentication getPasswordAuthentication() {
+	                return new PasswordAuthentication(username, password);
+	            }
+	        });
 
-		try {
-			
-			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(from));
-			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
-			message.setSubject("Automation Framework Report");
-			  // Create MimeMultipart
-            Multipart multipart = new MimeMultipart();
+	        try {
+	            Message message = new MimeMessage(session);
+	            message.setFrom(new InternetAddress(from));
+	            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+	            message.setRecipients(Message.RecipientType.CC, InternetAddress.parse(cc));
+	            message.setSubject("Automation Framework Report");
 
-            // Add HTML part (replace htmlContent with your actual HTML content)
-            BodyPart htmlPart = new MimeBodyPart();
-            String htmlContent = "<html><body><h2>Automation Test Report</h2>"
-                    + "<p>Hi Sir, </p><p>Please find the Automation Test Report Below Table:</p>"
-                    + "<table border=\"1\">\n"
-                    +"<tr> <th><font color=\"Green\">Project</font></th><th><font color=\"Blue\">Total TCs</font></th><th><font color=\"Green\">Passed TCs</font></th><th><font color=\"Red\">Failed TCs</font></th><th>Report</th></tr>"
-                    +"<td>Row 2</td><td>Row 2</td><td><a href=kanha>Row</a></td><td>Row 2</td><td><a href=C:\\Users\\biswa\\eclipse-workspace\\BiswajitFramework\\RESULT\\2024\\January\\21\\Report\\19_59_36_students.html>View Report</a></td>"
-                    + "</table></body></html>";
-            htmlPart.setContent(htmlContent, "text/html");
+	            // Create MimeMultipart for the message content
+	            Multipart multipart = new MimeMultipart("mixed");
+	            
+	        
 
-            // Add HTML part to MimeMultipart
-            multipart.addBodyPart(htmlPart);
+	            // HTML Body Part
+	            BodyPart htmlPart = new MimeBodyPart();
+	            String htmlContent = "<html><body><h2>Automation Test Report</h2>"
+	                    + "<p>Hi Sir, </p><p>Please find the Automation Test Report Below Table : </p>"
+	                    + "<table border=\"1\">\n"
+	                    + "<tr> <th><font color=\"Green\">Project</font></th><th><font color=\"Blue\">Total TCs</font></th><th><font color=\"Green\">Passed TCs</font></th><th><font color=\"Red\">Failed TCs</font></th><th>Report</th></tr>"
+	                    + "<td>Row 2</td><td>Row 2</td><td><a href=kanha>Row</a></td><td>Row 2</td><td><a href=C:\\Users\\biswa\\eclipse-workspace\\BiswajitFramework\\RESULT\\2024\\January\\21\\Report\\19_59_36_students.html>View Report</a></td>"
+	                    + "</table><br><br></body></html>";
+	            htmlPart.setContent(htmlContent, "text/html");
+	            multipart.addBodyPart(htmlPart);
 
-            // Set the content of the message
-            message.setContent(multipart);
+	         // Attachment Body Message
+	            BodyPart attachmentBodyPart = new MimeBodyPart();
+	            String attachmentBodyMessage = "Please find the attachment for detailed report.";
+	            attachmentBodyPart.setText(attachmentBodyMessage);
+	            multipart.addBodyPart(attachmentBodyPart);
+	            
 
-            // Send the email message
-            Transport.send(message);
+	            // Attachment Part
+	            BodyPart attachmentPart = new MimeBodyPart();
+	            String fileName = "C:\\Users\\biswa\\eclipse-workspace\\BiswajitFramework\\DYNAMIC_RESULT\\SummaryTable.html"; // Specify the path to your attachment file
+	            FileDataSource source = new FileDataSource(fileName);
+	            attachmentPart.setDataHandler(new DataHandler(source));
+	            attachmentPart.setFileName(new File(fileName).getName());
+	            multipart.addBodyPart(attachmentPart);
+	            
+	            
+	            // Set the content of the message
+	            message.setContent(multipart);
 
-            System.out.println("Sent message successfully....");
+	            // Send the email message
+	            Transport.send(message);
 
-		} catch (AuthenticationFailedException e) {
-			System.out.println("Authentication failed. Please check your credentials.");
-			e.printStackTrace();
-		}
+	            System.out.println("Sent message successfully....");
+
+	        } catch (MessagingException e) {
+	            e.printStackTrace();
+	        }
 	}
 
 }

@@ -18,10 +18,12 @@ public class ConnectToMainController {
 	static String TestFlow_Path = null;
 
 	static String Sr_No = null;
+	static String Browser = null;
 	static String ApplicationID = null;
 	static String Module = null;
-	static String Browser = null;
 	static String process1 = null;
+	public static String ReportType = null;
+	
 	static ConnectDataSheet conDataSheet;
 	final static Logger logger = LogManager.getLogger(ConnectToMainController.class);
 
@@ -60,7 +62,7 @@ public class ConnectToMainController {
 					rowlist.add(rowvalues);
 				}
 
-//			System.out.println("MainController Row List "+rowlist);    // MainController Row List [[3, y, Chrome, IshinePortal, IshinePortal, IshinePortal, IshinePortal]]   this type it is print row list
+//			System.out.println("MainController Row List "+rowlist);    // MainController Row List [[3, y, Chrome, IshinePortal, IshinePortal, IshinePortal, IshinePortal]]   this type it is print row list that is list of array type but here which row are "y" are print
 
 				for (int i = 0; i < rowlist.size(); i++) {
 
@@ -70,17 +72,22 @@ public class ConnectToMainController {
 					Browser = (String) row.get(2);
 					ApplicationID = (String) row.get(3);
 					Module = (String) row.get(4);
-					process1 = (String) row.get(6);
+					process1 = (String) row.get(5);
+					ReportType = (String) row.get(6);
+					
+					
 					try {
 
 						if (Sr_No != null && !Sr_No.isEmpty() && Browser != null && !Browser.isEmpty()
 								&& ApplicationID != null && !ApplicationID.isEmpty() && Module != null
-								&& !Module.isEmpty() && process1 != null && !process1.isEmpty())
+								&& !Module.isEmpty() && process1 != null && !process1.isEmpty() && ReportType != null && !ReportType.isEmpty())
 
 						{
+							UtilScreenshotAndReport.configureLog4j();//call to generate the logs
 							MainControlerDataSheet(process1); // call this method with processname to the datasheet
 						} else {
-							System.out.println("Please Filled all the data Properly");
+							System.out.println("Please Filled all the data Properly inside the MainController Sheet");
+							System.exit(0);
 						}
 
 					} catch (Exception e) {
@@ -92,7 +99,7 @@ public class ConnectToMainController {
 //			System.out.println(process1);
 				}
 			} else {
-				System.out.println("MainMain_Controller File is Not Present");
+				System.out.println("Main_Controller File is Not Present");
 				System.exit(0);
 			}
 		} catch (Exception e) {
@@ -120,7 +127,7 @@ public class ConnectToMainController {
 			Fillo fillo = new Fillo();
 			Connection conn = fillo
 					.getConnection(System.getProperty("user.dir") + File.separator + "Main_Controller.xlsx");
-			String query = "SELECT * FROM Sheet3 Where Process='" + process1 + "'";
+			String query = "SELECT * FROM DataSheet Where Process='" + process1 + "'";
 
 			Recordset recordset = conn.executeQuery(query);
 			List<Object> rowLists = new ArrayList<Object>();
@@ -141,9 +148,13 @@ public class ConnectToMainController {
 
 //				System.out.println("DataSheetName========================> " + TestFlow_Path);// print the datasheet file name "IshinePortal.xlsx"
 
-				fileCheck(TestFlow_Path);///// Call this method sending the datasheet name with the .xlsx format which
-											///// is
-											///// check
+				if(TestFlow_Path != null && !TestFlow_Path.isEmpty()) {
+					fileCheck(TestFlow_Path);///// Call this method sending the datasheet name with the .xlsx format which is check
+				}else {
+					System.out.println("Please filled the data MainController DataSheet !!!");
+					System.exit(0);
+				}
+											
 
 			}
 
