@@ -23,7 +23,8 @@ public class ConnectToMainController {
 	static String Module = null;
 	static String process1 = null;
 	public static String ReportType = null;
-	
+	public static String process = null;
+
 	static ConnectDataSheet conDataSheet;
 	final static Logger logger = LogManager.getLogger(ConnectToMainController.class);
 
@@ -34,13 +35,14 @@ public class ConnectToMainController {
 	// then call this MainControlerDataSheet() and pass the process data
 
 	public static void MainContolerSheet() throws FilloException, InterruptedException, IOException {
+
+		conDataSheet = new ConnectDataSheet();
+
+		// TODO Auto-generated method stub
+
+		String MainControler = System.getProperty("user.dir") + File.separator + "Main_Controller.xlsx";
+		File file = new File(MainControler);
 		try {
-			conDataSheet = new ConnectDataSheet();
-
-			// TODO Auto-generated method stub
-
-			String MainControler = System.getProperty("user.dir") + File.separator + "Main_Controller.xlsx";
-			File file = new File(MainControler);
 
 			if (file.exists()) {
 
@@ -74,16 +76,16 @@ public class ConnectToMainController {
 					Module = (String) row.get(4);
 					process1 = (String) row.get(5);
 					ReportType = (String) row.get(6);
-					
-					
+
 					try {
 
 						if (Sr_No != null && !Sr_No.isEmpty() && Browser != null && !Browser.isEmpty()
 								&& ApplicationID != null && !ApplicationID.isEmpty() && Module != null
-								&& !Module.isEmpty() && process1 != null && !process1.isEmpty() && ReportType != null && !ReportType.isEmpty())
+								&& !Module.isEmpty() && process1 != null && !process1.isEmpty() && ReportType != null
+								&& !ReportType.isEmpty())
 
 						{
-							UtilScreenshotAndReport.configureLog4j();//call to generate the logs
+							UtilScreenshotAndReport.configureLog4j();// call to generate the logs
 							MainControlerDataSheet(process1); // call this method with processname to the datasheet
 						} else {
 							System.out.println("Please Filled all the data Properly inside the MainController Sheet");
@@ -98,12 +100,10 @@ public class ConnectToMainController {
 
 //			System.out.println(process1);
 				}
-			} else {
-				System.out.println("Main_Controller File is Not Present");
-				System.exit(0);
-			}
+			} 
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Main_Controller File is Not Present");
+			System.exit(0);
 			logger.debug("Debug Message : " + e);
 			logger.info("Info Message :  " + e);
 			logger.warn("Warn Message :  " + e);
@@ -143,18 +143,18 @@ public class ConnectToMainController {
 
 			for (int i = 0; i < rowLists.size(); i++) {
 				List<Object> row = (List<Object>) rowLists.get(i);
-
+				process = (String) row.get(1);
 				TestFlow_Path = (String) row.get(2);
 
 //				System.out.println("DataSheetName========================> " + TestFlow_Path);// print the datasheet file name "IshinePortal.xlsx"
 
-				if(TestFlow_Path != null && !TestFlow_Path.isEmpty()) {
-					fileCheck(TestFlow_Path);///// Call this method sending the datasheet name with the .xlsx format which is check
-				}else {
+				if (TestFlow_Path != null && !TestFlow_Path.isEmpty()) {
+					fileCheck(TestFlow_Path);///// Call this method sending the datasheet name with the .xlsx format
+												///// which is check
+				} else {
 					System.out.println("Please filled the data MainController DataSheet !!!");
 					System.exit(0);
 				}
-											
 
 			}
 
@@ -176,7 +176,7 @@ public class ConnectToMainController {
 	/// is called fileCheck(TestFlow_Path) like this...
 	// Then call the conDataSheet.DataSheetGet(fileName); to send the file name .
 
-	public static void fileCheck(String DataSheetFileName) throws FilloException, InterruptedException, IOException {
+	public static void fileCheck(String DataSheetFileName) throws Exception {
 
 		String DataSheetFolderPath = System.getProperty("user.dir") + File.separator + "DataSheet";
 		String DataSheetFilePath = System.getProperty("user.dir") + File.separator + "DataSheet" + File.separator

@@ -89,7 +89,7 @@ public class HtmlTable {
 		
 		 String from = "biswajitkanha11@gmail.com";
 		 String to = "biswajitsahookanha11@gmail.com";
-		 String cc = "kanhabiswajitsahoo11@gmail.com,biswajitkanha316@gmail.com";
+		 String cc = "kanhabiswajitsahoo11@gmail.com,biswajitkanha316@gmail.com,biswajit.sahoo@apmosys.com";
 	       
 	        final String username = "biswajitkanha11@gmail.com";
 	        final String password = "zfbaqijmtutiejyd";
@@ -117,7 +117,7 @@ public class HtmlTable {
 	            // Create MimeMultipart for the message content
 	            Multipart multipart = new MimeMultipart("mixed");
 	            
-	        
+	        String kanha = "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh";
 
 	            // HTML Body Part
 	            BodyPart htmlPart = new MimeBodyPart();

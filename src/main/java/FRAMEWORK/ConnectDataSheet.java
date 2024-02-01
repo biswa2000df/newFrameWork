@@ -64,7 +64,7 @@ public class ConnectDataSheet extends BrowserClass {
 	// after retrive the all the value the call to the extentflush() to stop the
 	// generate report.
 
-	public static void DataSheetGet(String fileName) throws FilloException, InterruptedException, IOException {
+	public static void DataSheetGet(String fileName) throws Exception {
 		connectDatasheet = new ConnectDataSheet();
 		locatorClass = new LocatorClass();
 		utilClass = new UtilScreenshotAndReport();
@@ -293,6 +293,7 @@ public class ConnectDataSheet extends BrowserClass {
 			utilClass.ExtentFlush();
 			utilClass.ExecutionTime();
 			UtilScreenshotAndReport.CreateHtmlTable();
+			MAILSEND.MailSend();
 		}
 
 	}
