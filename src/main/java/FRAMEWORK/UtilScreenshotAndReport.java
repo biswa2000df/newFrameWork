@@ -56,13 +56,16 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 	public static String csvFileDynamicPath;
 	public static String conCatDot = ".";
 
-	final static Logger logger = LogManager.getLogger(UtilScreenshotAndReport.class);
+	final static Logger logger = LogManager.getLogger(UtilScreenshotAndReport.class.getName());
 
 	public String takeScreenShot(WebDriver driver, String TestCase_No) throws IOException {
-
+		
+		String screenShotFileName = Scenario_ID + "_" + MODULE + "_" + Test_Case + "_" + PageName + "_";
+		
 		File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		String destPath = getFormat("YYYY", "MMMM", "dd", "Screenshot", "screenshotMethod");
-		ConnectDataSheet.destFileScrnshot = destPath + File.separator + time + "_" + TestCase_No + ".png";
+		String destPath = getFormat("YYYY", "MMMM", "dd", ConnectToMainController.Module, "SCREENSHOTs", "screenshotMethod");
+		ConnectDataSheet.destFileScrnshot = destPath + File.separator + screenShotFileName + time + ".png";
+		
 
 //		ScreenshotPathFormat();		
 //		ConnectDataSheet.destFileScrnshot = System.getProperty("user.dir") + File.separator + "Screenshot"
@@ -83,7 +86,7 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 
 	// Modification on file format ======today date is 12-aug-2023
 
-	public static String getFormat(String Year, String Month, String Date, String Type, String methodName) {
+	public static String getFormat(String Year, String Month, String Date, String projectName, String Type, String methodName) {
 
 		Date date = new Date();
 		SimpleDateFormat yer = new SimpleDateFormat(Year);
@@ -101,17 +104,18 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 //		System.out.println(year);
 //		System.out.println(Mnth);
 //		System.out.println(Dt);
+
 		String f = null;
 
 //	         ConnectToMainController.ReportType = "DYNAMIC";//DYNAMIC STATIC
 
 		if (ConnectToMainController.ReportType.equalsIgnoreCase("DYNAMIC")) {
+			/* why i am equaling the "screenshotMethod" this method because report method
+			 also call to this method so.*/
 			if (methodName.equalsIgnoreCase("screenshotMethod")) {
-				f = conCatDot + File.separator + "DYNAMIC_RESULT" + File.separator + Type; // because the only required
-																							// this file due to create
-																							// the dynamic image path
-																							// and other method are not
-																							// required
+				/* because the only required this file due to create the dynamic image path and
+				 other method are not required */
+				f = conCatDot + File.separator + "DYNAMIC_RESULT" + File.separator + Type;
 			} else {
 				f = System.getProperty("user.dir") + conCatDot + File.separator + "DYNAMIC_RESULT";
 				new File(f).mkdirs();
@@ -121,7 +125,7 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 		} else {
 
 			f = System.getProperty("user.dir") + File.separator + "STATIC_RESULT" + File.separator + year
-					+ File.separator + Mnth + File.separator + Dt + File.separator + Type;
+					+ File.separator + Mnth + File.separator + Dt + File.separator + projectName + File.separator + Type;
 			new File(f).mkdirs();
 //				System.out.println("==========================================" + f);
 			return f;
@@ -132,7 +136,7 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 
 	public void extentReport() throws IOException {
 
-		String htmlFile = "students.html";
+//		String htmlFile = "students.html";
 
 		/*
 		 * // ScreenshotPathFormat(); // String destFile =
@@ -141,9 +145,11 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 		 * File(destFile).mkdirs();
 		 */
 
-		String destFile = getFormat("YYYY", "MMMM", "dd", "Report", "ReportMethod");
-		Extent_ReportFile = destFile + File.separator + time + "_" + htmlFile;
-		extentReportDynamicPath = conCatDot + File.separator + time + "_" + htmlFile;
+		String destFile = getFormat("YYYY", "MMMM", "dd", ConnectToMainController.Module, "REPORTs", "ReportMethod");
+		
+		Extent_ReportFile = destFile + File.separator + ConnectToMainController.Module + "_" + "Report_" + time + ".html";
+		extentReportDynamicPath = conCatDot + File.separator + ConnectToMainController.Module + "_" + time + ".html";
+		
 		htmlReport = new ExtentHtmlReporter(Extent_ReportFile);
 		extent = new ExtentReports();
 		extent.attachReporter(htmlReport);
@@ -187,30 +193,31 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 	}
 
 	public static void testcaseInfoWithoutDataField() {
-		test.log(Status.INFO, "<font color=\"Aqua\"><b>Module - </b></font>" + MODULE + "  "
-				+ "<font color=\"Lime\"><b>Step - </b></font>" + Si_No + "  "
-				+ "<font color=\"MediumSlateBlue\"><b>Action - </b></font>" + Action.toUpperCase());
+		test.log(Status.INFO,
+				"<font color=\"Aqua\"><b>Module - </b></font>" + MODULE + "  "
+						+ "<font color=\"Lime\"><b>Step - </b></font>" + Si_No + "  "
+						+ "<font color=\"MediumSlateBlue\"><b>Action - </b></font>" + Action.toUpperCase());
 	}
 
 	public static void testcaseInfoWithDataFieldWithoutDataField_WithFailedWebElement(String withDataFieldOrNot) {
 
-		if(withDataFieldOrNot.equalsIgnoreCase("Y")) {
-		ssDatafield = Datafield;
-		ssDataSheet2Value = DataSheet2Value;
+		if (withDataFieldOrNot.equalsIgnoreCase("Y")) {
+			ssDatafield = Datafield;
+			ssDataSheet2Value = DataSheet2Value;
 
-		test.log(Status.FAIL,
-				"<font color=\"Aqua\"><b>Module - </b></font>" + MODULE + "  "
-						+ "<font color=\"Lime\"><b>Step - </b></font>" + Si_No + "  "
-						+ "<font color=\"Red\"><b>Data Field - </b></font>" + ssDatafield.toUpperCase() + "  "
-						+ "<font color=\"Lime\"><b>Test Data - </b></font>" + ssDataSheet2Value);
-		}else {
-			test.log(Status.INFO, "<font color=\"AquaAqua\"><b>Module - </b></font>" + MODULE + "  "
-					+ "<font color=\"Lime\"><b>Step - </b></font>" + Si_No + "  "
-					+ "<font color=\"MediumSlateBlue\"><b>Action - </b></font>" + Action);
+			test.log(Status.FAIL,
+					"<font color=\"Aqua\"><b>Module - </b></font>" + MODULE + "  "
+							+ "<font color=\"Lime\"><b>Step - </b></font>" + Si_No + "  "
+							+ "<font color=\"Red\"><b>Data Field - </b></font>" + ssDatafield.toUpperCase() + "  "
+							+ "<font color=\"Lime\"><b>Test Data - </b></font>" + ssDataSheet2Value);
+		} else {
+			test.log(Status.INFO,
+					"<font color=\"AquaAqua\"><b>Module - </b></font>" + MODULE + "  "
+							+ "<font color=\"Lime\"><b>Step - </b></font>" + Si_No + "  "
+							+ "<font color=\"MediumSlateBlue\"><b>Action - </b></font>" + Action);
 		}
 	}
-	
-	
+
 	public void testCaseCreate() {
 		try {
 			test = extent
@@ -253,11 +260,11 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 
 	public void failTestCase() throws IOException {
 		String TakeScreenshotPath;
-			if (ConnectToMainController.ReportType.equalsIgnoreCase("DYNAMIC")) {
-				TakeScreenshotPath = conCatDot + takeScreenShot(driver, Scenario_ID);
-			} else {
-				TakeScreenshotPath = takeScreenShot(driver, Scenario_ID);
-			}
+		if (ConnectToMainController.ReportType.equalsIgnoreCase("DYNAMIC")) {
+			TakeScreenshotPath = conCatDot + takeScreenShot(driver, Scenario_ID);
+		} else {
+			TakeScreenshotPath = takeScreenShot(driver, Scenario_ID);
+		}
 //		test.log(Status.INFO, MarkupHelper.createLabel(Neg_Description, ExtentColor.RED));
 //		test.log(Status.FAIL, "",
 //				MediaEntityBuilder.createScreenCaptureFromPath(
@@ -266,13 +273,12 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 //								+ "<br>" , takeScreenShot(driver, Scenario_ID))
 //						.build());
 
-			test.log(Status.FAIL,
-					"<h6><br><font color=\"Red\"><b> Expected Result is - </b></font></h6>" + ssDataSheet2Value
-							+ "	 <h6><br> <font color=\"Red\"><b>Actual Result is - </b></font></h6>"
-							+ ActionClass.ActualResult + "<br>",
+		test.log(Status.FAIL,
+				"<h6><br><font color=\"Red\"><b> Expected Result is - </b></font></h6>" + ssDataSheet2Value
+						+ "	 <h6><br> <font color=\"Red\"><b>Actual Result is - </b></font></h6>"
+						+ ActionClass.ActualResult + "<br>",
 //					MediaEntityBuilder.createScreenCaptureFromPath(takeScreenShot(driver, Scenario_ID)).build());
-					MediaEntityBuilder.createScreenCaptureFromPath(TakeScreenshotPath).build());
-	
+				MediaEntityBuilder.createScreenCaptureFromPath(TakeScreenshotPath).build());
 
 	}
 
@@ -282,7 +288,7 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 
 	/////// CSV FILE CREATE///////////////////////////
 
-	String csvFile = "students.csv";
+	String csvFile =  ConnectToMainController.Module + "_CSV_" + time + ".csv";
 	String destFile;
 
 	public void CsvFileCreate() throws IOException {
@@ -296,7 +302,7 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 		 * File(destFile).mkdirs();
 		 */
 
-		destFile = getFormat("YYYY", "MMMM", "dd", "CSVFile", "csvFileMethod");
+		destFile = getFormat("YYYY", "MMMM", "dd", ConnectToMainController.Module, "Logs", "csvFileMethod");
 
 	}
 
@@ -368,64 +374,64 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 
 		try {
 
-			String htmlTable = getFormat("YYYY", "MMMM", "dd", "HtmlTable", "htmlTableMethod");
-			String filename = htmlTable + File.separator + "SummaryTable.html";
+			String htmlTable = getFormat("YYYY", "MMMM", "dd", ConnectToMainController.Module, "HtmlTables", "htmlTableMethod");
+			String filename = htmlTable + File.separator + ConnectToMainController.Module + "_" + "HtmlTable_Report_" + time + ".html";
 
 			FileWriter writer = new FileWriter(filename);
 
 			writer.write("<!DOCTYPE html>\n<html>\n<head>\n");
 
 			writer.write("<style> table { border-collapse: collapse; width: 50%; margin: auto; margin-top: 20px; }");
-			writer.write(" th, td { border: 1px solid black; padding: 8px; text-align: center; }");
+			writer.write(
+					" th, td { border: 1px solid black; padding: 8px; text-align: center; background-color: #E4E5E5; }");
 			writer.write("th {  background-color: #E4E5E5; } </style>");
 			writer.write("</head>\n<body>\n");
 
 			writer.write("<table border=\"1\">\n");
-			writer.write(
-					"<tr>"
-		                    + "<th style=\"text-align:center; border: 1px solid black; background-color:#4CAF50; color: white;\">Project</th>"
-		                    + "<th style=\"text-align:center; border: 1px solid black; background-color:#1E90FF; color: white;\">Total TCs</th>"
-		                    + "<th style=\"text-align:center; border: 1px solid black; background-color:#4CAF50; color: white;\">Passed TCs</th>"
-		                    + "<th style=\"text-align:center; border: 1px solid black; background-color:#FF6347; color: white;\">Failed TCs</th>"
-		                    + "<th style=\"text-align:center; border: 1px solid black; background-color:#4682B4; color: white;\">Total Validations in all the TCs</th>"
-		                    + "<th style=\"text-align:center; border: 1px solid black; background-color:#32CD32; color: white;\">Passed Validations</th>"
-		                    + "<th style=\"text-align:center; border: 1px solid black; background-color:#FF6347; color: white;\">Failed Validations</th>"
-		                    + "<th>Report</th>"
-		    			    + "<th>CSV_File</th>"
-		                    + "<th style=\"text-align:center; border: 1px solid black; background-color:#4CAF50; color: white;\">ExecutionTime</th>"
-		                    + "</tr>");
-			 
+			writer.write("<tr>"
+					+ "<th style=\"text-align:center; border: 1px solid black; background-color:#4CAF50; color: white;\">Project</th>"
+					+ "<th style=\"text-align:center; border: 1px solid black; background-color:#1E90FF; color: white;\">Total TCs</th>"
+					+ "<th style=\"text-align:center; border: 1px solid black; background-color:#4CAF50; color: white;\">Passed TCs</th>"
+					+ "<th style=\"text-align:center; border: 1px solid black; background-color:#FF6347; color: white;\">Failed TCs</th>"
+					+ "<th style=\"text-align:center; border: 1px solid black; background-color:#4682B4; color: white;\">Total Validations in all the TCs</th>"
+					+ "<th style=\"text-align:center; border: 1px solid black; background-color:#32CD32; color: white;\">Passed Validations</th>"
+					+ "<th style=\"text-align:center; border: 1px solid black; background-color:#FF6347; color: white;\">Failed Validations</th>"
+					+ "<th>Report</th>" + "<th>CSV_File</th>"
+					+ "<th style=\"text-align:center; border: 1px solid black; background-color:#4CAF50; color: white;\">ExecutionTime</th>"
+					+ "</tr>");
 
 			if (ConnectToMainController.ReportType.equalsIgnoreCase("STATIC")) {
-			    writer.write("<tr>"
-			    	    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectToMainController.Module + "</td>"
-	                    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.totalTest + "</td>"
-	                    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.pass + "</td>"
-	                    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.fail + "</td>"
-	                    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.totalValidations + "</td>"
-	                    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.passValidations + "</td>"
-	                    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.failedValidations + "</td>"
-	                    + "<td><a href=" + Extent_ReportFile + " target=_blank>View Report</a></td>"
-	                    + "<td><a href=" + CSV_ReportFile + " target=_blank>CSV</a></td>"
-	                    + "<td style=\"text-align:center; border: 1px solid black;\">" + UtilScreenshotAndReport.TotalExecutionTime + "</td></tr>");
-			    
-			    
-			
-			    
+				writer.write("<tr>" + "<td style=\"text-align:center; border: 1px solid black;\">"
+						+ ConnectToMainController.Module + "</td>"
+						+ "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.totalTest
+						+ "</td>" + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.pass
+						+ "</td>" + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.fail
+						+ "</td>" + "<td style=\"text-align:center; border: 1px solid black;\">"
+						+ ConnectDataSheet.totalValidations + "</td>"
+						+ "<td style=\"text-align:center; border: 1px solid black;\">"
+						+ ConnectDataSheet.passValidations + "</td>"
+						+ "<td style=\"text-align:center; border: 1px solid black;\">"
+						+ ConnectDataSheet.failedValidations + "</td>" + "<td><a href=" + Extent_ReportFile
+						+ " target=_blank>View Report</a></td>" + "<td><a href=" + CSV_ReportFile
+						+ " target=_blank>CSV</a></td>" + "<td style=\"text-align:center; border: 1px solid black;\">"
+						+ UtilScreenshotAndReport.TotalExecutionTime + "</td></tr>");
+
 			} else {
-				  writer.write("<tr>"
-				    	    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectToMainController.Module + "</td>"
-		                    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.totalTest + "</td>"
-		                    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.pass + "</td>"
-		                    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.fail + "</td>"
-		                    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.totalValidations + "</td>"
-		                    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.passValidations + "</td>"
-		                    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.failedValidations + "</td>"
-		                    + "<td><a href=" + extentReportDynamicPath + " target=_blank>View Report</a></td>"
-		    	            + "<td><a href=" + csvFileDynamicPath + " target=_blank>CSV</a></td><"
-		                    + "<td style=\"text-align:center; border: 1px solid black;\">" + UtilScreenshotAndReport.TotalExecutionTime + "</td></tr>");
-				    
-			   
+				writer.write("<tr>" + "<td style=\"text-align:center; border: 1px solid black;\">"
+						+ ConnectToMainController.Module + "</td>"
+						+ "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.totalTest
+						+ "</td>" + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.pass
+						+ "</td>" + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.fail
+						+ "</td>" + "<td style=\"text-align:center; border: 1px solid black;\">"
+						+ ConnectDataSheet.totalValidations + "</td>"
+						+ "<td style=\"text-align:center; border: 1px solid black;\">"
+						+ ConnectDataSheet.passValidations + "</td>"
+						+ "<td style=\"text-align:center; border: 1px solid black;\">"
+						+ ConnectDataSheet.failedValidations + "</td>" + "<td><a href=" + extentReportDynamicPath
+						+ " target=_blank>View Report</a></td>" + "<td><a href=" + csvFileDynamicPath
+						+ " target=_blank>CSV</a></td><" + "<td style=\"text-align:center; border: 1px solid black;\">"
+						+ UtilScreenshotAndReport.TotalExecutionTime + "</td></tr>");
+
 			}
 
 			writer.write("</table>\n");
@@ -529,8 +535,8 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 	}
 
 	private static String generateLogFileName() {
-		String LogsFilePath = getFormat("YYYY", "MMMM", "dd", "Logs", "logsFileMethod");
-		return LogsFilePath + File.separator + "Framework.log";
+		String LogsFilePath = getFormat("YYYY", "MMMM", "dd", ConnectToMainController.Module, "Logs", "logsFileMethod");
+		return LogsFilePath + File.separator + ConnectToMainController.Module + ".log";
 	}
 
 	public void ExecutionTime() {

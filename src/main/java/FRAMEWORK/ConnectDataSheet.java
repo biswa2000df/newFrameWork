@@ -52,7 +52,7 @@ public class ConnectDataSheet extends BrowserClass {
 	public static int totalTest = 0, pass = 0, fail = 0;
 	public static int totalValidations = 0, passValidations = 0, failedValidations = 0;
 
-	final static Logger logger = LogManager.getLogger(ConnectDataSheet.class);
+	final static Logger logger = LogManager.getLogger(ConnectDataSheet.class.getName());
 
 	// In this method DataSheetGet(String fileName) recive the datasheet file name
 	// check the maincontroler module is same as datasheet module name

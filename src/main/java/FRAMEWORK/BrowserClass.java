@@ -3,6 +3,8 @@ package FRAMEWORK;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -19,6 +21,8 @@ public class BrowserClass {
 	public static String browserDriverFolderPath;
 	public static String browserDriverPath;
 	public static String OS;
+	
+	final static Logger logger = LogManager.getLogger(BrowserClass.class.getName());
 
 	public static void Initialisation(String browser) {
 
@@ -29,9 +33,14 @@ public class BrowserClass {
 			ChromeOptions option = new ChromeOptions();
 			option.addArguments("--remote-allow-origins=*");
 			option.addArguments("--no-sandbox");
+//			option.addArguments("--incognito");
+			option.addArguments("--disable-notifications");
+			option.addArguments("--disable-cache");
+
+			
 			option.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 //			option.addArguments("--headless");
-			
+
 			driver = new ChromeDriver(option);
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
@@ -68,27 +77,36 @@ public class BrowserClass {
 		browserDriverFolderPath = System.getProperty("user.dir") + File.separator + "BrowserDriver";
 		File BrowserDriverFolderPath = new File(browserDriverFolderPath);
 
-		if (BrowserDriverFolderPath.exists()) {
+		try {
+			//check browser driver folder exist or not
+			BrowserDriverFolderPath.exists();
 
 			OS = System.getProperty("os.name");
 			System.out.println("OS = " + OS); // Windows 11
 
 			if (OS.equalsIgnoreCase("Linux")) {
-				LinuxAndUbuntuBrowserDriver(Browser); // calling to the linux and ubuntu browser file
+				// calling to the linux and ubuntu browser file
+				LinuxAndUbuntuBrowserDriver(Browser); 
 			} else {
-				WindowBrowserDriver(Browser);// calling to the windowsbrowser .exe file
+				// calling to the windowsbrowser .exe file
+				WindowBrowserDriver(Browser);
 			}
 
 			File BrowserDriverPath = new File(browserDriverPath);
-			if (BrowserDriverPath.exists()) {
-
-			} else {
+			try {
+				//check driver path are exist or not
+				BrowserDriverPath.exists();
+			} catch (Exception e) {
 				System.out.println("SORRY!!!  " + Browser + "Driver.exe File is Not Present");
+				logger.info("Info Message :  SORRY!!!  " + Browser + " Driver.exe File is Not Present ");
+				logger.error("Error Message :  " + e);
 				System.exit(1);
-
 			}
-		} else {
+
+		} catch (Exception e) {
 			System.out.println("SORRY!!!  'BrowserDriver' folder is Not Present");
+			logger.info("Info Message :  SORRY!!!  'BrowserDriver' folder is Not Present ");
+			logger.error("Error Message :  " + e);
 			System.exit(1);
 		}
 	}
@@ -111,8 +129,16 @@ public class BrowserClass {
 			browserDriverPath = System.getProperty("user.dir") + File.separator + "BrowserDriver" + File.separator
 					+ "edgedriver.exe";
 			break;
+		case "Chrome":
+			browserDriverPath = System.getProperty("user.dir") + File.separator + "BrowserDriver" + File.separator
+					+ "chromedriver.exe";
+			break;
+		case "Edge":
+			browserDriverPath = System.getProperty("user.dir") + File.separator + "BrowserDriver" + File.separator
+					+ "edgedriver.exe";
+			break;
 		default:
-			System.out.println("SORRY!!! Your OS = " + OS +", But You select Invalid Driver");
+			System.out.println("SORRY!!! Your OS = " + OS + ", But You select Invalid Driver");
 			System.exit(0);
 
 		}
@@ -136,9 +162,17 @@ public class BrowserClass {
 			browserDriverPath = System.getProperty("user.dir") + File.separator + "BrowserDriver" + File.separator
 					+ "edgedriver";
 			break;
+		case "Chrome":
+			browserDriverPath = System.getProperty("user.dir") + File.separator + "BrowserDriver" + File.separator
+					+ "chromedriver";
+			break;
+		case "Edge":
+			browserDriverPath = System.getProperty("user.dir") + File.separator + "BrowserDriver" + File.separator
+					+ "edgedriver";
+			break;
 		default:
-			System.out.println("SORRY!!! Your OS  = " + OS +", But You select Invalid Driver");
-			System.exit(0); 
+			System.out.println("SORRY!!! Your OS  = " + OS + ", But You select Invalid Driver");
+			System.exit(0);
 
 		}
 	}
