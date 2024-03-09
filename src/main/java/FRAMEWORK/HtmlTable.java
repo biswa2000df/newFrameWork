@@ -10,6 +10,7 @@ import javax.activation.FileDataSource;
 import javax.mail.*;
 import javax.mail.internet.*;
 
+
 import com.aventstack.extentreports.Status;
 
 public class HtmlTable {
@@ -123,9 +124,15 @@ public class HtmlTable {
 	            BodyPart htmlPart = new MimeBodyPart();
 	            String htmlContent = "<html><body><h2>Automation Test Report</h2>"
 	                    + "<p>Hi Sir, </p><p>Please find the Automation Test Report Below Table : </p>"
-	                    + "<table border=\"1\">\n"
-	                    + "<tr> <th><font color=\"Green\">Project</font></th><th><font color=\"Blue\">Total TCs</font></th><th><font color=\"Green\">Passed TCs</font></th><th><font color=\"Red\">Failed TCs</font></th><th>Report</th></tr>"
-	                    + "<td>Row 2</td><td>Row 2</td><td><a href=kanha>Row</a></td><td>Row 2</td><td><a href=C:\\Users\\biswa\\eclipse-workspace\\BiswajitFramework\\RESULT\\2024\\January\\21\\Report\\19_59_36_students.html>View Report</a></td>"
+	                    + "<TABLE style=\"border: 1px solid black;  background-color:#E4E5E5\"  width=\"100%\">"  //border-collapse: collapse; ae line re lekhile au table re border au rahibani
+						+ "<tr><th  style=\"text-align:center; border: 1px solid black;\">Project</th>"
+						+ "<th style=\"text-align:center; border: 1px solid black;\">Total TCs</th>"
+						+ "<th style=\"text-align:center; border: 1px solid black;\">Passed TCs</th>"
+						+ "<th style=\"text-align:center; border: 1px solid black;\">Failed TCs</th>"
+						+ "<th style=\"text-align:center; border: 1px solid black;\">Total validations in all the TCs</th>"
+						+ "<th style=\"text-align:center; border: 1px solid black;\">Passed validations</th>"
+						+ "<th style=\"text-align:center; border: 1px solid black;\">Failed validations</th>"
+						+ "<th style=\"text-align:center; border: 1px solid black;\">ExecutionTime</th>"
 	                    + "</table><br><br></body></html>";
 	            htmlPart.setContent(htmlContent, "text/html");
 	            multipart.addBodyPart(htmlPart);

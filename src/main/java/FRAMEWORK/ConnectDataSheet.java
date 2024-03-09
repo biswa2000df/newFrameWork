@@ -3,6 +3,7 @@ package FRAMEWORK;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -38,7 +39,7 @@ public class ConnectDataSheet extends BrowserClass {
 	public static ConnectDataSheet connectDatasheet;
 	public static UtilScreenshotAndReport utilClass;
 	public static String destFileScrnshot;
-	public static String status;
+	public static String status; // here status are mention only for write the csv file status 'pass' or 'fail'
 
 	public static WebElement webElement;
 	public static List<WebElement> webElements;
@@ -49,6 +50,7 @@ public class ConnectDataSheet extends BrowserClass {
 	public static String sTest_Case = null;
 
 	public static int totalTest = 0, pass = 0, fail = 0;
+	public static int totalValidations = 0, passValidations = 0, failedValidations = 0;
 
 	final static Logger logger = LogManager.getLogger(ConnectDataSheet.class);
 
@@ -70,55 +72,86 @@ public class ConnectDataSheet extends BrowserClass {
 		utilClass = new UtilScreenshotAndReport();
 
 		Fillo fillo = new Fillo();
-		Connection conn = fillo.getConnection(
-				System.getProperty("user.dir") + File.separator + "DataSheet" + File.separator + fileName);
+		Connection conn = fillo.getConnection(ConnectToMainController.DataSheetFilePath);
+		Recordset recordset = null;
+		String query = "SELECT * FROM Sheet1";
+		String queryForModule = "SELECT * FROM Sheet1 WHERE RUNSTATUS='Y' and MODULE='" + ConnectToMainController.Module
+				+ "'";
 		try {
+			recordset = conn.executeQuery(query);
+			if (recordset != null) {
+//				System.out.println("Inside " + fileName + " this file the Sheet1 DataSheet are present");
 
-			String query = "SELECT * FROM Sheet1 WHERE RUNSTATUS='Y' and MODULE='" + ConnectToMainController.Module
-					+ "'";
-			Recordset recordset = conn.executeQuery(query);
+				List<String> actualColumnName = recordset.getFieldNames();
+				List<String> exceptedColumnName = new ArrayList<>();
+				exceptedColumnName.addAll(
+						Arrays.asList("Srno", "Module", "PageName", "RunStatus", "PropertyName", "PropertyValue",
+								"Datafield", "Action", "Action_Type", "Test_Case", "Description", "Scenario_ID"));
 
-			// new type and logic explanation***************************************
+				List<String> notPresentColumn = new ArrayList<>();
 
-			/*
-			 * This is Most Important
-			 * 
-			 * 
-			 * tale jou logic lekhichi First re sabu column name get kariki list re store
-			 * kariba List<String> columnName = r.getFieldNames();
-			 * 
-			 * Then row value paei gote object type array list kariba gote row ku gote
-			 * object type array list
-			 * 
-			 * Then gote row ra total column value ku get kariki first object type arraylist
-			 * re store kariba //rowValue.add(r.getField(s));
-			 * 
-			 * Then sabu jaka object type array list ku gote object type array list re store
-			 * kariba //rowList.add(rowValue); [Srno, Module, PageName, RunStatus, Control,
-			 * ObjectType] this is a single object type array list in a single row ,This
-			 * type we get the all the row and addd a particular object type array list
-			 * 
-			 * [[Srno, Module, PageName, RunStatus, Control, ObjectType],[Srno, Module,
-			 * PageName, RunStatus, Control, ObjectType],[Srno, Module, PageName, RunStatus,
-			 * Control, ObjectType]]
-			 * 
-			 * this way to store all the row value in the object type to store the
-			 * particular objecttype arraylist ...To check it the two square bracket lisk
-			 * as[[]] object type array list
-			 */
+				Boolean allColumnPresent = true;
 
-			List<Object> rowsList = new ArrayList<>();
-
-			while (recordset.next()) {
-				List<String> columns = recordset.getFieldNames();
-				List<Object> rowValues = new ArrayList<>();
-				for (String column : columns) {
-					rowValues.add(recordset.getField(column));
+				for (String columnName : actualColumnName) {
+					if (!exceptedColumnName.contains(columnName)) {
+						notPresentColumn.add(columnName);
+						allColumnPresent = false;
+					}
 				}
-				rowsList.add(rowValues);
-			}
 
-			// this type is working properly****************************
+				if (allColumnPresent) {
+//					System.out.println("All the columnName are present");
+					recordset.close();
+				} else {
+					System.out.println("SORRY!!! " + notPresentColumn + " columns are not present");
+					System.exit(0);
+				}
+			}
+			try {
+				recordset = conn.executeQuery(queryForModule);// here to check the runstatus and module
+				if (recordset != null) {
+
+					// new type and logic explanation***************************************
+
+					/*
+					 * This is Most Important
+					 * 
+					 * 
+					 * tale jou logic lekhichi First re sabu column name get kariki list re store
+					 * kariba List<String> columnName = r.getFieldNames();
+					 * 
+					 * Then row value paei gote object type array list kariba gote row ku gote
+					 * object type array list
+					 * 
+					 * Then gote row ra total column value ku get kariki first object type arraylist
+					 * re store kariba //rowValue.add(r.getField(s));
+					 * 
+					 * Then sabu jaka object type array list ku gote object type array list re store
+					 * kariba //rowList.add(rowValue); [Srno, Module, PageName, RunStatus, Control,
+					 * ObjectType] this is a single object type array list in a single row ,This
+					 * type we get the all the row and addd a particular object type array list
+					 * 
+					 * [[Srno, Module, PageName, RunStatus, Control, ObjectType],[Srno, Module,
+					 * PageName, RunStatus, Control, ObjectType],[Srno, Module, PageName, RunStatus,
+					 * Control, ObjectType]]
+					 * 
+					 * this way to store all the row value in the object type to store the
+					 * particular objecttype arraylist ...To check it the two square bracket lisk
+					 * as[[]] object type array list
+					 */
+
+					List<Object> rowsList = new ArrayList<>();
+
+					while (recordset.next()) {
+						List<String> columns = recordset.getFieldNames();
+						List<Object> rowValues = new ArrayList<>();
+						for (String column : columns) {
+							rowValues.add(recordset.getField(column));
+						}
+						rowsList.add(rowValues);
+					}
+
+					// this type is working properly****************************
 
 //		List<String> al = new ArrayList<String>();
 //		while (recordset.next()) {
@@ -136,110 +169,103 @@ public class ConnectDataSheet extends BrowserClass {
 //			System.out.println(o);
 //		}
 
-			// **************************************************
+					// **************************************************
 
 //		System.out.println(rowsList);
 //		return rowsList;
 
-			/*
-			 * utilClass.CsvFileCreate(); utilClass.WriteCSVFile("Si_No", "TestCase_No",
-			 * "Status", "Screenshot_Path"); utilClass.extentReport(); ///// call the extent
-			 * report class
-			 */
+					/*
+					 * utilClass.CsvFileCreate(); utilClass.WriteCSVFile("Si_No", "TestCase_No",
+					 * "Status", "Screenshot_Path"); utilClass.extentReport(); ///// call the extent
+					 * report class
+					 */
 
-			utilClass.extentReport(); // call the extent report method
-			utilClass.CsvFileCreate();
-			utilClass.WriteCSVFileHeading("Test_Case", "Description", "ExpectedResult", "ActualResult", "Status",
-					"Date", "Time", "Screenshot_File_Location", "BrowserType", "IP", "HOST", "ZONE");
-			utilClass.IP_HOST();
+					utilClass.extentReport(); // call the extent report method
+					utilClass.CsvFileCreate();
+					utilClass.WriteCSVFileHeading("Test_Case", "Description", "ExpectedResult", "ActualResult",
+							"Status", "Date", "Time", "Screenshot_File_Location", "BrowserType", "IP", "HOST", "ZONE");
+					utilClass.IP_HOST();
 
-			int i;
-			for (i = 0; i < rowsList.size(); i++) {
+					int i;
+					for (i = 0; i < rowsList.size(); i++) {
 
 //				if (i == 0) {
 //					utilClass.extentReport(); ///// call the extent report class		
 //				}
 
-				destFileScrnshot = null;
-				status = "PASS";
+						destFileScrnshot = null;
+						status = "PASS";
 
-				List<Object> row = (List<Object>) rowsList.get(i);
+						List<Object> row = (List<Object>) rowsList.get(i);
 
-				Si_No = (String) row.get(0);
-				MODULE = (String) row.get(1);
-				PageName = (String) row.get(2);
-				PropertyName = (String) row.get(4);
-				PropertyValue = (String) row.get(5);
-				Datafield = (String) row.get(6);
-				Action = (String) row.get(7);
-				Action_Type = (String) row.get(8);
-				Test_Case = (String) row.get(9);
-				Description = (String) row.get(10);
-				Scenario_ID = (String) row.get(11);
+						Si_No = (String) row.get(0);
+						MODULE = (String) row.get(1);
+						PageName = (String) row.get(2);
+						PropertyName = (String) row.get(4);
+						PropertyValue = (String) row.get(5);
+						Datafield = (String) row.get(6);
+						Action = (String) row.get(7);
+						Action_Type = (String) row.get(8);
+						Test_Case = (String) row.get(9);
+						Description = (String) row.get(10);
+						Scenario_ID = (String) row.get(11);
 
 //			 System.out.println("LOCATOR NAME=========================>"+LOCATOR+"\n"+"PropertyValue====================>"+PropertyValue+"\n"+"Datafield=============>"+Datafield+"\n"+"ActionType========>"+Action);
-				System.out.println();
-				System.out.println("SI_No             ====================> " + Si_No);
-				System.out.println("Scenario_ID       ====================> " + Scenario_ID);
-				System.out.println("PropertyName      ====================> " + PropertyName);
-				System.out.println("PropertyValue     ====================> " + PropertyValue);
-				System.out.println("Datafield         ====================> " + Datafield);
-				System.out.println("ActionType        ====================> " + Action);
+						System.out.println();
+						System.out.println("SI_No             ====================> " + Si_No);
+						System.out.println("Scenario_ID       ====================> " + Scenario_ID);
+						System.out.println("PropertyName      ====================> " + PropertyName);
+						System.out.println("PropertyValue     ====================> " + PropertyValue);
+						System.out.println("Datafield         ====================> " + Datafield);
+						System.out.println("ActionType        ====================> " + Action);
 
-				/*
-				 * if (Description != null && !Description.isEmpty()) { String
-				 * testCaseAndDescription = TestCase_No.concat(" " + Description);
-				 * UtilScreenshotAndReport.testCaseCreate(testCaseAndDescription); if
-				 * (!Action.equalsIgnoreCase("CheckVisibility")) {
-				 * UtilScreenshotAndReport.testcaseInfo(Description); } }
-				 */
+						/*
+						 * if (Description != null && !Description.isEmpty()) { String
+						 * testCaseAndDescription = TestCase_No.concat(" " + Description);
+						 * UtilScreenshotAndReport.testCaseCreate(testCaseAndDescription); if
+						 * (!Action.equalsIgnoreCase("CheckVisibility")) {
+						 * UtilScreenshotAndReport.testcaseInfo(Description); } }
+						 */
 
-				/*
-				 * TestCase_No, PropertyName, PropertyValue, Datafield, Action, Description,
-				 * Neg_Description, driver
-				 */
+						/*
+						 * TestCase_No, PropertyName, PropertyValue, Datafield, Action, Description,
+						 * Neg_Description, driver
+						 */
 
-				if (!Test_Case.equals(sTest_Case)) {  //here we created the report to the testcase id
-					utilClass.testCaseCreate();
-				}
-				sTest_Case = Test_Case;
-
-				try {
-					totalTest++;
-					if(ConnectToMainController.Browser.equalsIgnoreCase("HtmlUnitDriver") && Action.equalsIgnoreCase("CheckVisibility")) {//only for htmlunit driver because the driver is headless driver
+						if (!Test_Case.equals(sTest_Case)) { // here we created the report to the testcase id
+							utilClass.testCaseCreate();
+						}
+						sTest_Case = Test_Case;
+						totalTest++;
 						
-					}else {
-					locatorClass.xpathpick();
-					}
+						if(Action.equalsIgnoreCase("CheckVisibility"))
+							totalValidations++;
+						
+						// only for htmlunit driver because the driver is headless driver
+						if (ConnectToMainController.Browser.equalsIgnoreCase("HtmlUnitDriver")
+								&& Action.equalsIgnoreCase("CheckVisibility")) {
+						} else {
+							// here to call the locator method
+							locatorClass.xpathpick();
+						}
 
-					pass = totalTest - fail;
-					System.out.println("TotalTest = " + totalTest + " Pass = " + pass + " Fail = " + fail);
+						pass = totalTest - fail;
+						passValidations = totalValidations - failedValidations;
+						
+						System.out.println("TotalValidation = " + totalValidations + " PassedValidations = " + passValidations + " FailedValidations = " + failedValidations);
+						System.out.println("TotalTest = " + totalTest + " Pass = " + pass + " Fail = " + fail);
 
-				} catch (Exception e) {
-//					UtilScreenshotAndReport.test.fail(e);
-					e.printStackTrace();
-					fail++;
-					System.out.println("TotalTest = " + totalTest + " Pass = " + pass + " Fail = " + fail);
-					e.printStackTrace();
-					logger.debug("Debug Message : " + e);
-					logger.info("Info Message :  " + e);
-					logger.warn("Warn Message :  " + e);
-					logger.error("Error Message :  " + e);
-					logger.fatal("Fatal Message : " + e);
+						// Write the Data Inside the csv File
+						if (Action.equalsIgnoreCase("CheckVisibility"))
+							utilClass.WriteCSVFileData(Test_Case, Description, DataSheet2Value,
+									String.valueOf(ActionClass.ActualResult), status, utilClass.yearFormat,
+									utilClass.time, destFileScrnshot, ConnectToMainController.Browser, utilClass.IP,
+									utilClass.HostName, utilClass.ZoneName);
 
-				}
-
-				// Write the Data Inside the csv File
-				if (Action.equalsIgnoreCase("CheckVisibility"))
-					utilClass.WriteCSVFileData(Test_Case, Description, DataSheet2Value,
-							String.valueOf(ActionClass.ActualResult), status, utilClass.yearFormat, utilClass.time,
-							destFileScrnshot, ConnectToMainController.Browser, utilClass.IP, utilClass.HostName,
-							utilClass.ZoneName);
-
-				/*
-				 * if (!Action.contains("wait") && Action.equalsIgnoreCase("CheckVisibility")) {
-				 * utilClass.WriteCSVFile(Si_No, TestCase_No, status, destFileScrnshot); }
-				 */
+						/*
+						 * if (!Action.contains("wait") && Action.equalsIgnoreCase("CheckVisibility")) {
+						 * utilClass.WriteCSVFile(Si_No, TestCase_No, status, destFileScrnshot); }
+						 */
 
 //				UtilScreenshotAndReport.test.log(Status.INFO, Description);
 //			locatorClass.xpathpick((String) row.get(1), (String) row.get(2), (String) row.get(3), (String) row.get(4), driver);
@@ -270,23 +296,35 @@ public class ConnectDataSheet extends BrowserClass {
 
 //			 locatorClass.xpathpick(LOCATOR, PropertyValue, Datafield, Action, driver);
 
-			}
-			if (i == rowsList.size()) {
+					}
+					if (i == rowsList.size()) {
 
-				System.out.println("\n");
+						System.out.println("\n");
 
-				System.out.println("TotalTest = " + totalTest + " Pass = " + pass + " Fail = " + fail);
+						System.out.println("TotalTest = " + totalTest + " Pass = " + pass + " Fail = " + fail);
 
-				System.out.println("********************  Successfully Completed  ********************" + "\n");
+						System.out.println("********************  Successfully Completed  ********************" + "\n");
+					}
+
+//					System.out.println("'DataSheet' sheet are present And RunStatus are 'Y' and modul name also same");
+					recordset.close();
+				}
+			} catch (Exception e) {
+				System.out.println(
+						"SORRY!!! 'DataSheet' sheet are present BUT problem on RunStatus or ModulName column value");
+				logger.info(
+						"Info Message :  SORRY!!! 'DataSheet' sheet are present BUT problem on RunStatus or ModulName column value ");
+				logger.error("Error Message :  " + e);
+				System.exit(0);
 			}
 		} catch (Exception e) {
-			System.err.print(e.getMessage());
-			e.printStackTrace();
-			logger.debug("Debug Message : " + e);
-			logger.info("Info Message :  " + e);
-			logger.warn("Warn Message :  " + e);
+//			System.err.print(e.getMessage());
+//			e.printStackTrace();
+			System.out.println("SORRY!!! Inside " + fileName + " this file there are not Sheet1 DataSheet are present");
+			logger.info("Info Message :  SORRY!!! Inside " + fileName
+					+ " this file there are not Sheet1 DataSheet are present");
 			logger.error("Error Message :  " + e);
-			logger.fatal("Fatal Message : " + e);
+			System.exit(0);
 		}
 
 		finally {
@@ -298,9 +336,7 @@ public class ConnectDataSheet extends BrowserClass {
 
 	}
 
-	//////////////////////////////////////// DataField Read
-	//////////////////////////////////////// kariba
-	//////////////////////////////////////// sheet2//////////////////////////////
+	//////////////// DataField Read kariba sheet2 ////////////
 
 	// In this method DataFieldRead(to receive the datasheet filed value to get the
 	// sheet2 value)
@@ -315,38 +351,70 @@ public class ConnectDataSheet extends BrowserClass {
 		 * WebDriver driver
 		 */
 		try {
-
 			actClass = new ActionClass();
 
-			if (Datafield != null && !Datafield.isEmpty())
-
-			{
+			if (Datafield != null && !Datafield.isEmpty()) {
 
 				Fillo fillo = new Fillo();
-				Connection conn = fillo.getConnection(System.getProperty("user.dir") + File.separator + "DataSheet"
-						+ File.separator + ConnectToMainController.TestFlow_Path);
+				Connection conn = fillo.getConnection(ConnectToMainController.DataSheetFilePath);
 				String query = "SELECT * FROM Sheet2";
-				Recordset recordset = conn.executeQuery(query);
-				while (recordset.next()) {
-					DataSheet2Value = recordset.getField(Datafield);
-					System.out.print("DataFields For Sheet2==================================================== "
-							+ DataSheet2Value + "\n");
+				Recordset recordset = null;
+				try {
+					recordset = conn.executeQuery(query);
+
+					while (recordset.next()) {
+						try {
+							DataSheet2Value = recordset.getField(Datafield);
+							System.out
+									.print("DataFields For Sheet2==================================================== "
+											+ DataSheet2Value + "\n");
+						} catch (Exception e) {
+							System.out.println("SORRY!!! Inside '" + ConnectToMainController.TestFlow_Path
+									+ "' this file Sheet2 are present But this '" + Datafield + "' are not present");
+							logger.info("Info Message :  SORRY!!! Inside '" + ConnectToMainController.TestFlow_Path
+									+ "'  this file Sheet2 are present But this '" + Datafield + "' are not present");
+							logger.error("Error Message :  " + e);
+						}
+
 //				ActionClass.actrds();
 
-					// TestCase_No, webElement, webElements, DataSheet2Value, Action, Description,
-					// Neg_Description,
-					// driver
+						// TestCase_No, webElement, webElements, DataSheet2Value, Action, Description,
+						// Neg_Description,
+						// driver
+					}
+				} catch (Exception e) {
+					System.out.println("SORRY!!! Inside '" + ConnectToMainController.TestFlow_Path
+							+ "' this file Sheet2 are not present");
+					logger.info("Info Message :  SORRY!!! Inside '" + ConnectToMainController.TestFlow_Path
+							+ "' this file Sheet2 are not present");
+					logger.error("Error Message :  " + e);
+					System.exit(0);
 				}
+				recordset.close();
+				conn.close();
 
-				UtilScreenshotAndReport.testcaseInfoWithDataField();
-				ActionClass.actrds();
+				// When the if block are execute - when the xpath are failed and action are not
+				// the CheckVisibility then the if block are execute other wise else lock
+				// execute and down also same
+				if (PropertyValue != null && !PropertyValue.isEmpty() && webElement == null && webElements == null
+						&& !Action.equals("CheckVisibility")) {
+					// here 'Y' means with data_field
+					UtilScreenshotAndReport.testcaseInfoWithDataFieldWithoutDataField_WithFailedWebElement("Y");
+
+				} else {
+					UtilScreenshotAndReport.testcaseInfoWithDataField();
+					ActionClass.actrds();
+				}
 			}
 
 			else {
-
-				UtilScreenshotAndReport.testcaseInfoWithoutDataField();
-
-				ActionClass.actrds();
+				if (PropertyValue != null && !PropertyValue.isEmpty() && webElement == null && webElements == null) {
+					// here 'N' means without data_field
+					UtilScreenshotAndReport.testcaseInfoWithDataFieldWithoutDataField_WithFailedWebElement("N");
+				} else {
+					UtilScreenshotAndReport.testcaseInfoWithoutDataField();
+					ActionClass.actrds();
+				}
 				// TestCase_No, webElement, webElements, DataSheet2Value, Action, Description,
 				// Neg_Description,
 				// driver

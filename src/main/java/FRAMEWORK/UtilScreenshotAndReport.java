@@ -156,22 +156,20 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 
 		extent.setSystemInfo("Comapny Name", "APMOSYS");
 		extent.setSystemInfo("FrameWork", "Biswajit Framework");
-		extent.setSystemInfo("Project Name", "ISHINE");
+		extent.setSystemInfo("Project Name", ConnectToMainController.Module);
 		extent.setSystemInfo("Test Lead", "Prabhat Padhy");
 		extent.setSystemInfo("OS", System.getProperty("os.name"));
 		extent.setSystemInfo("User Name", System.getProperty("user.name"));
 		extent.setSystemInfo("Tester Name", "Biswajit");
 		extent.setSystemInfo("Browser", ConnectToMainController.Browser);
-		extent.setSystemInfo("Application URL", "https://www.google.com");
+//		extent.setSystemInfo("Application URL", "https://www.google.com");
 
 	}
 
 	public static void testcaseInfoWithDataField() {
 
-		try {
-
-			ssDatafield = Datafield;
-			ssDataSheet2Value = DataSheet2Value;
+		ssDatafield = Datafield;
+		ssDataSheet2Value = DataSheet2Value;
 //		test.log(Status.INFO, Description);
 
 //		if (Datafield != null && !Datafield.isEmpty())
@@ -181,45 +179,43 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 //			ssDataSheet2Value = " ";
 //		}
 
-			test.log(Status.INFO,
-					"<font color=\"Blue\"><b>Module - </b></font>" + MODULE + " "
-							+ "<font color=\"Lime\"><b>Step - </b></font>" + Si_No + " "
-							+ "<font color=\"Red\"><b>Data Field - </b></font>" + ssDatafield.toUpperCase() + " "
-							+ "<font color=\"Lime\"><b>Test Data - </b></font>" + ssDataSheet2Value);
-		} catch (Exception e) {
-			e.printStackTrace();
-			logger.debug("Debug Message : " + e);
-			logger.info("Info Message :  " + e);
-//			logger.warn("Warn Message :  " + e);
-//			logger.error("Error Message :  " + e);
-//			logger.fatal("Fatal Message : " + e);
-		}
-
+		test.log(Status.INFO,
+				"<font color=\"Aqua\"><b>Module - </b></font>" + MODULE + "  "
+						+ "<font color=\"Lime\"><b>Step - </b></font>" + Si_No + "  "
+						+ "<font color=\"Red\"><b>Data Field - </b></font>" + ssDatafield.toUpperCase() + "  "
+						+ "<font color=\"Lime\"><b>Test Data - </b></font>" + ssDataSheet2Value);
 	}
 
 	public static void testcaseInfoWithoutDataField() {
-
-		try {
-
-			test.log(Status.INFO, "<font color=\"Blue\"><b>Module - </b></font>" + MODULE + " "
-					+ "<font color=\"Lime\"><b>Step - </b></font>" + Si_No);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			logger.debug("Debug Message : " + e);
-			logger.info("Info Message :  " + e);
-//			logger.warn("Warn Message :  " + e);
-//			logger.error("Error Message :  " + e);
-//			logger.fatal("Fatal Message : " + e);
-		}
-
+		test.log(Status.INFO, "<font color=\"Aqua\"><b>Module - </b></font>" + MODULE + "  "
+				+ "<font color=\"Lime\"><b>Step - </b></font>" + Si_No + "  "
+				+ "<font color=\"MediumSlateBlue\"><b>Action - </b></font>" + Action.toUpperCase());
 	}
 
+	public static void testcaseInfoWithDataFieldWithoutDataField_WithFailedWebElement(String withDataFieldOrNot) {
+
+		if(withDataFieldOrNot.equalsIgnoreCase("Y")) {
+		ssDatafield = Datafield;
+		ssDataSheet2Value = DataSheet2Value;
+
+		test.log(Status.FAIL,
+				"<font color=\"Aqua\"><b>Module - </b></font>" + MODULE + "  "
+						+ "<font color=\"Lime\"><b>Step - </b></font>" + Si_No + "  "
+						+ "<font color=\"Red\"><b>Data Field - </b></font>" + ssDatafield.toUpperCase() + "  "
+						+ "<font color=\"Lime\"><b>Test Data - </b></font>" + ssDataSheet2Value);
+		}else {
+			test.log(Status.INFO, "<font color=\"AquaAqua\"><b>Module - </b></font>" + MODULE + "  "
+					+ "<font color=\"Lime\"><b>Step - </b></font>" + Si_No + "  "
+					+ "<font color=\"MediumSlateBlue\"><b>Action - </b></font>" + Action);
+		}
+	}
+	
+	
 	public void testCaseCreate() {
 		try {
 			test = extent
 					.createTest(
-							"<font color=\"Blue\"><b>" + Scenario_ID + "</b></font> - <font color=\"Brown\"><b>"
+							"<font color=\"BlueViolet\"><b>" + Scenario_ID + "</b></font> - <font color=\"Brown\"><b>"
 									+ MODULE + "</b></font> - <font color=\"Green\"><b>" + Test_Case + "</b></font> ( "
 									+ Description + " )",
 							"</br><h4><font color=\"Lime\"><b>" + MODULE.toUpperCase() + "</b></font></h4>")
@@ -240,7 +236,7 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 
 			test.log(Status.PASS,
 					"<h6><br><font color=\"Red\"><b> Expected Result is - </b></font></h6>" + ssDataSheet2Value
-							+ "	 <h6><br> <font color=\"Red\"><b>Actual Result is - </b></font><h6>"
+							+ "	 <h6><br> <font color=\"Red\"><b>Actual Result is - </b></font></h6>"
 							+ ActionClass.ActualResult + "<br>",
 //					MediaEntityBuilder.createScreenCaptureFromPath(takeScreenShot(driver, Scenario_ID)).build());
 					MediaEntityBuilder.createScreenCaptureFromPath(TakeScreenshotPath).build());
@@ -257,7 +253,6 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 
 	public void failTestCase() throws IOException {
 		String TakeScreenshotPath;
-		try {
 			if (ConnectToMainController.ReportType.equalsIgnoreCase("DYNAMIC")) {
 				TakeScreenshotPath = conCatDot + takeScreenShot(driver, Scenario_ID);
 			} else {
@@ -273,19 +268,11 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 
 			test.log(Status.FAIL,
 					"<h6><br><font color=\"Red\"><b> Expected Result is - </b></font></h6>" + ssDataSheet2Value
-							+ "	 <h6><br> <font color=\"Red\"><b>Actual Result is - </b></font><h6>"
+							+ "	 <h6><br> <font color=\"Red\"><b>Actual Result is - </b></font></h6>"
 							+ ActionClass.ActualResult + "<br>",
 //					MediaEntityBuilder.createScreenCaptureFromPath(takeScreenShot(driver, Scenario_ID)).build());
 					MediaEntityBuilder.createScreenCaptureFromPath(TakeScreenshotPath).build());
-		} catch (Exception e) {
-
-			e.printStackTrace();
-			logger.debug("Debug Message : " + e);
-			logger.info("Info Message :  " + e);
-//			logger.warn("Warn Message :  " + e);
-//			logger.error("Error Message :  " + e);
-//			logger.fatal("Fatal Message : " + e);
-		}
+	
 
 	}
 
@@ -390,36 +377,61 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 
 			writer.write("<style> table { border-collapse: collapse; width: 50%; margin: auto; margin-top: 20px; }");
 			writer.write(" th, td { border: 1px solid black; padding: 8px; text-align: center; }");
-			writer.write("th {  background-color: #f2f2f2; } </style>");
+			writer.write("th {  background-color: #E4E5E5; } </style>");
 			writer.write("</head>\n<body>\n");
 
 			writer.write("<table border=\"1\">\n");
 			writer.write(
-					"<tr> <th><font color=\"Lime\">Project</font></th><th><font color=\"Blue\">Total TCs</font></th><th><font color=\"Green\">Passed TCs</font></th><th><font color=\"Red\">Failed TCs</font></th><th>Report</th><th>CSV_File</th><th><font color=\"Green\">ExecutionTime</font></th></tr>");
+					"<tr>"
+		                    + "<th style=\"text-align:center; border: 1px solid black; background-color:#4CAF50; color: white;\">Project</th>"
+		                    + "<th style=\"text-align:center; border: 1px solid black; background-color:#1E90FF; color: white;\">Total TCs</th>"
+		                    + "<th style=\"text-align:center; border: 1px solid black; background-color:#4CAF50; color: white;\">Passed TCs</th>"
+		                    + "<th style=\"text-align:center; border: 1px solid black; background-color:#FF6347; color: white;\">Failed TCs</th>"
+		                    + "<th style=\"text-align:center; border: 1px solid black; background-color:#4682B4; color: white;\">Total Validations in all the TCs</th>"
+		                    + "<th style=\"text-align:center; border: 1px solid black; background-color:#32CD32; color: white;\">Passed Validations</th>"
+		                    + "<th style=\"text-align:center; border: 1px solid black; background-color:#FF6347; color: white;\">Failed Validations</th>"
+		                    + "<th>Report</th>"
+		    			    + "<th>CSV_File</th>"
+		                    + "<th style=\"text-align:center; border: 1px solid black; background-color:#4CAF50; color: white;\">ExecutionTime</th>"
+		                    + "</tr>");
+			 
 
 			if (ConnectToMainController.ReportType.equalsIgnoreCase("STATIC")) {
-				writer.write("<td>" + ConnectToMainController.Module + "</td><td>" + totalTest + "</td><td>" + pass
-						+ "</td><td>" + fail + "</td><td><a href=" + Extent_ReportFile
-						+ " target=_blank>View Report</a></td><td><a href=" + CSV_ReportFile
-						+ " target=_blank>CSV</a></td>" + "<td>" + TotalExecutionTime + "</td>");
+			    writer.write("<tr>"
+			    	    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectToMainController.Module + "</td>"
+	                    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.totalTest + "</td>"
+	                    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.pass + "</td>"
+	                    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.fail + "</td>"
+	                    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.totalValidations + "</td>"
+	                    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.passValidations + "</td>"
+	                    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.failedValidations + "</td>"
+	                    + "<td><a href=" + Extent_ReportFile + " target=_blank>View Report</a></td>"
+	                    + "<td><a href=" + CSV_ReportFile + " target=_blank>CSV</a></td>"
+	                    + "<td style=\"text-align:center; border: 1px solid black;\">" + UtilScreenshotAndReport.TotalExecutionTime + "</td></tr>");
+			    
+			    
+			
+			    
 			} else {
-				writer.write("<td>" + ConnectToMainController.Module + "</td><td>" + totalTest + "</td><td>" + pass
-						+ "</td><td>" + fail + "</td><td><a href=" + extentReportDynamicPath
-						+ " target=_blank>View Report</a></td><td><a href=" + csvFileDynamicPath
-						+ " target=_blank>CSV</a></td>" + "<td>" + TotalExecutionTime + "</td>");
+				  writer.write("<tr>"
+				    	    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectToMainController.Module + "</td>"
+		                    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.totalTest + "</td>"
+		                    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.pass + "</td>"
+		                    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.fail + "</td>"
+		                    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.totalValidations + "</td>"
+		                    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.passValidations + "</td>"
+		                    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.failedValidations + "</td>"
+		                    + "<td><a href=" + extentReportDynamicPath + " target=_blank>View Report</a></td>"
+		    	            + "<td><a href=" + csvFileDynamicPath + " target=_blank>CSV</a></td><"
+		                    + "<td style=\"text-align:center; border: 1px solid black;\">" + UtilScreenshotAndReport.TotalExecutionTime + "</td></tr>");
+				    
+			   
 			}
-
-//	            for (int i = 0; i < numRows; i++) {
-//	                writer.write("<tr>\n");
-//	                for (int j = 0; j < numCols; j++) {
-//	                    writer.write("<td>Row " + (i + 1) + ", Column " + (j + 1) + "</td>\n");
-//	                }
-//	                writer.write("</tr>\n");
-//	            }
 
 			writer.write("</table>\n");
 			writer.write("</body>\n</html>");
 			writer.close();
+
 //		System.out.println("HTML table has been generated in " + filename);
 
 		} catch (Exception e) {
@@ -554,11 +566,11 @@ public class UtilScreenshotAndReport extends ConnectDataSheet {
 		if (hours != 0) {
 			TotalExecutionTime = hours + " hour " + minutes + " min " + seconds + " seconds " + milliseconds + " ms";
 		} else if (minutes != 0) {
-			TotalExecutionTime = minutes + " min " + seconds + " seconds "  + milliseconds + " ms";
-		} else if(seconds != 0) {
-			TotalExecutionTime = seconds + " seconds "  + milliseconds + " ms";
+			TotalExecutionTime = minutes + " min " + seconds + " seconds " + milliseconds + " ms";
+		} else if (seconds != 0) {
+			TotalExecutionTime = seconds + " seconds " + milliseconds + " ms";
 		} else
-			 TotalExecutionTime = milliseconds + " ms";
+			TotalExecutionTime = milliseconds + " ms";
 
 //		TotalExecutionTime = hours + ":" + minutes + ":" + seconds;
 		/*

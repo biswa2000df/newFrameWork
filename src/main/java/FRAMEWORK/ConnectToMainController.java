@@ -3,6 +3,7 @@ package FRAMEWORK;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -15,7 +16,6 @@ import com.codoid.products.fillo.Recordset;
 
 public class ConnectToMainController {
 
-	static String TestFlow_Path = null;
 
 	static String Sr_No = null;
 	static String Browser = null;
@@ -24,7 +24,10 @@ public class ConnectToMainController {
 	static String process1 = null;
 	public static String ReportType = null;
 	public static String process = null;
-
+	static String TestFlow_Path = null;
+	public static String mainControlerFilePath;
+	public static String DataSheetFilePath;
+	
 	static ConnectDataSheet conDataSheet;
 	final static Logger logger = LogManager.getLogger(ConnectToMainController.class);
 
@@ -38,77 +41,118 @@ public class ConnectToMainController {
 
 		conDataSheet = new ConnectDataSheet();
 
-		// TODO Auto-generated method stub
+		mainControlerFilePath = System.getProperty("user.dir") + File.separator + "Main_Controller.xlsx";
+		File file = new File(mainControlerFilePath);
 
-		String MainControler = System.getProperty("user.dir") + File.separator + "Main_Controller.xlsx";
-		File file = new File(MainControler);
 		try {
+			file.exists();
+			Fillo fillo = new Fillo();
+			Connection conn = fillo.getConnection(mainControlerFilePath);
 
-			if (file.exists()) {
+			String query = "SELECT * FROM MainController";
+			String queryForProcessName = "SELECT * FROM MainController Where RunStatus='Y'";
+			Recordset recordset = null;
 
-				Fillo fillo = new Fillo();
-				Connection conn = fillo.getConnection(MainControler);
-				String query = "SELECT * FROM MainController Where RunStatus='Y'";
+			try {
+				recordset = conn.executeQuery(query);
+				if (recordset != null) {
+//						System.out.println("'MainController' sheet are present...");
 
-				List<Object> rowlist = new ArrayList<Object>();
+					List<String> actualColumnName = recordset.getFieldNames();
+					List<String> exceptedColumnName = new ArrayList<>();
+					exceptedColumnName.addAll(Arrays.asList("Sr_No", "RunStatus", "Browser", "ApplicationID", "Module",
+							"Process1", "ReportType"));
 
-				Recordset recordset = conn.executeQuery(query);
+					List<String> notPresentColumn = new ArrayList<>();
 
-				while (recordset.next()) {
-					List<String> columns = recordset.getFieldNames();
-					List<Object> rowvalues = new ArrayList<Object>();
+					Boolean allColumnPresent = true;
 
-					for (String column : columns) {
-						rowvalues.add(recordset.getField(column));
+					for (String columnName : actualColumnName) {
+						if (!exceptedColumnName.contains(columnName)) {
+							notPresentColumn.add(columnName);
+							allColumnPresent = false;
+						}
 					}
-					rowlist.add(rowvalues);
+
+					if (allColumnPresent) {
+//							System.out.println("All the columnName are present");
+						recordset.close();
+					} else {
+						System.out.println("SORRY!!! " + notPresentColumn + " columns are not present");
+						System.exit(0);
+					}
 				}
+				try {
+					recordset = conn.executeQuery(queryForProcessName);
+					if (recordset != null) {
 
-//			System.out.println("MainController Row List "+rowlist);    // MainController Row List [[3, y, Chrome, IshinePortal, IshinePortal, IshinePortal, IshinePortal]]   this type it is print row list that is list of array type but here which row are "y" are print
+						List<Object> rowlist = new ArrayList<Object>();
 
-				for (int i = 0; i < rowlist.size(); i++) {
+						while (recordset.next()) {
+							List<String> columns = recordset.getFieldNames();
+							List<Object> rowvalues = new ArrayList<Object>();
 
-					List<Object> row = (List<Object>) rowlist.get(i);
-
-					Sr_No = (String) row.get(0);
-					Browser = (String) row.get(2);
-					ApplicationID = (String) row.get(3);
-					Module = (String) row.get(4);
-					process1 = (String) row.get(5);
-					ReportType = (String) row.get(6);
-
-					try {
-
-						if (Sr_No != null && !Sr_No.isEmpty() && Browser != null && !Browser.isEmpty()
-								&& ApplicationID != null && !ApplicationID.isEmpty() && Module != null
-								&& !Module.isEmpty() && process1 != null && !process1.isEmpty() && ReportType != null
-								&& !ReportType.isEmpty())
-
-						{
-							UtilScreenshotAndReport.configureLog4j();// call to generate the logs
-							MainControlerDataSheet(process1); // call this method with processname to the datasheet
-						} else {
-							System.out.println("Please Filled all the data Properly inside the MainController Sheet");
-							System.exit(0);
+							for (String column : columns) {
+								rowvalues.add(recordset.getField(column));
+							}
+							rowlist.add(rowvalues);
 						}
 
-					} catch (Exception e) {
-						System.err.println(e.getMessage());
-						e.printStackTrace();
+//							System.out.println("MainController Row List "+rowlist);    // MainController Row List [[3, y, Chrome, IshinePortal, IshinePortal, IshinePortal, IshinePortal]]   this type it is print row list that is list of array type but here which row are "y" are print
 
+						for (int i = 0; i < rowlist.size(); i++) {
+
+							List<Object> row = (List<Object>) rowlist.get(i);
+
+							Sr_No = (String) row.get(0);
+							Browser = (String) row.get(2);
+							ApplicationID = (String) row.get(3);
+							Module = (String) row.get(4);
+							process1 = (String) row.get(5);
+							ReportType = (String) row.get(6);
+
+//									try {
+
+							if (Sr_No != null && !Sr_No.isEmpty() && Browser != null && !Browser.isEmpty()
+									&& ApplicationID != null && !ApplicationID.isEmpty() && Module != null
+									&& !Module.isEmpty() && process1 != null && !process1.isEmpty()
+									&& ReportType != null && !ReportType.isEmpty())
+
+							{
+								UtilScreenshotAndReport.configureLog4j();// call to generate the logs
+								MainControlerDataSheet(process1); // call this method with processname to
+																					// the datasheet
+							} else {
+								System.out
+										.println("Please Filled all the data Properly inside the MainController Sheet");
+								System.exit(0);
+							}
+
+//									} catch (Exception e) {
+//										System.err.println(e.getMessage());
+//										e.printStackTrace();
+//
+//									}
+
+//							System.out.println(process1);
+						}
+
+//							System.out.println("'MainController' sheet are present And RunStatus = 'Y'");
+						recordset.close();
 					}
-
-//			System.out.println(process1);
+				} catch (Exception e) {
+					System.out.println("SORRY!!! 'MainController' sheet are present BUT problem may be on RunStatus");
+					System.exit(0);
 				}
-			} 
+
+			} catch (Exception e) {
+				System.out.println("SORRY!!!  'MainControllerSheet' sheet are not present...");
+				System.exit(0);
+			}
+
 		} catch (Exception e) {
-			System.out.println("Main_Controller File is Not Present");
+			System.out.println("SORRY!!! 'Main_Controller' .xlsx file are not present...");
 			System.exit(0);
-			logger.debug("Debug Message : " + e);
-			logger.info("Info Message :  " + e);
-			logger.warn("Warn Message :  " + e);
-			logger.error("Error Message :  " + e);
-			logger.fatal("Fatal Message : " + e);
 		}
 
 	}
@@ -122,50 +166,92 @@ public class ConnectToMainController {
 
 	public static void MainControlerDataSheet(String process1)
 			throws FilloException, InterruptedException, IOException {// this method read the MainController datasheet
+
+		Fillo fillo = new Fillo();
+		Connection conn = fillo.getConnection(mainControlerFilePath);
+
+		String query = "SELECT * FROM DataSheet";
+		String queryForProcessName = "SELECT * FROM DataSheet Where Process='" + process1 + "'";
+		Recordset recordset = null;
+
 		try {
+			recordset = conn.executeQuery(query);
+			if (recordset != null) {
+//				System.out.println("'DataSheet' sheet are present...");
 
-			Fillo fillo = new Fillo();
-			Connection conn = fillo
-					.getConnection(System.getProperty("user.dir") + File.separator + "Main_Controller.xlsx");
-			String query = "SELECT * FROM DataSheet Where Process='" + process1 + "'";
+				List<String> actualColumnName = recordset.getFieldNames();
+				List<String> exceptedColumnName = new ArrayList<>();
+				exceptedColumnName.addAll(Arrays.asList("Sr_No", "Process", "TestFlow_Path"));
 
-			Recordset recordset = conn.executeQuery(query);
-			List<Object> rowLists = new ArrayList<Object>();
-			while (recordset.next()) {
-				List<String> columns = recordset.getFieldNames();
-				List<Object> rowvalues = new ArrayList<Object>();
+				List<String> notPresentColumn = new ArrayList<>();
 
-				for (String column : columns) {
-					rowvalues.add(recordset.getField(column));
+				Boolean allColumnPresent = true;
+
+				for (String columnName : actualColumnName) {
+					if (!exceptedColumnName.contains(columnName)) {
+						notPresentColumn.add(columnName);
+						allColumnPresent = false;
+					}
 				}
-				rowLists.add(rowvalues);
-			}
 
-			for (int i = 0; i < rowLists.size(); i++) {
-				List<Object> row = (List<Object>) rowLists.get(i);
-				process = (String) row.get(1);
-				TestFlow_Path = (String) row.get(2);
-
-//				System.out.println("DataSheetName========================> " + TestFlow_Path);// print the datasheet file name "IshinePortal.xlsx"
-
-				if (TestFlow_Path != null && !TestFlow_Path.isEmpty()) {
-					fileCheck(TestFlow_Path);///// Call this method sending the datasheet name with the .xlsx format
-												///// which is check
+				if (allColumnPresent) {
+//					System.out.println("All the columnName are present");
+					recordset.close();
 				} else {
-					System.out.println("Please filled the data MainController DataSheet !!!");
+					System.out.println("SORRY!!! " + notPresentColumn + " columns are not present in URs Sheet");
 					System.exit(0);
 				}
+			}
+			try {
+				recordset = conn.executeQuery(queryForProcessName);
+				if (recordset != null) {
 
+					List<Object> rowLists = new ArrayList<Object>();
+					while (recordset.next()) {
+						List<String> columns = recordset.getFieldNames();
+						List<Object> rowvalues = new ArrayList<Object>();
+
+						for (String column : columns) {
+							rowvalues.add(recordset.getField(column));
+						}
+						rowLists.add(rowvalues);
+					}
+
+					for (int i = 0; i < rowLists.size(); i++) {
+						List<Object> row = (List<Object>) rowLists.get(i);
+						process = (String) row.get(1);
+						TestFlow_Path = (String) row.get(2);
+
+//						System.out.println("DataSheetName========================> " + TestFlow_Path);// print the datasheet file name "IshinePortal.xlsx"
+
+						if (TestFlow_Path != null && !TestFlow_Path.isEmpty()) {
+							//Call this method sending the datasheet name with the .xlsx format which is check
+							fileCheck(TestFlow_Path);
+						} else {
+							System.out.println("Please filled the data MainController DataSheet !!!");
+							logger.info("Info Message :  Please filled the data MainController DataSheet !!!");
+							System.exit(0);
+						}
+
+					}
+
+//					System.out.println("'DataSheet' sheet are present And process are same");
+					recordset.close();
+				}
+			} catch (Exception e) {
+				System.out.println("SORRY!!! 'DataSheet' sheet are present But Process column value are not match");
+				logger.info("Info Message :  SORRY!!! 'DataSheet' sheet are present But Process column value are not match");
+				logger.error("Error Message :  " + e);
+				System.exit(0);
 			}
 
 		} catch (Exception e) {
-			System.err.println(e.getMessage());
-			e.printStackTrace();
-			logger.debug("Debug Message : " + e);
-			logger.info("Info Message :  " + e);
-			logger.warn("Warn Message :  " + e);
+			System.out.println("SORRY!!!  'DataSheet' sheet are not present...");
+			logger.info("Info Message :  SORRY!!!  'DataSheet' sheet are not present...");
 			logger.error("Error Message :  " + e);
-			logger.fatal("Fatal Message : " + e);
+//			System.err.println(e.getMessage());
+//			e.printStackTrace();
+			System.exit(0);
 		}
 
 	}
@@ -179,26 +265,32 @@ public class ConnectToMainController {
 	public static void fileCheck(String DataSheetFileName) throws Exception {
 
 		String DataSheetFolderPath = System.getProperty("user.dir") + File.separator + "DataSheet";
-		String DataSheetFilePath = System.getProperty("user.dir") + File.separator + "DataSheet" + File.separator
+		DataSheetFilePath = System.getProperty("user.dir") + File.separator + "DataSheet" + File.separator
 				+ DataSheetFileName;
 //	System.out.println(DataSheetFolderPath);
 
 		File DataSheetFolder = new File(DataSheetFolderPath);
-		if (DataSheetFolder.exists()) {
+		try {
+			//check the folder exit or not
+			DataSheetFolder.exists(); 
 
 			File DataSheetFile = new File(DataSheetFilePath);
-			if (DataSheetFile.exists()) {
+			try {
+				//check the file are exist or not
+				DataSheetFile.exists();
 //			System.out.println(filePath + " DataSheet File is present");
-				conDataSheet.DataSheetGet(DataSheetFileName);///// this method to call the datasheet folder which is
-																///// present in
-				///// the
-				///// DataSheet folder.
-			} else {
-				System.out.println("DataSheet File is not present");
+				//this method to call the datasheet folder which is present in the DataSheet folder.
+				conDataSheet.DataSheetGet(DataSheetFileName);
+			} catch (Exception e) {
+				System.out.println("SORRY!!! " + DataSheetFileName + " DataSheet File are not present inside the 'DataSheet' Folder");
+				logger.info("Info Message :  SORRY!!! " + DataSheetFileName + " DataSheet File are not present inside the 'DataSheet' Folder");
+				logger.error("Error Message :  " + e);
 				System.exit(0);
 			}
-		} else {
+		} catch (Exception e) {
 			System.out.println("SORRY!!! 'DataSheet' folder is not present");
+			logger.info("Info Message :  SORRY!!! 'DataSheet' folder is not present");
+			logger.error("Error Message :  " + e);
 			System.exit(0);
 		}
 	}

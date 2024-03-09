@@ -16,6 +16,8 @@ import com.codoid.products.fillo.Recordset;
 public class LunchMainClass extends BrowserClass {
 public static long executionStartTime;
 	public static void main(String[] args) throws FilloException, InterruptedException, IOException, ParseException {
+//		String value1 = args[0];
+//		System.out.println("The command line value are = " + value1);
 		executionStartTime = System.nanoTime();//Execution start time	
 		Run();
 	}

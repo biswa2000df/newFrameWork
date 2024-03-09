@@ -71,37 +71,43 @@ public class LocatorClass extends ConnectDataSheet {
 				throw new IllegalArgumentException("Unsupported PropertyName type: " + PropertyName);
 			}
 			try {
-				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 				wait.until(ExpectedConditions.visibilityOfElementLocated(by));
 				webElement = driver.findElement(by);
 				webElements = driver.findElements(by);
 				ConnectDataSheet.DataFieldRead();
-				
-				
+
 				/*
 				 * TestCase_No, webElement, webElements, Datafield, Action, Description,
 				 * Neg_Description, driver
 				 */
 			} catch (Exception e) {
-				//i write again to the webelement becaause it print the erroe exceptioin the clear format thats why i write because the explicity wait it is showing only timeout exception so thats why.
+				// i write again to the webelement because it print the error exception the
+				// clear format thats why i write because the explicity wait it is showing only
+				// timeout exception so thats why.
 				try {
 					webElement = driver.findElement(by);
 					webElements = driver.findElements(by);
+				} catch (Exception E) {
+					System.err.println(E.getMessage());
+//					E.printStackTrace();
+					logger.error("ERROR MESSAGE :  " + E);
 				}
-				catch(Exception E) {
-//					System.err.println(E.getMessage());
-					E.printStackTrace();
-					logger.error("Error Message :  " + E);
-				}
-				
+
 //				System.err.println(e.getMessage());
 //				e.printStackTrace();
-				if (Action.equalsIgnoreCase("CheckVisibility")) {
-					ConnectDataSheet.DataFieldRead();
-				}
-				fail++;
-				
-				
+
+				// again write this line because suppose checkvisibility are failed then that is
+				// added to the extent report but while the normal xpath are not found then i
+				// write thats way to add the normal xpath added to the extent report
+//						IshinePortal	IshineLoginPage	Y	id	//input[@placeholder='Enter Password']	password	sendkeys		TC_01_02	User should be able to login after entering credentials.	SC_07
+//						IshinePortal	IshineLoginPage	Y	xpath	//input[@placeholder='Enter Password']	password	sendkeys		TC_01_02	User should be able to login after entering credentials.	SC_07
+				// look into this first line are incorrect but second line are correct so
+				ConnectDataSheet.DataFieldRead();
+
+				fail++; // why i write fail here because not only checkvisibility are fail it is
+						// increase any other xpath are fail then also it is increase
+
 				/*
 				 * TestCase_No, webElement, webElements, Datafield, Action, Description,
 				 * Neg_Description, driver

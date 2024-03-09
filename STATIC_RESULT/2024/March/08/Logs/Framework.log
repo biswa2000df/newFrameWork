@@ -1,0 +1,104 @@
+2024-03-08 10:53:38.785 [main] INFO  FRAMEWORK.UtilScreenshotAndReport - Logging to dynamically created file: C:\Users\biswa\eclipse-workspace\BiswajitFramework\STATIC_RESULT\2024\March\08\Logs\Framework.log
+2024-03-08 10:53:42.017 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: session not created: This version of ChromeDriver only supports Chrome version 120
+Current browser version is 122.0.6261.112 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.137.1', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goog:chromeOptions: {args: [--remote-allow-origins=*, --no-sandbox], extensions: []}, pageLoadStrategy: normal}], desiredCapabilities=Capabilities {browserName: chrome, goog:chromeOptions: {args: [--remote-allow-origins=*, --no-sandbox], extensions: []}, pageLoadStrategy: normal}}]
+2024-03-08 10:53:42.019 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: session not created: This version of ChromeDriver only supports Chrome version 120
+Current browser version is 122.0.6261.112 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.137.1', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goog:chromeOptions: {args: [--remote-allow-origins=*, --no-sandbox], extensions: []}, pageLoadStrategy: normal}], desiredCapabilities=Capabilities {browserName: chrome, goog:chromeOptions: {args: [--remote-allow-origins=*, --no-sandbox], extensions: []}, pageLoadStrategy: normal}}]
+2024-03-08 10:53:42.019 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: session not created: This version of ChromeDriver only supports Chrome version 120
+Current browser version is 122.0.6261.112 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.137.1', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goog:chromeOptions: {args: [--remote-allow-origins=*, --no-sandbox], extensions: []}, pageLoadStrategy: normal}], desiredCapabilities=Capabilities {browserName: chrome, goog:chromeOptions: {args: [--remote-allow-origins=*, --no-sandbox], extensions: []}, pageLoadStrategy: normal}}]
+2024-03-08 10:53:42.019 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: session not created: This version of ChromeDriver only supports Chrome version 120
+Current browser version is 122.0.6261.112 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.137.1', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goog:chromeOptions: {args: [--remote-allow-origins=*, --no-sandbox], extensions: []}, pageLoadStrategy: normal}], desiredCapabilities=Capabilities {browserName: chrome, goog:chromeOptions: {args: [--remote-allow-origins=*, --no-sandbox], extensions: []}, pageLoadStrategy: normal}}]
+2024-03-08 10:53:42.069 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.get(String)" because "FRAMEWORK.ActionClass.driver" is null
+2024-03-08 10:53:42.070 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.get(String)" because "FRAMEWORK.ActionClass.driver" is null
+2024-03-08 10:53:42.070 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.get(String)" because "FRAMEWORK.ActionClass.driver" is null
+2024-03-08 10:53:42.070 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.get(String)" because "FRAMEWORK.ActionClass.driver" is null
+2024-03-08 10:53:44.080 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-03-08 10:53:44.122 [main] INFO  FRAMEWORK.UtilScreenshotAndReport - Info Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.TakesScreenshot.getScreenshotAs(org.openqa.selenium.OutputType)" because "driver" is null
+2024-03-08 10:53:44.124 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-03-08 10:53:45.128 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-03-08 10:53:45.130 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-03-08 10:53:45.166 [main] INFO  FRAMEWORK.UtilScreenshotAndReport - Info Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.TakesScreenshot.getScreenshotAs(org.openqa.selenium.OutputType)" because "driver" is null
+2024-03-08 10:55:15.433 [main] INFO  FRAMEWORK.UtilScreenshotAndReport - Logging to dynamically created file: C:\Users\biswa\eclipse-workspace\BiswajitFramework\STATIC_RESULT\2024\March\08\Logs\Framework.log
+2024-03-08 10:55:37.710 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=122.0.6261.112)
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.137.1', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [a4ab5ac24c2295f00c868db206b2ae6c, findElement {using=id, value=//button[@type='submit']}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 122.0.6261.112, chrome: {chromedriverVersion: 122.0.6261.111 (9d4c1072da6..., userDataDir: C:\Users\biswa\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60665}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:60665/devtoo..., se:cdpVersion: 122.0.6261.112, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a4ab5ac24c2295f00c868db206b2ae6c
+2024-03-08 10:55:37.810 [main] INFO  FRAMEWORK.UtilScreenshotAndReport - Info Message :  org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=122.0.6261.112)
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.137.1', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [a4ab5ac24c2295f00c868db206b2ae6c, screenshot {}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 122.0.6261.112, chrome: {chromedriverVersion: 122.0.6261.111 (9d4c1072da6..., userDataDir: C:\Users\biswa\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60665}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:60665/devtoo..., se:cdpVersion: 122.0.6261.112, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a4ab5ac24c2295f00c868db206b2ae6c
+2024-03-08 17:17:37.969 [main] INFO  FRAMEWORK.UtilScreenshotAndReport - Logging to dynamically created file: C:\Users\biswa\eclipse-workspace\BiswajitFramework\STATIC_RESULT\2024\March\08\Logs\Framework.log
+2024-03-08 17:18:34.879 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"#\/\/button\[\@type\=\'submit\'\]"}
+  (Session info: chrome=122.0.6261.112)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.137.1', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [84f1b13ecef7faef897682f355e011e1, findElement {using=id, value=//button[@type='submit']}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 122.0.6261.112, chrome: {chromedriverVersion: 122.0.6261.111 (9d4c1072da6..., userDataDir: C:\Users\biswa\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53646}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:53646/devtoo..., se:cdpVersion: 122.0.6261.112, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 84f1b13ecef7faef897682f355e011e1
+2024-03-08 17:26:56.281 [main] INFO  FRAMEWORK.UtilScreenshotAndReport - Logging to dynamically created file: C:\Users\biswa\eclipse-workspace\BiswajitFramework\STATIC_RESULT\2024\March\08\Logs\Framework.log
+2024-03-08 17:27:51.394 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"#\/\/button\[\@type\=\'submit\'\]"}
+  (Session info: chrome=122.0.6261.112)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.137.1', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [7118944afa0d7ace4cbf3f0990847a69, findElement {using=id, value=//button[@type='submit']}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 122.0.6261.112, chrome: {chromedriverVersion: 122.0.6261.111 (9d4c1072da6..., userDataDir: C:\Users\biswa\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:54274}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:54274/devtoo..., se:cdpVersion: 122.0.6261.112, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 7118944afa0d7ace4cbf3f0990847a69
+2024-03-08 21:20:31.253 [main] INFO  FRAMEWORK.UtilScreenshotAndReport - Logging to dynamically created file: C:\Users\biswa\eclipse-workspace\BiswajitFramework\STATIC_RESULT\2024\March\08\Logs\Framework.log
+2024-03-08 22:43:04.560 [main] INFO  FRAMEWORK.UtilScreenshotAndReport - Logging to dynamically created file: C:\Users\biswa\eclipse-workspace\BiswajitFramework\STATIC_RESULT\2024\March\08\Logs\Framework.log
+2024-03-08 22:43:57.556 [main] INFO  FRAMEWORK.UtilScreenshotAndReport - Logging to dynamically created file: C:\Users\biswa\eclipse-workspace\BiswajitFramework\STATIC_RESULT\2024\March\08\Logs\Framework.log
+2024-03-08 22:53:56.116 [main] INFO  FRAMEWORK.UtilScreenshotAndReport - Logging to dynamically created file: C:\Users\biswa\eclipse-workspace\BiswajitFramework\STATIC_RESULT\2024\March\08\Logs\Framework.log
+2024-03-08 22:55:48.007 [main] INFO  FRAMEWORK.UtilScreenshotAndReport - Logging to dynamically created file: C:\Users\biswa\eclipse-workspace\BiswajitFramework\STATIC_RESULT\2024\March\08\Logs\Framework.log
+2024-03-08 22:58:56.676 [main] INFO  FRAMEWORK.UtilScreenshotAndReport - Logging to dynamically created file: C:\Users\biswa\eclipse-workspace\BiswajitFramework\STATIC_RESULT\2024\March\08\Logs\Framework.log
+2024-03-08 23:24:01.724 [main] INFO  FRAMEWORK.UtilScreenshotAndReport - Logging to dynamically created file: C:\Users\biswa\eclipse-workspace\BiswajitFramework\STATIC_RESULT\2024\March\08\Logs\Framework.log
+2024-03-08 23:25:21.447 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"#\/\/input\[\@placeholder\=\'Enter\ Password\'\]"}
+  (Session info: chrome=122.0.6261.112)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.137.1', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [321f5bebd6c1684ff26e170f113fcb26, findElement {using=id, value=//input[@placeholder='Enter Password']}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 122.0.6261.112, chrome: {chromedriverVersion: 122.0.6261.111 (9d4c1072da6..., userDataDir: C:\Users\biswa\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64218}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:64218/devtoo..., se:cdpVersion: 122.0.6261.112, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 321f5bebd6c1684ff26e170f113fcb26
+2024-03-08 23:29:45.049 [main] INFO  FRAMEWORK.UtilScreenshotAndReport - Logging to dynamically created file: C:\Users\biswa\eclipse-workspace\BiswajitFramework\STATIC_RESULT\2024\March\08\Logs\Framework.log
+2024-03-08 23:30:51.521 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"#\/\/input\[\@placeholder\=\'Enter\ Password\'\]"}
+  (Session info: chrome=122.0.6261.112)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.1.103', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [20147d01a9a2ae6ec1d686c70862f491, findElement {using=id, value=//input[@placeholder='Enter Password']}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 122.0.6261.112, chrome: {chromedriverVersion: 122.0.6261.111 (9d4c1072da6..., userDataDir: C:\Users\biswa\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64654}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:64654/devtoo..., se:cdpVersion: 122.0.6261.112, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 20147d01a9a2ae6ec1d686c70862f491
+2024-03-08 23:30:51.593 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.sendKeys(java.lang.CharSequence[])" because "FRAMEWORK.ActionClass.element" is null
+2024-03-08 23:30:51.593 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.sendKeys(java.lang.CharSequence[])" because "FRAMEWORK.ActionClass.element" is null
+2024-03-08 23:30:51.593 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.sendKeys(java.lang.CharSequence[])" because "FRAMEWORK.ActionClass.element" is null
+2024-03-08 23:30:51.593 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.sendKeys(java.lang.CharSequence[])" because "FRAMEWORK.ActionClass.element" is null

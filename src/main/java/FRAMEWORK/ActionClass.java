@@ -72,7 +72,13 @@ public class ActionClass extends ConnectDataSheet {
 
 		if (Action.equalsIgnoreCase("QUIT")) {
 
-			driver.quit();
+			//if i stop the execution manually then browser close automatically.
+			  Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+		            if (driver != null) {
+		                driver.quit();
+		            }
+		        }));
+//			driver.quit();
 		}
 		
 		if (Action.equalsIgnoreCase("Close")) {
@@ -257,6 +263,7 @@ public class ActionClass extends ConnectDataSheet {
 					ActualResult = false;
 					System.out.println("ActualResultFail======"+ActualResult);
 					ConnectDataSheet.status="FAIL";
+					ConnectDataSheet.failedValidations++;
 //					utilClass.testCaseCreate(TestCase_No);
 					utilClass.failTestCase();
 					System.out.println("webElement is not Display");

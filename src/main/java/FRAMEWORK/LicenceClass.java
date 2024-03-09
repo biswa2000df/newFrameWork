@@ -72,7 +72,7 @@ public class LicenceClass {
 			Date dt = new Date();
 			
 			SimpleDateFormat smdt = new SimpleDateFormat("dd/MM/yyyy");
-			String sDate1 = "25/08/2024";
+			String sDate1 = "03/08/2025";
 			Date date1 = smdt.parse(sDate1);
 			if (dt.before(date1) && validateMac == true) {
 				System.out.println();
