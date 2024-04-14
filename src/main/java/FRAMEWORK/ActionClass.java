@@ -27,8 +27,8 @@ public class ActionClass extends ConnectDataSheet {
 	static UtilScreenshotAndReport utilClass;
 	public static WebElement element;
 	public static List<WebElement> elements;
-	
 	public static boolean ActualResult;
+	public static Actions act ;
 	
 	ActionClass(){
 	 element = ConnectDataSheet.webElement;
@@ -46,7 +46,11 @@ public class ActionClass extends ConnectDataSheet {
 		if (Action.equalsIgnoreCase("SendKeys")) {
 			element.sendKeys(DataSheet2Value);
 		}
-
+		
+		if (Action.equalsIgnoreCase("type")) {
+			element.sendKeys(DataSheet2Value);
+		}
+		
 		if (Action.equalsIgnoreCase("click")) {
 			element.click();
 		}
@@ -68,6 +72,10 @@ public class ActionClass extends ConnectDataSheet {
 
 		if (Action.equalsIgnoreCase("STARTBROWSER")) {
 			Initialisation(ConnectToMainController.Browser);
+		}
+		
+		if(Action.equalsIgnoreCase("setWindowSize")) {
+			setWindowsSize(PropertyValue);
 		}
 
 		if (Action.equalsIgnoreCase("QUIT")) {
@@ -109,25 +117,28 @@ public class ActionClass extends ConnectDataSheet {
 			 System.out.println("Total window are ==============================> "+windowHandles.size());
 		        driver.switchTo().window(windowHandles.get(Scroll));
 		}
+		
+		
+		//////////////////////Action Class for Mouse and KeyBoard//////////////////////////////////////
 
 		if (Action.equalsIgnoreCase("MOUSEHOVER")) {
-			Actions act = new Actions(driver);
+			 act = new Actions(driver);
 			act.moveToElement(element).build().perform();
 
 		}
 		if (Action.equalsIgnoreCase("DOUBLECLICK")) {
-			Actions act = new Actions(driver);
+			 act = new Actions(driver);
 			act.doubleClick(element).perform();
 
 		}
 
 		if (Action.equalsIgnoreCase("ACTIONCLICK")) {
-			Actions act = new Actions(driver);
+			 act = new Actions(driver);
 			act.moveToElement(element).click().build().perform();
 
 		}
 		if (Action.equalsIgnoreCase("RIGHTCLICK")) {
-			Actions act = new Actions(driver);
+			 act = new Actions(driver);
 			act.contextClick(element).click().build().perform();
 
 		}
@@ -139,15 +150,25 @@ public class ActionClass extends ConnectDataSheet {
 		
 		if (Action.equalsIgnoreCase("MOUSEDROP")) {
 			System.out.println(element);
-			Actions act = new Actions(driver);
+			 act = new Actions(driver);
 			act.dragAndDrop(FROM, element).perform();
 		}
 
 		if (Action.equalsIgnoreCase("MOUSECLICKSENDKEY")) {
-			Actions act = new Actions(driver);
+			 act = new Actions(driver);
 			act.moveToElement(element).click().sendKeys(DataSheet2Value).perform();
 		}
 
+		if(Action.equalsIgnoreCase("MOUSEOVER")) {
+			act = new Actions(driver);
+			act.moveToElement(element).build().perform();
+		}
+		
+		if(Action.equalsIgnoreCase("MOUSEOUT")) {
+			act = new Actions(driver);
+			act.moveToElement(element).build().perform();
+		}
+		
 		/////////////// ******************IFRAME*************************//////////////////////////
 
 		if (Action.contains("FRAMEINDEX")) {
@@ -216,6 +237,8 @@ public class ActionClass extends ConnectDataSheet {
 		if (Action.equalsIgnoreCase("AlertSendkeys")) {
 			driver.switchTo().alert().sendKeys(DataSheet2Value);
 		}
+		
+		///////////////////Page Scrolling Function///////////////////////////
 
 		if (Action.contains("ScrollDown")) {
 

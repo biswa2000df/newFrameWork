@@ -157,3 +157,9 @@ public static long executionStartTime;
 //	}
 //
 //}
+
+
+
+
+
+//to make jar run the command = mvn clean package

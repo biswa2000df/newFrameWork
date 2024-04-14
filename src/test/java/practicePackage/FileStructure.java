@@ -9,6 +9,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -94,7 +97,7 @@ public class FileStructure {
 //	            e.printStackTrace();
 //	        }
 //	    
-		 String filePath = "C:\\Users\\biswa\\eclipse-workspace\\BiswajitFramework\\STATIC_RESULT\\2024\\February\\08\\HtmlTable\\16_01_57_students.html";
+/*		 String filePath = "C:\\Users\\biswa\\eclipse-workspace\\BiswajitFramework\\STATIC_RESULT\\2024\\February\\08\\HtmlTable\\16_01_57_students.html";
 
 	        try {
 	            // Parse the HTML file using Jsoup
@@ -111,7 +114,7 @@ public class FileStructure {
 	            e.printStackTrace();
 	        }
 	    
-	}
+	}*/
 	
 	
 	
@@ -174,5 +177,37 @@ public class FileStructure {
 //
 //
 //	}
+		
+		
+		
+		
+//		   String inputString = "biswajit.sahoo@apmosys.com";
+//	        
+//	        // Define a pattern to match any character that is not a letter or a number
+//	        Pattern pattern = Pattern.compile("[^a-zA-Z0-9]");
+//	        
+//	        // Create a matcher with the input string
+//	        Matcher matcher = pattern.matcher(inputString);
+//	        
+//	        // Replace any matched characters with underscore
+//	        String result = matcher.replaceAll("_");
+//	        
+//	        System.out.println(result);
+		
+		
+		
+		
+		
+		
+		
+		String s = "wait(2000)";
+		
+		String s1 = s.substring(s.indexOf('(')+1, s.indexOf(')'));
+		
+		
+		int i = Integer.parseInt(s1);
+		System.out.println(i);
+		
 
+	}
 }

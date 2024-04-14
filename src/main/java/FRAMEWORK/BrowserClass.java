@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -42,7 +43,7 @@ public class BrowserClass {
 //			option.addArguments("--headless");
 
 			driver = new ChromeDriver(option);
-			driver.manage().window().maximize();
+//			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
 		}
@@ -68,6 +69,18 @@ public class BrowserClass {
 			System.exit(0);
 		}
 
+	}
+	
+	public static void setWindowsSize(String size) {
+		String part[] = size.split("x");
+		if(part.length != 2) {
+			 throw new IllegalArgumentException("Size string must be in the format 'widthxheight', e.g., '800x600'.");
+		}
+		int width = Integer.parseInt(part[0]);
+		int height = Integer.parseInt(part[1]);
+		
+		Dimension dimension = new Dimension(width, height);
+		driver.manage().window().setSize(dimension);
 	}
 
 //		driver.get("https://mail.apmosys.com/webmail/#sign-in");

@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -245,7 +247,7 @@ public class ConnectDataSheet extends BrowserClass {
 						if (ConnectToMainController.Browser.equalsIgnoreCase("HtmlUnitDriver")
 								&& Action.equalsIgnoreCase("CheckVisibility")) {
 						} else {
-							// here to call the locator method
+							// here to call the locator method ==========================================call to the locator class
 							locatorClass.xpathpick();
 						}
 
@@ -361,10 +363,15 @@ public class ConnectDataSheet extends BrowserClass {
 				Recordset recordset = null;
 				try {
 					recordset = conn.executeQuery(query);
-
+					
+					// Define a pattern to match any character that is not a letter or a number
+			        Pattern pattern = Pattern.compile("[^a-zA-Z0-9]");
+			     // Create a matcher with the input string
+			        Matcher matcher = pattern.matcher(Datafield);
 					while (recordset.next()) {
 						try {
-							DataSheet2Value = recordset.getField(Datafield);
+							
+							DataSheet2Value = recordset.getField(matcher.replaceAll("_"));
 							System.out
 									.print("DataFields For Sheet2==================================================== "
 											+ DataSheet2Value + "\n");
@@ -411,6 +418,7 @@ public class ConnectDataSheet extends BrowserClass {
 				if (PropertyValue != null && !PropertyValue.isEmpty() && webElement == null && webElements == null) {
 					// here 'N' means without data_field
 					UtilScreenshotAndReport.testcaseInfoWithDataFieldWithoutDataField_WithFailedWebElement("N");
+					ActionClass.actrds();//we call for this because to setwindowsize otherwise it is not required to call this method
 				} else {
 					UtilScreenshotAndReport.testcaseInfoWithoutDataField();
 					ActionClass.actrds();

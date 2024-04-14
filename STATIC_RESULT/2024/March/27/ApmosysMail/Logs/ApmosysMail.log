@@ -1,0 +1,91 @@
+2024-03-27 21:07:50.197 [main] INFO  FRAMEWORK.UtilScreenshotAndReport - Logging to dynamically created file: C:\Users\biswa\eclipse-workspace\BiswajitFramework\STATIC_RESULT\2024\March\27\ApmosysMail\Logs\ApmosysMail.log
+2024-03-27 21:07:55.010 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.NullPointerException: null value in entry: url=null
+2024-03-27 21:07:55.010 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.NullPointerException: null value in entry: url=null
+2024-03-27 21:07:55.011 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.NullPointerException: null value in entry: url=null
+2024-03-27 21:07:55.011 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.NullPointerException: null value in entry: url=null
+2024-03-27 21:09:14.640 [main] INFO  FRAMEWORK.UtilScreenshotAndReport - Logging to dynamically created file: C:\Users\biswa\eclipse-workspace\BiswajitFramework\STATIC_RESULT\2024\March\27\ApmosysMail\Logs\ApmosysMail.log
+2024-03-27 21:09:18.020 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.NullPointerException: null value in entry: url=null
+2024-03-27 21:09:18.020 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.NullPointerException: null value in entry: url=null
+2024-03-27 21:09:18.020 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.NullPointerException: null value in entry: url=null
+2024-03-27 21:09:18.020 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.NullPointerException: null value in entry: url=null
+2024-03-27 21:10:08.395 [main] INFO  FRAMEWORK.UtilScreenshotAndReport - Logging to dynamically created file: C:\Users\biswa\eclipse-workspace\BiswajitFramework\STATIC_RESULT\2024\March\27\ApmosysMail\Logs\ApmosysMail.log
+2024-03-27 21:10:18.138 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  org.openqa.selenium.StaleElementReferenceException: stale element reference: stale element not found
+  (Session info: chrome=123.0.6312.86)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#stale_element_reference
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.137.1', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [1bd3448a73c86b9a537008cc52f1c2e5, clickElement {id=f.27238DD8A2A25019A5A5E4F363920175.d.5FEAFEA1B281084260F94125E1C1487C.e.99}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 123.0.6312.86, chrome: {chromedriverVersion: 122.0.6261.111 (9d4c1072da6..., userDataDir: C:\Users\biswa\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59230}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:59230/devtoo..., se:cdpVersion: 123.0.6312.86, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on WINDOWS (1bd3448a73c86b9a537008cc52f1c2e5)] -> id: gui.frm_main.main.list/*15614734/SUBJECT]
+Session ID: 1bd3448a73c86b9a537008cc52f1c2e5
+2024-03-27 21:10:18.138 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  org.openqa.selenium.StaleElementReferenceException: stale element reference: stale element not found
+  (Session info: chrome=123.0.6312.86)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#stale_element_reference
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.137.1', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [1bd3448a73c86b9a537008cc52f1c2e5, clickElement {id=f.27238DD8A2A25019A5A5E4F363920175.d.5FEAFEA1B281084260F94125E1C1487C.e.99}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 123.0.6312.86, chrome: {chromedriverVersion: 122.0.6261.111 (9d4c1072da6..., userDataDir: C:\Users\biswa\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59230}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:59230/devtoo..., se:cdpVersion: 123.0.6312.86, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on WINDOWS (1bd3448a73c86b9a537008cc52f1c2e5)] -> id: gui.frm_main.main.list/*15614734/SUBJECT]
+Session ID: 1bd3448a73c86b9a537008cc52f1c2e5
+2024-03-27 21:10:18.139 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  org.openqa.selenium.StaleElementReferenceException: stale element reference: stale element not found
+  (Session info: chrome=123.0.6312.86)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#stale_element_reference
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.137.1', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [1bd3448a73c86b9a537008cc52f1c2e5, clickElement {id=f.27238DD8A2A25019A5A5E4F363920175.d.5FEAFEA1B281084260F94125E1C1487C.e.99}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 123.0.6312.86, chrome: {chromedriverVersion: 122.0.6261.111 (9d4c1072da6..., userDataDir: C:\Users\biswa\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59230}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:59230/devtoo..., se:cdpVersion: 123.0.6312.86, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on WINDOWS (1bd3448a73c86b9a537008cc52f1c2e5)] -> id: gui.frm_main.main.list/*15614734/SUBJECT]
+Session ID: 1bd3448a73c86b9a537008cc52f1c2e5
+2024-03-27 21:10:18.139 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : org.openqa.selenium.StaleElementReferenceException: stale element reference: stale element not found
+  (Session info: chrome=123.0.6312.86)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#stale_element_reference
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.137.1', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [1bd3448a73c86b9a537008cc52f1c2e5, clickElement {id=f.27238DD8A2A25019A5A5E4F363920175.d.5FEAFEA1B281084260F94125E1C1487C.e.99}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 123.0.6312.86, chrome: {chromedriverVersion: 122.0.6261.111 (9d4c1072da6..., userDataDir: C:\Users\biswa\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59230}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:59230/devtoo..., se:cdpVersion: 123.0.6312.86, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on WINDOWS (1bd3448a73c86b9a537008cc52f1c2e5)] -> id: gui.frm_main.main.list/*15614734/SUBJECT]
+Session ID: 1bd3448a73c86b9a537008cc52f1c2e5
+2024-03-27 21:10:19.750 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  org.openqa.selenium.StaleElementReferenceException: stale element reference: stale element not found
+  (Session info: chrome=123.0.6312.86)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#stale_element_reference
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.137.1', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [1bd3448a73c86b9a537008cc52f1c2e5, clickElement {id=f.27238DD8A2A25019A5A5E4F363920175.d.5FEAFEA1B281084260F94125E1C1487C.e.218}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 123.0.6312.86, chrome: {chromedriverVersion: 122.0.6261.111 (9d4c1072da6..., userDataDir: C:\Users\biswa\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59230}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:59230/devtoo..., se:cdpVersion: 123.0.6312.86, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on WINDOWS (1bd3448a73c86b9a537008cc52f1c2e5)] -> id: gui.frm_main.hmenu1/1]
+Session ID: 1bd3448a73c86b9a537008cc52f1c2e5
+2024-03-27 21:10:19.750 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  org.openqa.selenium.StaleElementReferenceException: stale element reference: stale element not found
+  (Session info: chrome=123.0.6312.86)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#stale_element_reference
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.137.1', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [1bd3448a73c86b9a537008cc52f1c2e5, clickElement {id=f.27238DD8A2A25019A5A5E4F363920175.d.5FEAFEA1B281084260F94125E1C1487C.e.218}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 123.0.6312.86, chrome: {chromedriverVersion: 122.0.6261.111 (9d4c1072da6..., userDataDir: C:\Users\biswa\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59230}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:59230/devtoo..., se:cdpVersion: 123.0.6312.86, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on WINDOWS (1bd3448a73c86b9a537008cc52f1c2e5)] -> id: gui.frm_main.hmenu1/1]
+Session ID: 1bd3448a73c86b9a537008cc52f1c2e5
+2024-03-27 21:10:19.750 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  org.openqa.selenium.StaleElementReferenceException: stale element reference: stale element not found
+  (Session info: chrome=123.0.6312.86)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#stale_element_reference
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.137.1', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [1bd3448a73c86b9a537008cc52f1c2e5, clickElement {id=f.27238DD8A2A25019A5A5E4F363920175.d.5FEAFEA1B281084260F94125E1C1487C.e.218}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 123.0.6312.86, chrome: {chromedriverVersion: 122.0.6261.111 (9d4c1072da6..., userDataDir: C:\Users\biswa\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59230}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:59230/devtoo..., se:cdpVersion: 123.0.6312.86, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on WINDOWS (1bd3448a73c86b9a537008cc52f1c2e5)] -> id: gui.frm_main.hmenu1/1]
+Session ID: 1bd3448a73c86b9a537008cc52f1c2e5
+2024-03-27 21:10:19.750 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : org.openqa.selenium.StaleElementReferenceException: stale element reference: stale element not found
+  (Session info: chrome=123.0.6312.86)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#stale_element_reference
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.137.1', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [1bd3448a73c86b9a537008cc52f1c2e5, clickElement {id=f.27238DD8A2A25019A5A5E4F363920175.d.5FEAFEA1B281084260F94125E1C1487C.e.218}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 123.0.6312.86, chrome: {chromedriverVersion: 122.0.6261.111 (9d4c1072da6..., userDataDir: C:\Users\biswa\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59230}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:59230/devtoo..., se:cdpVersion: 123.0.6312.86, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on WINDOWS (1bd3448a73c86b9a537008cc52f1c2e5)] -> id: gui.frm_main.hmenu1/1]
+Session ID: 1bd3448a73c86b9a537008cc52f1c2e5
