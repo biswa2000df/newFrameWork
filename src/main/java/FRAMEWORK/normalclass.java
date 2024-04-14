@@ -299,7 +299,7 @@ public class normalclass {
 		long seconds = remainingMilliseconds / 1000;
 		long milliseconds = remainingMilliseconds % 1000;
 
-		System.out.println("Execution time: " + hours + " hours, " + minutes + " minutes, " + seconds + " seconds, " + milliseconds + " milliseconds, " + executionTimeInMilliseconds + " milliseconds total");
+		System.out.println("Execution time : " + hours + " hours, " + minutes + " minutes, " + seconds + " seconds, " + milliseconds + " milliseconds, " + executionTimeInMilliseconds + " milliseconds total");
     }
 
 }
