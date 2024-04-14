@@ -1,0 +1,49 @@
+
+first push the code to the github
+then create the free style job in the jenkins
+then add the git hub path like this==
+			"GitHub project" this is the checkbox and enter the github path=== git@github.com:biswa2000df/BiswajitFramework/
+Source Code Management = to choose git
+then enter the url of the github for the project path
+								Repository URL = git@github.com:biswa2000df/BiswajitFramework.git
+								then enter the credential if it is private repository other wise not enter
+								then choose the branch means master or main branch
+								
+Select the "Repository browser"  = "githubweb"
+				enter the url = git@github.com:biswa2000df/BiswajitFramework.git
+				
+				
+				Then select the buid Trigger for the perticular check box = "GitHub hook trigger for GITScm polling"  here i choose when some one push or commit the code then that is automatically build
+				
+				
+				Then "Build Steps" to write the command to run the jar file like java -jar BISWAJIT-HYBRID-FRAMEWORK.jar
+
+				
+			
+			
+			
+			//the real work for integrating github with jenkins are while commiting the code then it is automatically build
+			need one application     "ngrok-v3-stable-windows-amd64"   this is the appplication name
+			in my system the application are kept in the     "‪C:\Users\biswa\ngrok.exe"     this location
+			* Main work of the application are to convert the jenkins url to another url which are use to integrate "github-webhook" to  jenkins
+			first install the application then follow the authentication like register then generate the token then register, 
+			after completion of the registration then open the application and run the command like    "ngrok http [port]" means ngrok http 8080
+			which port are jenkins are running that port
+			then u got the url then click on the url and accepth the permission then put the url in the github webhook means,
+			open the github then click on the perticular repository then click on the settion then click on the left site written "webhook" then right side open to "add webhook", how to add like
+			what u get the url "https://8a22-45-117-212-26.ngrok-free.app"and add the extra "/github-webhook/", 
+			so the final u put the github webbook url are   =            " https://8a22-45-117-212-26.ngrok-free.app/github-webhook/"
+			then click and add then refresh the page then u check the right sign are showing or not, if showing then it is connected or some problem are there.
+			
+			
+			then u commit and push the code to the github then jenkins are automatically build automatically.
+			
+			
+			http://localhost:8080/job/Biswajit/job/FRAMEWORK/job/AutomationFramework/
+			http://localhost:8080/job/Biswajit/job/lOCALMACHINE%20JAR/job/jmeter/
+			http://localhost:8080/job/Biswajit/job/Git%20Test1/
+			
+			
+			
+			
+			
