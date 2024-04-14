@@ -66,7 +66,7 @@ public class newPractie {
 //		Fillo fillo = new Fillo();
 //		Connection conn = fillo.getConnection(System.getProperty("user.dir") + File.separator + "DataSheet" + File.separator + "IshinePortal.xlsx");
 ////		Connection conn=fillo.getConnection("‪C:\\Users\\biswa\\eclipse-workspace\\BiswajitFramework\\Subscription.xlsx");
-//		String selectQuery = "SELECT * FROM Sheet3";
+//		String selectQuery = "SELECT * F.ROM Sheet3";
 //		Recordset r = conn.executeQuery(selectQuery);
 //
 //		List<Object> rowList = new ArrayList<Object>();
