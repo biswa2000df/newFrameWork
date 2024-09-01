@@ -69,6 +69,9 @@ public class ConnectDataSheet extends BrowserClass {
 	// generate report.
 
 	public static void DataSheetGet(String fileName) throws Exception {
+		totalTest = 0; pass = 0; fail = 0;
+		totalValidations = 0; passValidations = 0; failedValidations = 0;
+		
 		connectDatasheet = new ConnectDataSheet();
 		locatorClass = new LocatorClass();
 		utilClass = new UtilScreenshotAndReport();

@@ -1,0 +1,143 @@
+2024-08-27 13:27:10.673 [main] INFO  FRAMEWORK.UtilScreenshotAndReport - Logging to dynamically created file: C:\Users\biswa\eclipse-workspace\BiswajitFramework\STATIC_RESULT\2024\August\27\DEMO\Logs\DEMO.log
+2024-08-27 13:27:11.732 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: session not created: This version of ChromeDriver only supports Chrome version 123
+Current browser version is 128.0.6613.85 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.137.1', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goog:chromeOptions: {args: [--remote-allow-origins=*, --no-sandbox, --disable-notifications, --disable-cache], extensions: []}, pageLoadStrategy: normal}], desiredCapabilities=Capabilities {browserName: chrome, goog:chromeOptions: {args: [--remote-allow-origins=*, --no-sandbox, --disable-notifications, --disable-cache], extensions: []}, pageLoadStrategy: normal}}]
+2024-08-27 13:27:11.733 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: session not created: This version of ChromeDriver only supports Chrome version 123
+Current browser version is 128.0.6613.85 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.137.1', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goog:chromeOptions: {args: [--remote-allow-origins=*, --no-sandbox, --disable-notifications, --disable-cache], extensions: []}, pageLoadStrategy: normal}], desiredCapabilities=Capabilities {browserName: chrome, goog:chromeOptions: {args: [--remote-allow-origins=*, --no-sandbox, --disable-notifications, --disable-cache], extensions: []}, pageLoadStrategy: normal}}]
+2024-08-27 13:27:11.733 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: session not created: This version of ChromeDriver only supports Chrome version 123
+Current browser version is 128.0.6613.85 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.137.1', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goog:chromeOptions: {args: [--remote-allow-origins=*, --no-sandbox, --disable-notifications, --disable-cache], extensions: []}, pageLoadStrategy: normal}], desiredCapabilities=Capabilities {browserName: chrome, goog:chromeOptions: {args: [--remote-allow-origins=*, --no-sandbox, --disable-notifications, --disable-cache], extensions: []}, pageLoadStrategy: normal}}]
+2024-08-27 13:27:11.734 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: session not created: This version of ChromeDriver only supports Chrome version 123
+Current browser version is 128.0.6613.85 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.137.1', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goog:chromeOptions: {args: [--remote-allow-origins=*, --no-sandbox, --disable-notifications, --disable-cache], extensions: []}, pageLoadStrategy: normal}], desiredCapabilities=Capabilities {browserName: chrome, goog:chromeOptions: {args: [--remote-allow-origins=*, --no-sandbox, --disable-notifications, --disable-cache], extensions: []}, pageLoadStrategy: normal}}]
+2024-08-27 13:27:11.750 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.get(String)" because "FRAMEWORK.ActionClass.driver" is null
+2024-08-27 13:27:11.750 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.get(String)" because "FRAMEWORK.ActionClass.driver" is null
+2024-08-27 13:27:11.750 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.get(String)" because "FRAMEWORK.ActionClass.driver" is null
+2024-08-27 13:27:11.750 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.get(String)" because "FRAMEWORK.ActionClass.driver" is null
+2024-08-27 13:27:11.751 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.manage()" because "FRAMEWORK.BrowserClass.driver" is null
+2024-08-27 13:27:11.751 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.manage()" because "FRAMEWORK.BrowserClass.driver" is null
+2024-08-27 13:27:11.751 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.manage()" because "FRAMEWORK.BrowserClass.driver" is null
+2024-08-27 13:27:11.751 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.manage()" because "FRAMEWORK.BrowserClass.driver" is null
+2024-08-27 13:27:11.752 [main] ERROR FRAMEWORK.ConnectDataSheet - ERROR MESSAGE :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-08-27 13:27:11.752 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.753 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.753 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.753 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.753 [main] ERROR FRAMEWORK.ConnectDataSheet - ERROR MESSAGE :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-08-27 13:27:11.754 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.755 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.755 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.755 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.755 [main] ERROR FRAMEWORK.ConnectDataSheet - ERROR MESSAGE :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-08-27 13:27:11.756 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.756 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.756 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.756 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.757 [main] ERROR FRAMEWORK.ConnectDataSheet - ERROR MESSAGE :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-08-27 13:27:11.758 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.758 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.758 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.758 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.759 [main] ERROR FRAMEWORK.ConnectDataSheet - ERROR MESSAGE :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-08-27 13:27:11.759 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.759 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.760 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.760 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.760 [main] ERROR FRAMEWORK.ConnectDataSheet - ERROR MESSAGE :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-08-27 13:27:11.761 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.761 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.761 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.761 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.762 [main] ERROR FRAMEWORK.ConnectDataSheet - ERROR MESSAGE :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-08-27 13:27:11.763 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.763 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.763 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.763 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.764 [main] ERROR FRAMEWORK.ConnectDataSheet - ERROR MESSAGE :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-08-27 13:27:11.765 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.765 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.765 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.765 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.766 [main] ERROR FRAMEWORK.ConnectDataSheet - ERROR MESSAGE :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-08-27 13:27:11.766 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.767 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.767 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.767 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.767 [main] ERROR FRAMEWORK.ConnectDataSheet - ERROR MESSAGE :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-08-27 13:27:11.768 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.768 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.768 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.768 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.769 [main] ERROR FRAMEWORK.ConnectDataSheet - ERROR MESSAGE :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-08-27 13:27:11.769 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.769 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.770 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.770 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.770 [main] ERROR FRAMEWORK.ConnectDataSheet - ERROR MESSAGE :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-08-27 13:27:11.771 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.771 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.771 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.771 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.772 [main] ERROR FRAMEWORK.ConnectDataSheet - ERROR MESSAGE :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-08-27 13:27:11.772 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.772 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.772 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.772 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.773 [main] ERROR FRAMEWORK.ConnectDataSheet - ERROR MESSAGE :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-08-27 13:27:11.774 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.774 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.774 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.774 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.774 [main] ERROR FRAMEWORK.ConnectDataSheet - ERROR MESSAGE :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-08-27 13:27:11.775 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.775 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.775 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.775 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.776 [main] ERROR FRAMEWORK.ConnectDataSheet - ERROR MESSAGE :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-08-27 13:27:11.777 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.777 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.777 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.777 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.778 [main] ERROR FRAMEWORK.ConnectDataSheet - ERROR MESSAGE :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-08-27 13:27:11.779 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.779 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.779 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.779 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.780 [main] ERROR FRAMEWORK.ConnectDataSheet - ERROR MESSAGE :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-08-27 13:27:11.781 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.781 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.781 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.781 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.781 [main] ERROR FRAMEWORK.ConnectDataSheet - ERROR MESSAGE :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-08-27 13:27:11.782 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.782 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.782 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.782 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.783 [main] ERROR FRAMEWORK.ConnectDataSheet - ERROR MESSAGE :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-08-27 13:27:11.783 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.783 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.783 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.783 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebElement.click()" because "FRAMEWORK.ActionClass.element" is null
+2024-08-27 13:27:11.784 [main] ERROR FRAMEWORK.ConnectDataSheet - ERROR MESSAGE :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-08-27 13:27:11.784 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.784 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.784 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.784 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.IllegalArgumentException: Driver must be set
+2024-08-27 13:27:11.785 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.close()" because "FRAMEWORK.ActionClass.driver" is null
+2024-08-27 13:27:11.785 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.close()" because "FRAMEWORK.ActionClass.driver" is null
+2024-08-27 13:27:11.785 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.close()" because "FRAMEWORK.ActionClass.driver" is null
+2024-08-27 13:27:11.785 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.close()" because "FRAMEWORK.ActionClass.driver" is null
+2024-08-27 13:30:41.372 [main] INFO  FRAMEWORK.UtilScreenshotAndReport - Logging to dynamically created file: C:\Users\biswa\eclipse-workspace\BiswajitFramework\STATIC_RESULT\2024\August\27\DEMO\Logs\DEMO.log

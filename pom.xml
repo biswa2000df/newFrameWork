@@ -128,6 +128,19 @@
 					</execution>
 				</executions>
 			</plugin>
+			
+			   <!-- Configure Surefire Plugin to run your main class as a test -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <configuration>
+                    <includes>
+                        <include>**/LunchMainClass.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+			
 		</plugins>
 	</build>
 

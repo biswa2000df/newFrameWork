@@ -38,7 +38,7 @@ Select the "Repository browser"  = "githubweb"
 			
 			then u commit and push the code to the github then jenkins are automatically build automatically.
 			
-			
+			//this is the link for jenkins to integrated github
 			http://localhost:8080/job/Biswajit/job/FRAMEWORK/job/AutomationFramework/
 			http://localhost:8080/job/Biswajit/job/lOCALMACHINE%20JAR/job/jmeter/
 			http://localhost:8080/job/Biswajit/job/Git%20Test1/

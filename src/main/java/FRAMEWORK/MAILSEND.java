@@ -186,7 +186,7 @@ public class MAILSEND {
 			BodyPart htmlPart = new MimeBodyPart();
 			
 			String htmlContent = "<html><body><h2>Automation Test Report</h2>"
-                    + "<p>Hi Teams, </p><p> " + BODY_MESSAGE + ": </p>"
+                    + "<p>Hi Team, </p><p> " + BODY_MESSAGE + ": </p>"
                     + "<TABLE style=\"border-collapse: collapse; border: 1px solid black; background-color:#E4E5E5;\"  width=\"100%\">"
                     + "<tr>"
                     + "<th style=\"text-align:center; border: 1px solid black; background-color:#4CAF50; color: white;\">Project</th>"
@@ -199,7 +199,7 @@ public class MAILSEND {
                     + "<th style=\"text-align:center; border: 1px solid black; background-color:#4CAF50; color: white;\">ExecutionTime</th>"
                     + "</tr>"
                     + "<tr>"
-                    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectToMainController.Module + "</td>"
+                    + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectToMainController.Module.toUpperCase() + "</td>"
                     + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.totalTest + "</td>"
                     + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.pass + "</td>"
                     + "<td style=\"text-align:center; border: 1px solid black;\">" + ConnectDataSheet.fail + "</td>"

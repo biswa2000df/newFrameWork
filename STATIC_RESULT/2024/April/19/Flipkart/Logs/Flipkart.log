@@ -1,0 +1,64 @@
+2024-04-19 00:35:36.993 [main] INFO  FRAMEWORK.UtilScreenshotAndReport - Logging to dynamically created file: C:\Users\biswa\eclipse-workspace\BiswajitFramework\STATIC_RESULT\2024\April\19\Flipkart\Logs\Flipkart.log
+2024-04-19 00:35:39.458 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: session not created: This version of ChromeDriver only supports Chrome version 122
+Current browser version is 124.0.6367.60 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.1.106', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goog:chromeOptions: {args: [--remote-allow-origins=*, --no-sandbox, --disable-notifications, --disable-cache], extensions: []}, pageLoadStrategy: normal}], desiredCapabilities=Capabilities {browserName: chrome, goog:chromeOptions: {args: [--remote-allow-origins=*, --no-sandbox, --disable-notifications, --disable-cache], extensions: []}, pageLoadStrategy: normal}}]
+2024-04-19 00:35:39.460 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: session not created: This version of ChromeDriver only supports Chrome version 122
+Current browser version is 124.0.6367.60 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.1.106', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goog:chromeOptions: {args: [--remote-allow-origins=*, --no-sandbox, --disable-notifications, --disable-cache], extensions: []}, pageLoadStrategy: normal}], desiredCapabilities=Capabilities {browserName: chrome, goog:chromeOptions: {args: [--remote-allow-origins=*, --no-sandbox, --disable-notifications, --disable-cache], extensions: []}, pageLoadStrategy: normal}}]
+2024-04-19 00:35:39.461 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: session not created: This version of ChromeDriver only supports Chrome version 122
+Current browser version is 124.0.6367.60 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.1.106', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goog:chromeOptions: {args: [--remote-allow-origins=*, --no-sandbox, --disable-notifications, --disable-cache], extensions: []}, pageLoadStrategy: normal}], desiredCapabilities=Capabilities {browserName: chrome, goog:chromeOptions: {args: [--remote-allow-origins=*, --no-sandbox, --disable-notifications, --disable-cache], extensions: []}, pageLoadStrategy: normal}}]
+2024-04-19 00:35:39.461 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: session not created: This version of ChromeDriver only supports Chrome version 122
+Current browser version is 124.0.6367.60 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'BISWAJIT2000', ip: '192.168.1.106', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goog:chromeOptions: {args: [--remote-allow-origins=*, --no-sandbox, --disable-notifications, --disable-cache], extensions: []}, pageLoadStrategy: normal}], desiredCapabilities=Capabilities {browserName: chrome, goog:chromeOptions: {args: [--remote-allow-origins=*, --no-sandbox, --disable-notifications, --disable-cache], extensions: []}, pageLoadStrategy: normal}}]
+2024-04-19 00:35:39.525 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.get(String)" because "FRAMEWORK.ActionClass.driver" is null
+2024-04-19 00:35:39.526 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.get(String)" because "FRAMEWORK.ActionClass.driver" is null
+2024-04-19 00:35:39.526 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.get(String)" because "FRAMEWORK.ActionClass.driver" is null
+2024-04-19 00:35:39.526 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.get(String)" because "FRAMEWORK.ActionClass.driver" is null
+2024-04-19 00:35:39.529 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.manage()" because "FRAMEWORK.BrowserClass.driver" is null
+2024-04-19 00:35:39.530 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.manage()" because "FRAMEWORK.BrowserClass.driver" is null
+2024-04-19 00:35:39.532 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.manage()" because "FRAMEWORK.BrowserClass.driver" is null
+2024-04-19 00:35:39.533 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.manage()" because "FRAMEWORK.BrowserClass.driver" is null
+2024-04-19 00:35:39.537 [main] ERROR FRAMEWORK.ConnectDataSheet - ERROR MESSAGE :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-04-19 00:35:39.554 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-04-19 00:35:39.554 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-04-19 00:35:39.554 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-04-19 00:35:39.554 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.IllegalArgumentException: Driver must be set
+2024-04-19 00:35:39.555 [main] ERROR FRAMEWORK.ConnectDataSheet - ERROR MESSAGE :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-04-19 00:35:39.557 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-04-19 00:35:39.557 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-04-19 00:35:39.557 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-04-19 00:35:39.557 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.IllegalArgumentException: Driver must be set
+2024-04-19 00:35:39.559 [main] ERROR FRAMEWORK.ConnectDataSheet - ERROR MESSAGE :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-04-19 00:35:39.560 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-04-19 00:35:39.560 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-04-19 00:35:39.561 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-04-19 00:35:39.561 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.IllegalArgumentException: Driver must be set
+2024-04-19 00:35:39.562 [main] ERROR FRAMEWORK.ConnectDataSheet - ERROR MESSAGE :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-04-19 00:35:39.563 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-04-19 00:35:39.564 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-04-19 00:35:39.564 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-04-19 00:35:39.564 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.IllegalArgumentException: Driver must be set
+2024-04-19 00:35:39.565 [main] ERROR FRAMEWORK.ConnectDataSheet - ERROR MESSAGE :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElement(org.openqa.selenium.By)" because "FRAMEWORK.LocatorClass.driver" is null
+2024-04-19 00:35:39.569 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-04-19 00:35:39.570 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-04-19 00:35:39.571 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.IllegalArgumentException: Driver must be set
+2024-04-19 00:35:39.571 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.IllegalArgumentException: Driver must be set
+2024-04-19 00:35:39.573 [main] INFO  FRAMEWORK.ConnectDataSheet - Info Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.close()" because "FRAMEWORK.ActionClass.driver" is null
+2024-04-19 00:35:39.573 [main] WARN  FRAMEWORK.ConnectDataSheet - Warn Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.close()" because "FRAMEWORK.ActionClass.driver" is null
+2024-04-19 00:35:39.573 [main] ERROR FRAMEWORK.ConnectDataSheet - Error Message :  java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.close()" because "FRAMEWORK.ActionClass.driver" is null
+2024-04-19 00:35:39.574 [main] FATAL FRAMEWORK.ConnectDataSheet - Fatal Message : java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.close()" because "FRAMEWORK.ActionClass.driver" is null
+2024-04-19 00:42:27.490 [main] INFO  FRAMEWORK.UtilScreenshotAndReport - Logging to dynamically created file: C:\Users\biswa\eclipse-workspace\BiswajitFramework\STATIC_RESULT\2024\April\19\Flipkart\Logs\Flipkart.log
+2024-04-19 00:50:10.929 [main] INFO  FRAMEWORK.UtilScreenshotAndReport - Logging to dynamically created file: C:\Users\biswa\eclipse-workspace\BiswajitFramework\STATIC_RESULT\2024\April\19\Flipkart\Logs\Flipkart.log
